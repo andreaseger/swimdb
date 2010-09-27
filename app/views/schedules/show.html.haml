@@ -1,0 +1,15 @@
+%div
+  %strong
+    =@schedule.name
+  %em
+    =@schedule.created_at.strftime('%d. %b, %Y')
+  %p
+    =@schedule.description
+  %ul
+    -for item in @schedule.items
+      %li
+        %em
+          =item.level
+        %div
+          =item.text
+
