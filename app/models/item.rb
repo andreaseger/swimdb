@@ -1,6 +1,9 @@
 class Item
   include MongoMapper::Document
 
+  key :schedule_id, ObjectId
+  belongs_to :schedule
+
   key :level, Integer, :required => true, :only_integer => true, :in => 0..2
   key :text, String, :required => true
   validates_format_of :text, :key => :lvl0, :with =>/^((\d)(\*|x))?((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i, :if => Proc.new { level == 0 }
@@ -13,25 +16,23 @@ class Item
   key :inner, Integer, :only_integer => true, :greater_than_or_equal => 0
   key :distance, Integer, :only_integer => true, :greater_than_or_equal => 0
 
-  belongs_to :schedule
 
   def parse_text
     # http://www.rubular.com/r/IafYOKYlU7
     re = /^((\d)(\*|x))?((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i
     parse = re.match self.text
-      case self.level
-      	when 0
-      		self.outer = parse[2]
-      		self.inner = parse[5]
-      	when 1
-      	  self.outer = nil
-      	  self.inner = parse[2]
-      	when 2
-      	  self.outer = nil
-      	  self.inner = nil
-      end
-
-      self.distance=parse[7]
+    case self.level
+      when 0
+        self.outer = parse[2]
+        self.inner = parse[5]
+      when 1
+        self.outer = nil
+        self.inner = parse[2]
+      when 2
+        self.outer = nil
+        self.inner = nil
+    end
+    self.distance=parse[7]
   end
 
   def full_distance

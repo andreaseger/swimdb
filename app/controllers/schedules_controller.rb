@@ -1,11 +1,4 @@
-class SchedulesController < ApplicationController
+class SchedulesController < InheritedResources::Base
 
-  def index
-    @schedules = Schedule.all
-  end
-
-  def show
-    @schedule = Schedule.find(params[:id])
-  end
 end
 

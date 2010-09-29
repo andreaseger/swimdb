@@ -6,9 +6,9 @@ class Schedule
   key :description, String, :required => true
   many :items
 
+  key :original_date, Date
 
   def full_schedule_distance
-
     distance = 0
     last_outer = 1
     last_inner = 1
