@@ -12,21 +12,16 @@ class Schedule
     distance = 0
     last_outer = 1
     last_inner = 1
-#    sitems = self.items.sort(:rank)
     for item in items.sort(:rank)
-      item.parse_text         #evtl noch wo anders
-
-      if item.level == 0
-        last_outer = 1
-        last_inner = 1
-      elsif item.level == 1
-        last_inner = 1
-      end
+      item.parse_text         #evtl schon wo anders machen...
 
       if item.level == 0
         distance += item.full_distance
+        last_outer = 1
+        last_inner = 1
       elsif item.level == 1
         distance += item.full_distance * last_outer
+        last_inner = 1
       elsif item.level == 2
         distance += item.full_distance * last_outer * last_inner
       end

@@ -3,6 +3,9 @@ class Item
 
   key :level, Integer, :required => true, :only_integer => true, :in => 0..2
   key :text, String, :required => true
+  validates_format_of :text, :key => :lvl0, :with =>/^((\d)(\*|x))?((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i, :if => Proc.new { level == 0 }
+  validates_format_of :text, :key => :lvl1, :with =>/^((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i, :if => Proc.new { level == 1 }
+  validates_format_of :text, :key => :lvl2, :with =>/^(\d+)($|\s|m$|m\s|m,\s)/i, :if => Proc.new { level == 2 }
   key :rank, Integer, :required => true, :only_integer => true, :greater_than_or_equal => 0
 
   #parsed
@@ -13,27 +16,22 @@ class Item
   belongs_to :schedule
 
   def parse_text
-    parse = self.text.match(/((\d)(\*|x))?((\d)(\*|x))?(\d+)m?/)
+    # http://www.rubular.com/r/IafYOKYlU7
+    re = /^((\d)(\*|x))?((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i
+    parse = re.match self.text
       case self.level
       	when 0
       		self.outer = parse[2]
       		self.inner = parse[5]
       	when 1
-      	  self.outer = nil#parse[5]
+      	  self.outer = nil
       	  self.inner = parse[2]
       	when 2
-      	  self.outer = nil#parse[5]
-      	  self.inner = nil#parse[2]
+      	  self.outer = nil
+      	  self.inner = nil
       end
 
-      #parse[0]  #3x4x500m
-      #parse[1]  #3x
-      #self.outer=parse[2]  #3
-      #parse[3]  #x
-      #parse[4]  #4x
-      #self.inner=parse[5]  #4
-      #parse[6]  #x
-      self.distance=parse[7]  #500
+      self.distance=parse[7]
   end
 
   def full_distance

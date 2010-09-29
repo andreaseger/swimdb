@@ -3,10 +3,11 @@ require 'spec_helper'
 describe "items.rb" do
 
   describe 'validations' do
+
     %w(level text rank).each do |attrib|
       it "should validates presence of #{attrib}" do
         item = Factory.build(:item, attrib => nil)
-        item.save.should eq false
+        item.should_not be_valid
       end
     end
 
@@ -17,16 +18,36 @@ describe "items.rb" do
       item4 = Factory.build(:item, :level => -3)
       #positive test
       [item1, item2].each do |item|
-        item.save.should eq true
+        item.should be_valid
       end
       #negative test
       [item3, item4].each do |item|
-        item.save.should eq false
+        item.should_not be_valid
       end
+    end
+
+    it 'should validate the text pattern' do
+      item = Factory.build(:item, :level => 0, :text => '3x5x2x100m')
+      item.should_not be_valid
+      item = Factory.build(:item, :level => 0, :text => '3x5x100m')
+      item.should be_valid
+    end
+
+    it 'should validate the text pattern for lvl 1 items' do
+      item = Factory.build(:item, :level => 1, :text => '3x5x100m')
+      item.should_not be_valid
+      item = Factory.build(:item, :level => 1, :text => '3x100m')
+      item.should be_valid
+    end
+    it 'should validate the text pattern for lvl 2 items' do
+      item = Factory.build(:item, :level => 2, :text => '3x100m')
+      item.should_not be_valid
+      item = Factory.build(:item, :level => 2, :text => '100m')
+      item.should be_valid
     end
   end
 
-  describe 'parse_text' do
+  describe 'when parse_text' do
     it "should find the components in a easy example" do
       item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
       item.parse_text
@@ -55,8 +76,8 @@ describe "items.rb" do
       item.inner.should eq 3
       item.distance.should eq 200
     end
-    it 'should set inner and outer to nill if its a lvl2 item' do
-      item = Factory(:item, :level => 2, :text => "3*200 Kraul mit 50m Antritten")
+    it 'should set inner and outer to nil if its a lvl2 item' do
+      item = Factory(:item, :level => 2, :text => "200 Kraul mit 50m Antritten")
       item.parse_text
       item.outer.should eq nil
       item.inner.should eq nil

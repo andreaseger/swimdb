@@ -8,6 +8,7 @@ gem 'mongo_mapper'
 
 group :test, :spec, :development do
   gem 'rspec-rails', '>= 2.0.0.beta.22'
+  gem 'spork'
   gem 'webrat'
   #gem 'mocha'
   gem 'database_cleaner'
