@@ -9,15 +9,34 @@ Factory.define :first, :parent => :item do |f|
 end
 Factory.define :second, :parent => :item do |f|
   f.text '2*800m'
+  f.outer 2
   f.distance 800
 end
 Factory.define :third, :parent => :item do |f|
   f.text '3*500m'
+  f.outer 3
   f.distance 500
 end
 Factory.define :third_lvl1, :parent => :item do |f|
   f.level 1
   f.text "50m"
+  f.distance 50
+end
+Factory.define :forth, :parent => :item do |f|
+  f.text '3*5*100m'
+  f.outer 3
+  f.inner 5
+  f.distance 100
+end
+Factory.define :forth_lvl2, :parent => :item do |f|
+  f.level 2
+  f.text "50m"
+  f.distance 50
+end
+Factory.define :forth_lvl1, :parent => :item do |f|
+  f.level 1
+  f.text "2x50m"
+  f.inner 2
   f.distance 50
 end
 
