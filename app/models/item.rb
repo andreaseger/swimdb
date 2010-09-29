@@ -3,11 +3,14 @@ class Item
 
   key :level, Integer, :required => true, :only_integer => true, :in => 0..2
   key :text, String, :required => true
+  key :rank, Integer, :required => true, :only_integer => true, :greater_than_or_equal => 0
 
-  #chached
+  #parsed
   key :outer, Integer, :only_integer => true, :greater_than_or_equal => 0
   key :inner, Integer, :only_integer => true, :greater_than_or_equal => 0
   key :distance, Integer, :only_integer => true, :greater_than_or_equal => 0
+
+  belongs_to :schedule
 
   def parse_text
     parse = self.text.match(/((\d)(\*|x))?((\d)(\*|x))?(\d+)m?/)

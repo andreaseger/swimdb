@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "items.rb" do
 
   describe 'validations' do
-    %w(level text).each do |attrib|
+    %w(level text rank).each do |attrib|
       it "should validates presence of #{attrib}" do
         item = Factory.build(:item, attrib => nil)
         item.save.should eq false
@@ -67,13 +67,13 @@ describe "items.rb" do
   it 'should calculate the correct full distance' do
     item = Factory(:item, :inner => 5, :outer => 2, :distance => 100)
     item.full_distance.should eq 1000
-    
+
     item = Factory(:item, :inner => 7, :outer => 3, :distance => 50)
     item.full_distance.should eq 1050
-    
+
     item = Factory(:item, :inner => nil, :outer => 5, :distance => 50)
     item.full_distance.should eq 250
-    
+
     item = Factory(:item, :inner => 5, :outer => nil, :distance => 50)
     item.full_distance.should eq 250
   end
