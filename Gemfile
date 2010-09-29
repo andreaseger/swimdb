@@ -5,7 +5,6 @@ gem 'rails', '3.0.0'
 gem 'haml-rails'
 gem 'bson_ext'
 gem 'mongo_mapper'
-gem 'inherited_resources'
 
 group :test, :spec, :development do
   gem 'rspec-rails', '>= 2.0.0.beta.22'
