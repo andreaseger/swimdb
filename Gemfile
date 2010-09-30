@@ -17,6 +17,8 @@ group :test, :spec, :development do
 end
 
 
+#Plugins
+#rails plugin install http://github.com/jasp/nested_form.git -r rails3
 
 
 

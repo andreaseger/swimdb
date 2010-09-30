@@ -4,8 +4,8 @@ class Schedule
 
   key :name, String, :required => true
   key :description, String, :required => true
-  many :items
-
+  many :items, :dependent => :destroy
+  #accepts_nested_attributes_for :items, :reject_if => lambda { |a| a[:text].blank? }, :allow_destroy => true
   key :original_date, Date
 
   def full_schedule_distance
@@ -13,7 +13,7 @@ class Schedule
     last_outer = 1
     last_inner = 1
     for item in items.sort(:rank)
-      item.parse_text         #evtl schon wo anders machen...
+#      item.parse_text         #evtl schon wo anders machen...
 
       if item.level == 0
         distance += item.full_distance

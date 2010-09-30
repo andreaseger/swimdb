@@ -2,15 +2,27 @@ require 'spec_helper'
 
 describe "schedules.rb" do
 
-  %w(name description).each do |attrib|
-    it "should validates presence of #{attrib}" do
-      schedule = Factory.build(:schedule, attrib => nil)
-      schedule.save.should == false
+  describe 'when validate' do
+    %w(name description).each do |attrib|
+      it "should validates presence of #{attrib}" do
+        schedule = Factory.build(:schedule, attrib => nil)
+        schedule.save.should == false
+      end
     end
-  end
 
-  it "should have a relation to items" do
-    #TODO da gibt nen should_have ausdruck der checkt ob eine relation vorhanden ist...
+    it "should have a relation to items" do
+      #TODO da gibt nen should_have ausdruck der checkt ob eine relation vorhanden ist...
+    end
+
+    it 'should validate the nested items, negative test' do
+      schedule = Factory.build(:schedule, :items => [Item.new(:level => -3, :rank => 0, :text => "300m")])
+      schedule.should have(0).items
+    end
+
+    it 'should validate the nested items, positive test' do
+      schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m")])
+      schedule.should have(1).items
+    end
   end
 
   describe 'full_schedule_distance' do
@@ -48,6 +60,33 @@ describe "schedules.rb" do
     it "should calculate the right full distance if there is a mix of all the above2" do
       schedule = Factory(:full_distance_test7ext)
       schedule.full_schedule_distance.should eql(8300)
+    end
+  end
+
+  describe "nested items" do
+    it "should create the nested Items" do
+      Schedule.count.should == 0
+      Item.count.should == 0
+      schedule = Factory(:full_distance_test1)
+      Schedule.count.should == 1
+      schedule.should have(3).items
+      Item.count.should == 3
+    end
+    it "should delete the nested items with the schedule" do
+      Schedule.count.should == 0
+      Item.count.should == 0
+      schedule = Factory(:full_distance_test1)
+      # delete it
+      schedule.destroy
+      Schedule.count.should == 0
+      Item.count.should == 0
+    end
+
+    it 'should parse the nested items while saving' do
+      Factory(:full_distance_test3)
+      schedule = Schedule.last
+      schedule.items[0].distance.should_not be_nil
+      schedule.items[1].distance.should_not be_nil
     end
   end
 end

@@ -10,6 +10,7 @@ class SchedulesController < ApplicationController
 
   def new
     @schedule = Schedule.new
+    8.times {@schedule.items.build}
   end
 
   def edit

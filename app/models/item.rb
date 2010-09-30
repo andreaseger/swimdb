@@ -16,29 +16,32 @@ class Item
   key :inner, Integer, :only_integer => true, :greater_than_or_equal => 0
   key :distance, Integer, :only_integer => true, :greater_than_or_equal => 0
 
-
-  def parse_text
-    # http://www.rubular.com/r/IafYOKYlU7
-    re = /^((\d)(\*|x))?((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i
-    parse = re.match self.text
-    case self.level
-      when 0
-        self.outer = parse[2]
-        self.inner = parse[5]
-      when 1
-        self.outer = nil
-        self.inner = parse[2]
-      when 2
-        self.outer = nil
-        self.inner = nil
-    end
-    self.distance=parse[7]
-  end
+  before_save :parse_text
 
   def full_distance
     i = (self.inner == nil) ? 1 : self.inner
     o = (self.outer == nil) ? 1 : self.outer
     self.distance * i * o
   end
+
+  #private
+    def parse_text
+      # http://www.rubular.com/r/IafYOKYlU7
+      re = /^((\d)(\*|x))?((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i
+      parse = re.match self.text
+      case self.level
+        when 0
+          self.outer = parse[2]
+          self.inner = parse[5]
+        when 1
+          self.outer = nil
+          self.inner = parse[2]
+        when 2
+          self.outer = nil
+          self.inner = nil
+      end
+      self.distance=parse[7]
+      true
+    end
 end
 
