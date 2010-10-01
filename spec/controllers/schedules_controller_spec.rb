@@ -2,6 +2,15 @@ require 'spec_helper'
 
 describe SchedulesController do
 
+  #it 'foo test' do
+  #  get :new
+  #  assigns[:schedule].should_not be_nil
+  #  foo = assigns[:schedule]
+  #  puts foo.items
+  #  puts foo.inspect
+  #end
+
+
   def mock_schedule(stubs={})
     @mock_schedule ||= mock_model(Schedule, stubs).as_null_object
   end
