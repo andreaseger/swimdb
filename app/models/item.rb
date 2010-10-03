@@ -4,7 +4,7 @@ class Item
   key :schedule_id, ObjectId
   belongs_to :schedule
 
-  key :level, Integer, :required => true, :only_integer => true, :in => 0..2
+  key :level, Integer, :required => true, :only_integer => true, :in => 0..2, :default => 0
   key :text, String, :required => true
   validates_format_of :text, :key => :lvl0, :with =>/^((\d)(\*|x))?((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i, :if => Proc.new { level == 0 }
   validates_format_of :text, :key => :lvl1, :with =>/^((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i, :if => Proc.new { level == 1 }
@@ -24,6 +24,10 @@ class Item
     self.distance * i * o
   end
 
+  #delete from form workaround
+  def delete2
+    self.delete
+  end
   #private
     def parse_text
       # http://www.rubular.com/r/IafYOKYlU7

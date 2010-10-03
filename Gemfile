@@ -4,18 +4,24 @@ gem 'rails', '3.0.0'
 
 gem 'haml-rails'
 gem 'bson_ext'
-gem 'mongo_mapper'
+gem 'mongo_mapper', :git =>"git://github.com/jnunemaker/mongomapper.git", :branch => "rails3"
 
 group :test, :spec, :development do
   gem 'rspec-rails', '>= 2.0.0.beta.22'
   gem 'spork'
-  gem 'webrat'
   #gem 'mocha'
-  gem 'database_cleaner'
   gem 'autotest'
-  gem 'factory_girl_rails'
 end
 
+group :development do
+  #gem 'ruby-debug19', :require => 'ruby-debug'
+end
+
+group :test, :spec do
+  gem 'webrat'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+end
 
 #Plugins
 #rails plugin install http://github.com/jasp/nested_form.git -r rails3

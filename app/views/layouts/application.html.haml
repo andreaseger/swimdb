@@ -7,8 +7,8 @@
     =# stylesheet_link_tag 'screen.css', :media => 'screen, projection'
     =# stylesheet_link_tag 'print.css', :media => 'print'
     = stylesheet_link_tag :all
-    = javascript_include_tag 'jquery/jquery-1.4.2.min'
-    = javascript_include_tag 'nested_form'
+    = javascript_include_tag :all
+    =# javascript_include_tag 'jquery/jquery-1.4.2.min'
     =# javascript_include_tag :all, :cache => true
     = csrf_meta_tag
     = yield(:head)
