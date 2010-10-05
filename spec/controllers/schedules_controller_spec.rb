@@ -38,11 +38,6 @@ describe SchedulesController do
       get :new
       assigns(:schedule).should be(mock_schedule)
     end
-    it 'assigns a new, blank item inside of @schedule' do
-      Schedule.stub(:new) { mock_schedule }
-      get :new
-      pending
-    end
   end
 
   describe "GET edit" do

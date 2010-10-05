@@ -4,11 +4,15 @@ describe "items.rb" do
 
   describe 'when validation' do
 
-    %w(level text rank).each do |attrib|
+    %w(text rank).each do |attrib|
       it "should validates presence of #{attrib}" do
         item = Factory.build(:item, attrib => nil)
         item.should_not be_valid
       end
+    end
+    it 'should default level to 0' do
+      item = Factory.build(:item, :level => nil)
+      item.level.should == 0
     end
 
     it 'should validates that the level is in 0..2' do

@@ -8,10 +8,11 @@
   %ul
     -for item in @schedule.items
       %li
-        %em
-          =item.level
         %div
           =item.text
+  %ul
+    Volle Distanz
+    =@schedule.full_schedule_distance
   %ul.controls
     %li= link_to "Edit", edit_schedule_path(@schedule)
     %li= link_to "Destroy", @schedule, :confirm => 'Are you sure?', :method => :delete
