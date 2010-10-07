@@ -1,23 +1,24 @@
-===== swimDB =====
-Just messing around with rails and mongomapper
-try to spec most of the app and build it with BDD
-==================
+h1. swimdb
+Just messing around with rails 3, mongomapper and BDD
 
 *Features until now*
 * creating and editing a schedule with nested items in one form
 * calculate the complete distance of the schedule
 
 *Known Issues*
-* when entering an invalid item on the schedule's form you don't receive an error, it just saves the schedule without the invalid item
+* when entering an invalid item on the schedule's form you don't receive an error,
+it just saves the schedule without the invalid item
 * when you have an validation error on a schedule's field you loose all changes to the items
 
 *TODO*
-* fix the issues...(think they originate from mongomapper and the lack of accept_nested_attributes_from; perhaps i will try one of the implementations from gist)
+* fix the issues...
+(think they originate from mongomapper and the lack of accept_nested_attributes_from;
+perhaps i will try one of the implementations from gist)
 * add device to the hole site
 * add a commenting system
 * add tags to the schedule
 * add a original date the the schedule to indicate the original creation of the schedule
 
-==================
-Testing with rspec and cucumber for both ruby-1.9.2 and ree-1.8.7
+*meh*
+Testing with rspec and cucumber under ruby-1.9.2 and ree-1.8.7
 
