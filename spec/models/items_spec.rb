@@ -4,11 +4,9 @@ describe "items.rb" do
 
   describe 'when validation' do
 
-    %w(text rank).each do |attrib|
-      it "should validates presence of #{attrib}" do
-        item = Factory.build(:item, attrib => nil)
-        item.should_not be_valid
-      end
+    it "should validates presence of text" do
+      item = Factory.build(:item, :text => nil)
+      item.should_not be_valid
     end
     it 'should default level to 0' do
       item = Factory.build(:item, :level => nil)

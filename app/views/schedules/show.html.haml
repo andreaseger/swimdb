@@ -6,10 +6,9 @@
   %p
     =@schedule.description
   %ul
-    -for item in @schedule.items
+    -for item in @schedule.items.sort(:rank).all
       %li
-        %div
-          =item.text
+        =item.text
   %ul
     Volle Distanz
     =@schedule.full_schedule_distance

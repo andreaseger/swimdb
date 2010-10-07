@@ -19,7 +19,7 @@ group :test, :spec, :cucumber, :development, :spork do
   gem 'cucumber-rails'
 end
 
-gem 'ruby-debug19', :require => 'ruby-debug'
+#gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test, :spec, :cucumber do
   gem 'webrat'
