@@ -1,0 +1,16 @@
+%li
+  = f.number_field :level, :in => 0..2, :step => 1, :class => 'item-level'
+  = f.text_field :text, :class => 'item-text'
+  = f.link_to_remove "Remove this item"
+    %li
+      %ul#item_fields
+        -#@schedule.items.each_with_index do |item, n|
+        = f.fields_for :items do |builder|
+          %li
+            = builder.number_field :level, :in => 0..2, :step => 1, :class => 'item-level'
+            = builder.text_field :text, :class => 'item-text'
+            = builder.number_field :rank, :in => 0..20, :step => 1, :class => 'item-rank'
+            -# unless builder.object.new_record?
+              = builder.link_to_remove "Remove this item"
+        =# f.link_to_add "Add a item", :items
+

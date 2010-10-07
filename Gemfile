@@ -8,7 +8,9 @@ gem 'mongo_mapper', :git =>"git://github.com/jnunemaker/mongomapper.git", :branc
 gem 'inherited_resources'
 
 
-group :test, :spec, :development do
+
+
+group :test, :spec, :cucumber, :development, :spork do
   gem 'rspec-rails', '>= 2.0.0.beta.22'
   gem 'spork'
   #gem 'mocha'

@@ -1,0 +1,8 @@
+.item
+  = fields_for 'schedule[items]', item, :index => nil do |f|
+    %li
+      = f.number_field :level, :in => 0..2, :step => 1, :class => 'item-level'
+      = f.text_field :text, :class => 'item-text'
+      = f.number_field :rank, :in => 0..20, :step => 1, :class => 'item-rank'
+      = link_to_function "(remove)", "$(this).up('.item').remove()"
+

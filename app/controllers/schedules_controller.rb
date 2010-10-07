@@ -3,6 +3,9 @@ class SchedulesController < InheritedResources::Base
     @schedules = Schedule.all
   end
 end
+
+
+
 #< ApplicationController
 #
 #  def index

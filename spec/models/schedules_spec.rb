@@ -6,23 +6,25 @@ describe "schedules.rb" do
     %w(name description).each do |attrib|
       it "should validates presence of #{attrib}" do
         schedule = Factory.build(:schedule, attrib => nil)
-        schedule.save.should == false
+        schedule.should_not be_valid
       end
     end
 
-    it "should have a relation to items" do
-      #TODO da gibt nen should_have ausdruck der checkt ob eine relation vorhanden ist...
+    it 'should have at least one item' do
+      schedule = Factory.build(:schedule, :items =>[])
+      schedule.should_not be_valid
     end
 
     it 'should validate the nested items, negative test' do
-      schedule = Factory.build(:schedule, :items => [Item.new(:level => -3, :rank => 0, :text => "300m")])
-      schedule.should have(0).items
+      schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m"), Item.new(:level => -3, :rank => 0, :text => "300m")])
+      schedule.should have(1).items
     end
 
     it 'should validate the nested items, positive test' do
       schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m")])
       schedule.should have(1).items
     end
+
   end
 
   describe 'full_schedule_distance' do

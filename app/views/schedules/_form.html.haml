@@ -1,0 +1,20 @@
+= form_for @schedule do |f|
+  -if @schedule.errors.any?
+    #errorExplanation
+      %h2= "#{pluralize(@schedule.errors.count, "error")} prohibited this topic from being saved:"
+      %ul
+        - @schedule.errors.full_messages.each do |msg|
+          %li= msg
+  %ul.formList
+    %li
+      .label= f.label :name
+      .field= f.text_field :name
+    %li#items
+      = add_item_link "(add item)"
+      = render :partial => 'item', :collection => @schedule.items
+    %li
+      .label= f.label :description
+      .field= f.text_area :description, :rows => 5, :cols => 40
+    %li.actions
+      = f.submit 'Save'
+

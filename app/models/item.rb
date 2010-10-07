@@ -9,12 +9,13 @@ class Item
   validates_format_of :text, :key => :lvl0, :with =>/^((\d)(\*|x))?((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i, :if => Proc.new { level == 0 }
   validates_format_of :text, :key => :lvl1, :with =>/^((\d)(\*|x))?(\d+)($|\s|m$|m\s|m,\s)/i, :if => Proc.new { level == 1 }
   validates_format_of :text, :key => :lvl2, :with =>/^(\d+)($|\s|m$|m\s|m,\s)/i, :if => Proc.new { level == 2 }
-  key :rank, Integer, :required => true, :only_integer => true, :greater_than_or_equal => 0
+  key :rank, Integer, :required => true, :only_integer => true, :greater_than_or_equal => 0, :default => 0
 
   #parsed
   key :outer, Integer, :only_integer => true, :greater_than_or_equal => 0
   key :inner, Integer, :only_integer => true, :greater_than_or_equal => 0
   key :distance, Integer, :only_integer => true, :greater_than_or_equal => 0
+
 
   before_save :parse_text
 
@@ -24,10 +25,6 @@ class Item
     self.distance * i * o
   end
 
-  #delete from form workaround
-  def delete2
-    self.delete
-  end
   #private
     def parse_text
       # http://www.rubular.com/r/IafYOKYlU7
