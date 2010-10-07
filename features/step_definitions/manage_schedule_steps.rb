@@ -1,15 +1,11 @@
-Given /^I have no Schedules$/ do
+Given /^(?:|I )have no schedules$/ do
   Schedule.delete_all
 end
 
-Given /^I have (\d+) Schedules "([^"]*)" and "([^"]*)"$/ do |num, arg2, arg3|
+Given /^(?:|I )have (\d+) schedules "([^"]*)" and "([^"]*)"$/ do |num, arg2, arg3|
   Schedule.delete_all
   Schedule.create!(:name => arg2, :description => 'foo', :items => [Item.new(:text => "400m")])
   Schedule.create!(:name => arg3, :description => 'foo', :items => [Item.new(:text => "400m")])
-end
-
-When /^I click on the "([^"]*)" link$/ do |link_name|
-  click_link(link_name)
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)" within the (\d)(?:st|nd|rd|th) "([^"]*)" fieldset$/ do |field, value, index, selector|
@@ -28,7 +24,24 @@ When /^(?:|I )select "([^"]*)" from "([^"]*)" within the (\d)(?:st|nd|rd|th) "([
   end
 end
 
-Then /^I should have (\d+) schedule$/ do |number|
+Then /^(?:|I )should have (\d+) schedule$/ do |number|
   Schedule.count.should == number.to_f
+end
+
+Given /^(?:|I )have a schedule "([^"]*)" with the description "([^"]*)" and the following items:$/ do |name, description, table|
+  # table is a Cucumber::Ast::Table
+  schedule = Schedule.new(:name => name, :description => description)
+  table.hashes.each do |hash|
+    schedule.items.build(hash)
+  end
+  schedule.save
+end
+
+When /^(?:|I )follow "([^"]*)" within the (\d)(?:st|nd|rd|th) "([^"]*)" fieldset$/ do |link, index, selector|
+  matcher = "fieldset#{selector}"
+  path = Capybara::XPath.from_css(matcher).paths.first + "[#{index}]"
+  within(:xpath, path) do
+    click_link(link)
+  end
 end
 

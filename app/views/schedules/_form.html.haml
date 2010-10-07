@@ -6,15 +6,15 @@
         - @schedule.errors.full_messages.each do |msg|
           %li= msg
   %ul.formList
-    %li
+    %li#name
       .label= f.label :name
-      .field= f.text_field :name
+      .field= f.text_field :name, :id => 'name'
     %li#items
       = add_item_link "(add item)"
       = render :partial => 'item', :collection => @schedule.items
-    %li
+    %li#description
       .label= f.label :description
-      .field= f.text_area :description, :rows => 5, :cols => 40
+      .field= f.text_area :description, :rows => 5, :cols => 40, :id => 'description'
     %li.actions
       = f.submit 'Save'
 
