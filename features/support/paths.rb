@@ -11,8 +11,11 @@ module NavigationHelpers
     when /the home\s?page/
       '/'
 
-    when /the list of schedules/
-      '/schedules'
+    when /the list of (.+)/
+      "/#{$1}"
+
+    when /the schedule page/
+      "/schedules/#{Schedule.last.id.to_s}"
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
