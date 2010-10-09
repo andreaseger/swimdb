@@ -5,9 +5,12 @@ class SchedulesController < InheritedResources::Base
 
   def create
     @schedule = Schedule.new(params[:schedule])
-    params[:items].each_with_index do |item, index|
-      item[:rank]=index
-      @schedule.items.build(item)
+    #build the items
+    unless params[:items] == nil
+      params[:items].each_with_index do |item, index|
+        item[:rank]=index
+        @schedule.items.build(item)
+      end
     end
     create!
   end
@@ -20,9 +23,11 @@ class SchedulesController < InheritedResources::Base
     # now update the items
     # not brilliant but working for now
     @schedule.items.delete_all
-    params[:items].each_with_index do |item, index|
-      item[:rank]=index
-      @schedule.items.build(item)
+    unless params[:items] == nil
+      params[:items].each_with_index do |item, index|
+        item[:rank]=index
+        @schedule.items.build(item)
+      end
     end
     create!
   end

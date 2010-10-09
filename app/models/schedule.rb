@@ -5,15 +5,13 @@ class Schedule
   key :name, String, :required => true
   key :description, String, :required => true
   many :items, :dependent => :destroy
-  #accepts_nested_attributes_for :items, :reject_if => lambda { |a| a[:text].blank? }, :allow_destroy => true
   key :original_date, Date
-
 
   validates_associated :items
   validate :itemscount
 
   def itemscount
-    errors.add_on_empty :items
+    errors.add :items, "There has to be at least 1 Item" if self.items.empty?
   end
 
   def full_schedule_distance

@@ -8,7 +8,7 @@ Just messing around with rails 3, mongomapper and BDD
 
 *Known Issues*
 * -when entering an invalid item on the schedule's form you don't receive an error,-
--it just saves the schedule without the invalid item- fixed
+-it just saves the schedule without the invalid item- fixed, but not great
 
 *TODO*
 * add device to the hole site
@@ -17,5 +17,6 @@ Just messing around with rails 3, mongomapper and BDD
 * add a original date the the schedule to indicate the original creation of the schedule
 
 *meh*
-Testing with rspec and cucumber under ruby-1.9.2 and ree-1.8.7
+Testing with rspec and cucumber under ruby-1.9.2 and ree-1.8.7,
+think i will switch to ree only in the future because thats on my server
 

@@ -47,6 +47,10 @@ describe "items.rb" do
       item = Factory.build(:item, :level => 2, :text => '100m')
       item.should be_valid
     end
+    it 'should validate item multiplier > 10' do
+      item = Factory.build(:item, :level => 0, :text => '10*20x100m')
+      item.should be_valid
+    end
   end
 
   describe 'when parse_text' do
