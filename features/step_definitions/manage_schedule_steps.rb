@@ -24,7 +24,7 @@ When /^(?:|I )select "([^"]*)" from "([^"]*)" within the (\d)(?:st|nd|rd|th) "([
   end
 end
 
-Then /^(?:|I )should have (\d+) schedule$/ do |number|
+Then /^(?:|I )should have (\d+) schedules$/ do |number|
   Schedule.count.should == number.to_f
 end
 
@@ -43,5 +43,10 @@ When /^(?:|I )follow "([^"]*)" within the (\d)(?:st|nd|rd|th) "([^"]*)" fieldset
   within(:xpath, path) do
     click_link(link)
   end
+end
+
+When /^(?:I )click destroy$/ do
+  page.evaluate_script('window.confirm = function() { return true; }')
+  page.click('Destroy')
 end
 

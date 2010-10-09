@@ -8,9 +8,11 @@ class Schedule
   #accepts_nested_attributes_for :items, :reject_if => lambda { |a| a[:text].blank? }, :allow_destroy => true
   key :original_date, Date
 
+
+  validates_associated :items
   validate :itemscount
+
   def itemscount
-    #errors.add(:items, "foo")
     errors.add_on_empty :items
   end
 
@@ -19,7 +21,6 @@ class Schedule
     last_outer = 1
     last_inner = 1
     for item in items.sort(:rank)
-
       if item.level == 0
         distance += item.full_distance
         last_outer = 1

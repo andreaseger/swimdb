@@ -7,14 +7,10 @@ Just messing around with rails 3, mongomapper and BDD
 * calculate the complete distance of the schedule
 
 *Known Issues*
-* when entering an invalid item on the schedule's form you don't receive an error,
-it just saves the schedule without the invalid item
-* when you have an validation error on a schedule's field you loose all changes to the items
+* -when entering an invalid item on the schedule's form you don't receive an error,-
+-it just saves the schedule without the invalid item- fixed
 
 *TODO*
-* fix the issues...
-(think they originate from mongomapper and the lack of accept_nested_attributes_from;
-perhaps i will try one of the implementations from gist)
 * add device to the hole site
 * add a commenting system
 * add tags to the schedule

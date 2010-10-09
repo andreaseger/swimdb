@@ -15,12 +15,7 @@ describe "schedules.rb" do
       schedule.should_not be_valid
     end
 
-    it 'should validate the nested items, negative test' do
-      schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m"), Item.new(:level => -3, :rank => 0, :text => "300m")])
-      schedule.should have(1).items
-    end
-
-    it 'should validate the nested items, positive test' do
+    it 'should nest items' do
       schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m")])
       schedule.should have(1).items
     end

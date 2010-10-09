@@ -1,7 +1,7 @@
 %fieldset.item
-  = fields_for 'schedule[items]', item, :index => nil do |f|
+  = fields_for 'items', item, :index => nil do |f|
     = f.number_field :level, :in => 0..2, :step => 1, :id => 'level', :class => 'item-level'
     = f.text_field :text, :class => 'item-text',:id => 'text'
-    = f.number_field :rank, :in => 0..20, :step => 1, :class => 'item-rank', :id => 'rank'
+    =# f.number_field :rank, :in => 0..20, :step => 1, :class => 'item-rank', :id => 'rank'
     = link_to_function "(remove)", "$(this).up('.item').remove()"
 

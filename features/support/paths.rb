@@ -16,6 +16,11 @@ module NavigationHelpers
 
     when /the schedule page/
       "/schedules/#{Schedule.last.id.to_s}"
+
+    when /the edit schedule page/
+      "/schedules/#{Schedule.last.id.to_s}/edit"
+
+
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

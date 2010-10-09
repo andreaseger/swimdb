@@ -1,5 +1,5 @@
 Feature: It should be possible to view a list of schedules and
-  show, edit, create and delete a specific one
+  show, create and delete a specific one
 
 
 Scenario: There are no schedules
@@ -25,13 +25,11 @@ Scenario: I can create a new schedule with 2 Items
      | description      | Lorem Ipsum |
     And I fill in "level" with "0" within the 1st ".item" fieldset
     And I fill in "text" with "400m" within the 1st ".item" fieldset
-    And I fill in "rank" with "0" within the 1st ".item" fieldset
     And I follow "(add item)"
     And I fill in "level" with "0" within the 2nd ".item" fieldset
     And I fill in "text" with "200m" within the 2nd ".item" fieldset
-    And I fill in "rank" with "1" within the 2nd ".item" fieldset
     And I press "Save"
-   Then I should have 1 schedule
+   Then I should have 1 schedules
     And I should be on the schedule page
     And I should see "Foobar" within "strong"
     And I should see "Lorem Ipsum" within "p"
@@ -39,23 +37,30 @@ Scenario: I can create a new schedule with 2 Items
     And I should see "200m" within "ul/li"
 
 @javascript
-Scenario: I can edit an existing schedule
+Scenario: I cannot create a new schedule with a invalid Item
+  Given I have no schedules
+    And I am on the new schedule page
+   When I follow "(add item)"
+    And I fill in the following:
+     | name             | Foobar      |
+     | description      | Lorem Ipsum |
+    And I fill in "level" with "0" within the 1st ".item" fieldset
+    And I fill in "text" with "400m" within the 1st ".item" fieldset
+    And I follow "(add item)"
+    And I fill in "level" with "0" within the 2nd ".item" fieldset
+    And I fill in "text" with "foo" within the 2nd ".item" fieldset
+    And I press "Save"
+   Then I should see "error"
+
+
+@javascript
+Scenario: I can delete a schedule
   Given I have no schedules
     And I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
       | level | text      | rank |
       | 0     | 400m      | 0    |
-      | 0     | 3*200m    | 1    |
-      | 0     | 4*200m    | 2    |
-      | 1     | 2*100m    | 3    |
-      | 2     | 50m       | 4    |
-      | 0     | 400m      | 5    |
     And I am on the schedule page
-   When I follow "Edit"
-    And I fill in "name" with "Hello World"
-    And I follow "(remove)" within the 5th ".item" fieldset
-    And I fill in "rank" with "4" within the 5th ".item" fieldset
-    And I press "Save"
-   Then I should be on the schedule page
-    And I should see "Hello World" within "strong"
-    And I should not see "50m"
+   When I click destroy
+   Then I should have 0 schedules
+    And I should be on the list of schedules
 

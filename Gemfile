@@ -4,7 +4,7 @@ gem 'rails', '3.0.0'
 
 gem 'haml-rails'
 gem 'bson_ext'
-gem 'mongo_mapper', :git =>"git://github.com/jnunemaker/mongomapper.git", :branch => "rails3"
+gem 'mongo_mapper'#, :git =>"git://github.com/jnunemaker/mongomapper.git", :branch => "rails3"
 gem 'inherited_resources'
 
 
@@ -19,7 +19,7 @@ group :test, :spec, :cucumber, :development, :spork do
   gem 'cucumber-rails'
 end
 
-#gem 'ruby-debug19', :require => 'ruby-debug'
+gem 'ruby-debug19', :require => 'ruby-debug'
 
 group :test, :spec, :cucumber do
   gem 'webrat'
