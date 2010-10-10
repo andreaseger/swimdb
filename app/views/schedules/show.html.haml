@@ -6,7 +6,7 @@
   %p
     =@schedule.description
   %ul
-    -for item in @schedule.items.sort(:rank).all
+    -for item in @schedule.items.sort_by(&:rank)
       %li
         =item.text
   %ul

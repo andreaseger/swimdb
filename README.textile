@@ -2,13 +2,19 @@ h1. swimdb
 
 Just messing around with rails 3, mongomapper and BDD
 
+*Newest changes*
+* changed Items to an embedded document, not sure about that change. Had to move all
+the parsing logic into schedule because i cannot use the before_save callback.
+On the good side it completely made my controller changes obsolete, now it back to standart inherited_resources
+
+
+
 *Features until now*
 * creating and editing a schedule with nested items in one form
 * calculate the complete distance of the schedule
 
 *Known Issues*
-* -when entering an invalid item on the schedule's form you don't receive an error,-
--it just saves the schedule without the invalid item- fixed, but not great
+* looks awfull because I dont have an stylesheet
 
 *TODO*
 * add device to the hole site

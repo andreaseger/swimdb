@@ -5,20 +5,19 @@ class Schedule
   key :name, String, :required => true
   key :description, String, :required => true
   many :items, :dependent => :destroy
-  key :original_date, Date
+  #key :original_date, Date
 
   validates_associated :items
   validate :itemscount
 
-  def itemscount
-    errors.add :items, "There has to be at least 1 Item" if self.items.empty?
-  end
+
+  before_save :parseItems
 
   def full_schedule_distance
     distance = 0
     last_outer = 1
     last_inner = 1
-    for item in items.sort(:rank)
+    for item in items.sort_by(&:rank)
       if item.level == 0
         distance += item.full_distance
         last_outer = 1
@@ -37,5 +36,31 @@ class Schedule
     return distance
   end
 
+  private
+  MULTI = '((\d{1,2})(\*|x))?'
+  DIST = '(\d+)($|\s|m$|m\s|m,\s)'
+  def parseItems
+    re = /^#{MULTI}#{MULTI}#{DIST}/i
+    self.items.each do |item|
+      parse = re.match item.text
+      case item.level
+        when 0
+          item.outer = parse[2]
+          item.inner = parse[5]
+        when 1
+          item.outer = nil
+          item.inner = parse[2]
+        when 2
+          item.outer = nil
+          item.inner = nil
+      end
+      item.distance=parse[7]
+    end
+    true
+  end
+
+  def itemscount
+    errors.add :items, "There has to be at least 1 Item" if self.items.empty?
+  end
 end
 

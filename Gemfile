@@ -4,7 +4,7 @@ gem 'rails', '3.0.0'
 
 gem 'haml-rails'
 gem 'bson_ext'
-gem 'mongo_mapper'#, :git =>"git://github.com/jnunemaker/mongomapper.git", :branch => "rails3"
+gem 'mongo_mapper'
 gem 'inherited_resources'
 
 
