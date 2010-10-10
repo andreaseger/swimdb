@@ -4,7 +4,7 @@ describe '/schedules/new.html.haml' do
 
   before(:each) do
     #evtl noch schauen wie ich das richitg mocken muss
-    @schedule = Schedule.new
+    @schedule = Factory.build(:schedule)
   end
 
   it 'should have all nesessary fields ' do

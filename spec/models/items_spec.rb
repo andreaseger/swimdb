@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "items.rb" do
+describe Item do
 
   describe 'when validation' do
 

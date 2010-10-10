@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "schedules.rb" do
+describe Item do
 
   describe 'when validate' do
     %w(name description).each do |attrib|

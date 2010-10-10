@@ -1,22 +1,31 @@
 h1. swimdb
 
-Just messing around with rails 3, mongomapper and BDD
+Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
-*Features until now*
+h2. Newest changes
+
+* added devise to the mix; using devise_mongo_mapper gem to support MM
+till now I only added the usernav(+spec), the rest is unprotected.
+
+h2. Features until now
+
 * creating and editing a schedule with nested items in one form
 * calculate the complete distance of the schedule
 
-*Known Issues*
+h2. Known Issues
+
 * -when entering an invalid item on the schedule's form you don't receive an error,-
 -it just saves the schedule without the invalid item- fixed, but not great
 
-*TODO*
-* add device to the hole site
+h2. TODO
+
+* add device to the hole site *working on it*
 * add a commenting system
 * add tags to the schedule
 * add a original date the the schedule to indicate the original creation of the schedule
 
-*meh*
+h2. meh
+
 Testing with rspec and cucumber under ruby-1.9.2 and ree-1.8.7,
 think i will switch to ree only in the future because thats on my server
 

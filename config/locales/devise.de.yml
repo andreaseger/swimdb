@@ -1,0 +1,40 @@
+de:
+  errors:
+    messages:
+      not_found: "nicht gefunden"
+      already_confirmed: "schon bestätigt"
+      not_locked: "nicht verriegelt"
+
+  devise:
+    failure:
+      unauthenticated: 'Sie brauchen sich anzumelden oder einzutragen, bevor Sie fortsetzen.'
+      unconfirmed: 'Sie brauchen Ihr Konto zu bestätigen, bevor Sie fortfahren.'
+      locked: 'Ihr Konto ist gesperrt.'
+      invalid: 'Ihre E-Mail oder Ihr Passwort ungültig.'
+      invalid_token: 'Unzulässige Authentifikation.'
+      timeout: 'Ihre Session ist abgelaufen, bitte melden Sie sich erneut an, um fortzusetzen.'
+      inactive: 'Ihr Konto wurde noch nicht aktiviert.'
+    sessions:
+      signed_in: 'Die Anmeldung erfolgreich abgeschlossen.'
+      signed_out: 'Die Abmeldung erfolgreich abgeschlossen.'
+    passwords:
+      send_instructions: 'Nach wenigen Minuten erhalten Sie eine E-Mail mit den Anweisungen, Ihr Passwort rückzusetzen.'
+      updated: 'Ihr Passwort wurde erfolgreich geändert. Jetzt sind Sie angemeldet.'
+    confirmations:
+      send_instructions: 'Nach einigen Minuten erhalten Sie eine E-Mail mit den Anweisungen, wie eine Bestätigung von Ihrem Konto erfolgen muss.'
+      confirmed: 'Ihr Konto wurde erfolgreich bestätigt. Jetzt sind Sie angemeldet.'
+    registrations:
+      signed_up: 'Sie haben sich erfolgreich angemeldet. Sie erhalten die Bestätigung auf Ihre E-Mail, falls aktiviert.'
+      updated: 'Sie haben Ihr Konto erfolgreich aktualisiert.'
+      destroyed: 'Auf Wiedersehen! Ihr Konto wurde erfolgreich gelöscht. Wir hoffen Sie bald wieder zu sehen.'
+    unlocks:
+      send_instructions: 'Nach einigen Minuten erhalten Sie eine E-Mail mit den Anweisungen, wie die Freischaltung von Ihrem Konto erfolgen muss.'
+      unlocked: 'Ihr Konto wurde erfolgreich freigeschaltet. Jetzt sind Sie angemeldet.'
+    mailer:
+      confirmation_instructions:
+        subject: 'Bestätigungsanweisungen'
+      reset_password_instructions:
+        subject: 'Anweisungen zur Zurücksetzung vom Passwort'
+      unlock_instructions:
+        subject: 'Anweisungen zur Freischaltung'
+
