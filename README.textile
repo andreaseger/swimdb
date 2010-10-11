@@ -7,14 +7,15 @@ Just messing around with rails 3, mongomapper and BDD
 the parsing logic into schedule because i cannot use the before_save callback.
 On the good side it completely made my controller changes obsolete, now it back to standart inherited_resources
 
-
-
 *Features until now*
 * creating and editing a schedule with nested items in one form
 * calculate the complete distance of the schedule
 
 *Known Issues*
 * looks awfull because I dont have an stylesheet
+* the standard controller does not set the rank of the items;
+basicly its a array of hashes, so do i need to give them a rank?
+
 
 *TODO*
 * add device to the hole site
