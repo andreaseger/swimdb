@@ -4,18 +4,22 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
-* added devise to the mix; using devise_mongo_mapper gem to support MM
-till now I only added the usernav(+spec), the rest is unprotected.
+* devise almost fully implemented, but i'm not sure if i got all test scenarios
+unfortanatly the before_filer killed my controller hack to get validation errors on items
+dont know how to fix this now have to think about it. Either I have to hack even more in
+the controller or I could just switch to the embedded items; there I can use the default
+controller.
 
 h2. Features until now
 
 * creating and editing a schedule with nested items in one form
 * calculate the complete distance of the schedule
+* authentication
 
 h2. Known Issues
 
-* -when entering an invalid item on the schedule's form you don't receive an error,-
--it just saves the schedule without the invalid item- fixed, but not great
+* when entering an invalid item on the schedule's form you don't receive an error,
+it just saves the schedule without the invalid item -fixed, but not great- its back
 
 h2. TODO
 

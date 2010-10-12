@@ -5,6 +5,9 @@ describe '/layouts/application.html.haml' do
   include Devise::TestHelpers
 
   describe 'not authenticated' do
+    before :each do
+      @view.stub!(:user_signed_in?).and_return(false)
+    end
     it 'should show the default usernav' do
       render
       rendered.should have_selector("div", :id => "user_nav") do

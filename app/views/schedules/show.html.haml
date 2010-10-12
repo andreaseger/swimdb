@@ -13,7 +13,8 @@
     Volle Distanz
     =@schedule.full_schedule_distance
   %ul.controls
-    %li= link_to "Edit", edit_schedule_path(@schedule)
-    %li= link_to "Destroy", @schedule, :confirm => 'Are you sure?', :method => :delete
+    - if user_signed_in?
+      %li= link_to "Edit", edit_schedule_path(@schedule)
+      %li= link_to "Destroy", @schedule, :confirm => 'Are you sure?', :method => :delete
     %li= link_to "View All", schedules_path
 

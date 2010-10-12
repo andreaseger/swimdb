@@ -22,7 +22,6 @@ class Item
   key :inner, Integer, :only_integer => true, :greater_than_or_equal => 0
   key :distance, Integer, :only_integer => true, :greater_than_or_equal => 0
 
-
   before_save :parse_text
 
   def full_distance

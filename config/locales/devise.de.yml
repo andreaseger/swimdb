@@ -2,39 +2,42 @@ de:
   errors:
     messages:
       not_found: "nicht gefunden"
-      already_confirmed: "schon bestätigt"
-      not_locked: "nicht verriegelt"
+      already_confirmed: "wurde bereits bestätigt"
+      not_locked: "ist nicht gesperrt"
 
   devise:
     failure:
-      unauthenticated: 'Sie brauchen sich anzumelden oder einzutragen, bevor Sie fortsetzen.'
-      unconfirmed: 'Sie brauchen Ihr Konto zu bestätigen, bevor Sie fortfahren.'
-      locked: 'Ihr Konto ist gesperrt.'
-      invalid: 'Ihre E-Mail oder Ihr Passwort ungültig.'
-      invalid_token: 'Unzulässige Authentifikation.'
-      timeout: 'Ihre Session ist abgelaufen, bitte melden Sie sich erneut an, um fortzusetzen.'
-      inactive: 'Ihr Konto wurde noch nicht aktiviert.'
+      unauthenticated: 'Sie müssen sich anmelden oder registrieren, bevor Sie weiterfahren können.'
+      unconfirmed: 'Sie müssen Ihren Account bestätigen, bevor Sie weiterfahren können.'
+      locked: 'Ihr Account ist gesperrt.'
+      invalid: 'Ungültige Anmeldedaten.'
+      invalid_token: 'Invalid authentication token.'
+      timeout: 'Ihre Sitzung ist abgelaufen, bitte melden Sie sich erneut an.'
+      inactive: 'Ihr Account ist nicht aktiv.'
     sessions:
-      signed_in: 'Die Anmeldung erfolgreich abgeschlossen.'
-      signed_out: 'Die Abmeldung erfolgreich abgeschlossen.'
+      signed_in: 'Erfolgreich angemeldet.'
+      signed_out: 'Erfolgreich abgemeldet.'
     passwords:
-      send_instructions: 'Nach wenigen Minuten erhalten Sie eine E-Mail mit den Anweisungen, Ihr Passwort rückzusetzen.'
-      updated: 'Ihr Passwort wurde erfolgreich geändert. Jetzt sind Sie angemeldet.'
+      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.'
+      updated: 'Ihr Passwort wurde geändert. Sie sind angemeldet.'
     confirmations:
-      send_instructions: 'Nach einigen Minuten erhalten Sie eine E-Mail mit den Anweisungen, wie eine Bestätigung von Ihrem Konto erfolgen muss.'
-      confirmed: 'Ihr Konto wurde erfolgreich bestätigt. Jetzt sind Sie angemeldet.'
+      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie ihr Passwort zurücksetzten können.'
+      updated: 'Ihr Passwort wurde geändert. Sie sind angemeldet.'
     registrations:
-      signed_up: 'Sie haben sich erfolgreich angemeldet. Sie erhalten die Bestätigung auf Ihre E-Mail, falls aktiviert.'
-      updated: 'Sie haben Ihr Konto erfolgreich aktualisiert.'
-      destroyed: 'Auf Wiedersehen! Ihr Konto wurde erfolgreich gelöscht. Wir hoffen Sie bald wieder zu sehen.'
+      signed_up: 'Sie haben sich erfolgreich registriert. Es kann sein, dass Sie eine Aktivierungs-E-Mail erhalten.'
+      updated: 'Die Angaben wurden erfolgreich geändert.'
+      destroyed: 'Ihr Account wurde erfolgreich gelöscht.'
     unlocks:
-      send_instructions: 'Nach einigen Minuten erhalten Sie eine E-Mail mit den Anweisungen, wie die Freischaltung von Ihrem Konto erfolgen muss.'
-      unlocked: 'Ihr Konto wurde erfolgreich freigeschaltet. Jetzt sind Sie angemeldet.'
+      send_instructions: 'Sie erhalten in wenigen Minuten eine E-Mail mit der Anleitung, wie Sie Ihren Account entsperren können.'
+      unlocked: 'Ihr Account wurde entsperrt. Sie sind angemeldet.'
+    oauth_callbacks:
+      success: 'Erfolgreich mit dem %{kind}-Account angemeldet.'
+      failure: 'Sie konnten nicht mit dem %{kind}-Account angemeldet werden, weil "%{reason}".'
     mailer:
       confirmation_instructions:
-        subject: 'Bestätigungsanweisungen'
+        subject: 'Anleitung zur Bestätigung Ihres Accounts'
       reset_password_instructions:
-        subject: 'Anweisungen zur Zurücksetzung vom Passwort'
+        subject: 'Anleitung um das Passwort zurückzusetzten'
       unlock_instructions:
-        subject: 'Anweisungen zur Freischaltung'
+        subject: 'Anleitung um Ihren Account freizuschalten'
 
