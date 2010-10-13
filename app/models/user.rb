@@ -11,5 +11,8 @@ class User
   attr_accessible :username, :email, :password, :password_confirmation
 
   key :username, String, :required => true, :unique => true
+
+  many :schedules
+  validates_associated :schedules
 end
 

@@ -53,7 +53,7 @@ Scenario: I cannot create a new schedule with a invalid Item
     And I fill in "level" with "0" within the 2nd ".item" fieldset
     And I fill in "text" with "foo" within the 2nd ".item" fieldset
     And I press "Save"
-   Then I should see "error"
+   Then I should see "errors"
 
 @javascript
 Scenario: I can delete a schedule
@@ -85,7 +85,7 @@ Scenario: I can edit an existing schedule
     And I should see "Hello World" within "strong"
     And I should not see "50m"
 
-Scenario: I will be getting an error when entering something invalid on edit
+Scenario: I will be getting an errors when entering something invalid on edit
   Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
       | level | text      | rank |
       | 0     | 400m      | 0    |
@@ -94,9 +94,9 @@ Scenario: I will be getting an error when entering something invalid on edit
    When I follow "Edit"
     And I fill in "name" with ""
     And I press "Save"
-   Then I should see "error"
+   Then I should see "errors"
 
-Scenario: I will be getting an error when entering an invalid item on edit
+Scenario: I will be getting an errors when entering an invalid item on edit
   Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
       | level | text      | rank |
       | 0     | 400m      | 0    |
@@ -109,5 +109,5 @@ Scenario: I will be getting an error when entering an invalid item on edit
    When I follow "Edit"
     And I fill in "text" with "foobar" within the 3nd ".item" fieldset
     And I press "Save"
-   Then I should see "error"
+   Then I should see "errors"
 

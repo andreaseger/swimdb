@@ -1,4 +1,5 @@
 class SchedulesController < InheritedResources::Base
+  #belongs_to :user, :optional => true
   before_filter :authenticate_user!, :except => [:show, :index]
 
   def index

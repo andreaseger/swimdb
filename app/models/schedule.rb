@@ -6,8 +6,9 @@ class Schedule
   key :description, String, :required => true
   many :items, :dependent => :destroy
   key :original_date, Date
+  belongs_to :user
 
-  #validates_associated :items
+  validates_associated :items
   validate :itemscount
 
   def itemscount

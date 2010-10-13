@@ -23,8 +23,9 @@ describe '/layouts/application.html.haml' do
 
   describe 'authenticated' do
     before :each do
-      @view.current_user.stub!(:username).and_return("bob")
       @view.stub!(:user_signed_in?).and_return(true)
+      current_user = mock_model(User, :username => "bob")
+      @view.stub!(:current_user).and_return(current_user)
     end
     it 'should show the usernav for logged in user' do
       render

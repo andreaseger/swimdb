@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Item do
+describe Schedule do
 
   describe 'when validate' do
     %w(name description).each do |attrib|
@@ -21,16 +21,17 @@ describe Item do
     end
   end
 
-  it 'should deliver the created_at date when nothing else delivered' do
-    schedule = Factory(:schedule)
-    schedule.date.should == schedule.created_at
+  describe '#date' do
+    it 'should deliver the created_at date when nothing else delivered' do
+      schedule = Factory(:schedule)
+      schedule.date.should == schedule.created_at
+    end
+    it 'should deliver the original date when set' do
+      schedule = Factory(:schedule, :original_date => 2.days.ago)
+      schedule.date.should == 2.days.ago.to_date
+    end
   end
-  it 'should deliver the original date when set' do
-    schedule = Factory(:schedule, :original_date => 2.days.ago)
-    schedule.date.should == 2.days.ago.to_date
-  end
-
-  describe 'full_schedule_distance' do
+  describe '#full_schedule_distance' do
     it "should calculate the right full distance if all items lvl0" do
       schedule = Factory(:full_distance_test1)
       schedule.full_schedule_distance.should eql(3500)
@@ -67,6 +68,25 @@ describe Item do
       schedule.full_schedule_distance.should eql(8300)
     end
   end
+
+  describe '#user' do
+    before :each do
+      @amy = Factory(:amy)
+    end
+    it 'should be available if set' do
+      schedule = Factory(:schedule, :user => @amy)
+      schedule.user.should == @amy
+    end
+    it 'should be nil if not set' do
+      schedule = Factory(:schedule)
+      schedule.user.should be_nil
+    end
+    it 'should be in the list of the users schedules' do
+      schedule = Factory(:schedule, :user => @amy)
+      @amy.schedules.last.should == schedule
+    end
+  end
+
 
   describe "nested items" do
     it "should create the nested Items" do
