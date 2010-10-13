@@ -20,4 +20,3 @@ module LayoutHelper
     content_for(:head) { javascript_include_tag(*args) }
   end
 end
-

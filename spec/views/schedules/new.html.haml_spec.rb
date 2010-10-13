@@ -3,8 +3,8 @@ require 'spec_helper'
 describe '/schedules/new.html.haml' do
 
   before(:each) do
-    #evtl noch schauen wie ich das richtig mocken muss
-    @schedule = Schedule.new
+    #evtl noch schauen wie ich das richitg mocken muss
+    @schedule = Factory.build(:schedule)
   end
 
   it 'should have all nesessary fields ' do

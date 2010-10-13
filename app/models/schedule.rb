@@ -7,7 +7,7 @@ class Schedule
   many :items, :dependent => :destroy
   key :original_date, Date
 
-  validates_associated :items
+  #validates_associated :items
   validate :itemscount
 
   def itemscount

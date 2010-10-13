@@ -1,6 +1,6 @@
 = form_for @schedule do |f|
   -if @schedule.errors.any?
-    #errorExplanation
+    #error_explanation
       %h2= "#{pluralize(@schedule.errors.count, "error")} prohibited this topic from being saved:"
       %ul
         - @schedule.errors.full_messages.each do |msg|

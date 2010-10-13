@@ -1,1 +1,3 @@
 rvm ruby-1.9.2@swimdb
+export rvm_pretty_print_flag=1
+

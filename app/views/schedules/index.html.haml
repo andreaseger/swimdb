@@ -7,6 +7,8 @@
       %em
         =schedule.created_at.strftime('%d. %b, %Y') #format noch falsch gleich über i18 richtig machen
       = link_to 'show', schedule
-  %li
-    = link_to 'New Schedule', new_schedule_path
+
+  - if user_signed_in?
+    %li
+      = link_to 'New Schedule', new_schedule_path
 
