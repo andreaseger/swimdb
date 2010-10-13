@@ -14,6 +14,13 @@ class Schedule
     errors.add :items, "There has to be at least 1 Item" if self.items.empty?
   end
 
+  def date
+    original_date == nil ? created_at : original_date
+  end
+  def date=(value)
+    original_date = Date.parse(value) unless value.empty?
+  end
+
   def full_schedule_distance
     distance = 0
     last_outer = 1

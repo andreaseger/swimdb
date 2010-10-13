@@ -14,7 +14,6 @@ Just messing around with rails 3, mongomapper and BDD
 * add device to the hole site
 * add a commenting system
 * add tags to the schedule
-* add a original date the the schedule to indicate the original creation of the schedule
 
 *meh*
 Testing with rspec and cucumber under ruby-1.9.2 and ree-1.8.7,

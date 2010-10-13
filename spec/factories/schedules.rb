@@ -1,6 +1,7 @@
 Factory.define :schedule do |f|
   f.name "just an test"
   f.description "jaba jaba jaba"
+  f.items [Factory(:first)]
 end
 
 Factory.define :full_distance_test1, :parent => :schedule do |f|

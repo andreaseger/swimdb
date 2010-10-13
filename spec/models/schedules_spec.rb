@@ -19,7 +19,15 @@ describe "schedules.rb" do
       schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m")])
       schedule.should have(1).items
     end
+  end
 
+  it 'should deliver the created_at date when nothing else delivered' do
+    schedule = Factory(:schedule)
+    schedule.date.should == schedule.created_at
+  end
+  it 'should deliver the original date when set' do
+    schedule = Factory(:schedule, :original_date => 2.days.ago)
+    schedule.date.should == 2.days.ago.to_date
   end
 
   describe 'full_schedule_distance' do
