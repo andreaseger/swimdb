@@ -7,12 +7,18 @@ class Schedule
   many :items, :dependent => :destroy
   key :original_date, Date
   belongs_to :user
+  key :tags, Array, :index => true
 
   validates_associated :items
   validate :itemscount
 
-  def itemscount
-    errors.add :items, "There has to be at least 1 Item" if self.items.empty?
+  before_save :parseItems
+
+  def taggings=(value)
+    self.tags = value.split(",").join(" ").split(" ")
+  end
+  def taggings
+    tags.join(" ")
   end
 
   def date
@@ -26,7 +32,7 @@ class Schedule
     distance = 0
     last_outer = 1
     last_inner = 1
-    for item in items.sort(:rank)
+    for item in items.sort_by(&:rank)
       if item.level == 0
         distance += item.full_distance
         last_outer = 1
@@ -37,13 +43,37 @@ class Schedule
       elsif item.level == 2
         distance += item.full_distance * last_outer * last_inner
       end
-
       last_outer = item.outer unless (item.outer == nil)
       last_inner = item.inner unless (item.inner == nil)
-
     end
     return distance
   end
 
+  private
+  MULTI = '((\d{1,2})(\*|x))?'
+  DIST = '(\d+)($|\s|m$|m\s|m,\s)'
+  def parseItems
+    re = /^#{MULTI}#{MULTI}#{DIST}/i
+    self.items.each do |item|
+      parse = re.match item.text
+      case item.level
+        when 0
+          item.outer = parse[2]
+          item.inner = parse[5]
+        when 1
+          item.outer = nil
+          item.inner = parse[2]
+        when 2
+          item.outer = nil
+          item.inner = nil
+      end
+      item.distance=parse[7]
+    end
+    true
+  end
+
+  def itemscount
+    errors.add :items, "There has to be at least 1 Item" if self.items.empty?
+  end
 end
 

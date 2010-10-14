@@ -10,10 +10,15 @@
     %li#description
       .label= f.label :description
       .field= f.text_area :description, :rows => 7, :cols => 60, :id => 'description'
+
     %li#name
       .label= f.label :date, "Original Date"
-      .field= f.text_field :date, :id => 'date'
-      .info="Today if empty"
+      .field
+        = f.text_field :date, :id => 'date'
+        ="Today if empty"
+    %li#tags
+      .label= f.label :taggings
+      .field= f.text_field :taggings, :id => 'taggings'
     %li.actions
       = f.submit 'Save'
 

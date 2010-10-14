@@ -1,0 +1,6 @@
+%strong
+  TagCloud:
+#tag_cloud
+  - @tags.each do |tag|
+    = "#{tag['_id']} (#{tag['value'].to_i})"
+

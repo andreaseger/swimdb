@@ -9,23 +9,30 @@ unfortanatly the before_filer killed my controller hack to get validation errors
 dont know how to fix this now have to think about it. Either I have to hack even more in
 the controller or I could just switch to the embedded items; there I can use the default
 controller.
+* added tags(embeded) + tag cloud(mapreduce)
+* changed Items to an embedded document, not sure about that change. Had to move all
+the parsing logic into schedule because i cannot use the before_save callback.
+On the good side it completely made my controller changes obsolete, now it
+is back to standart inherited_resources
 
 h2. Features until now
 
 * creating and editing a schedule with nested items in one form
 * calculate the complete distance of the schedule
-* authentication
+* tag a schedule
+
 
 h2. Known Issues
-
-* when entering an invalid item on the schedule's form you don't receive an error,
-it just saves the schedule without the invalid item -fixed, but not great- its back
+* looks awfull because I dont have an stylesheet
+* the standard controller does not set the rank of the items;
+nonIssue because of the array??
+* not really an issue but I not really know how that mapreduce snippet works ;)
 
 h2. TODO
-
-* add device to the hole site *working on it*
 * add a commenting system
-* add tags to the schedule
+* search for schedules with tags(scope :where(tag in tags)???)
+* search in general
+* add a original date the the schedule to indicate the original creation of the schedule
 
 h2. meh
 
