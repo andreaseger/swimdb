@@ -7,6 +7,7 @@ class Schedule
   many :items, :dependent => :destroy
   key :original_date, Date
   belongs_to :user
+  #key :user_id, ObjectId
   key :tags, Array, :index => true
 
   validates_associated :items

@@ -50,7 +50,7 @@ When /^(?:I )click destroy$/ do
   page.click('Destroy')
 end
 
-Then /^: the schedules user should be "([^"]*)"$/ do |username|
+Then /^the schedules user should be "([^"]*)"$/ do |username|
   Schedule.last.user.username.should == username
 end
 

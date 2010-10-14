@@ -1,7 +1,7 @@
 = form_for @schedule do |f|
   = f.error_messages
   %ul.formList
-    = f.hidden_field :user_id, :value => current_user.id
+    =# f.hidden_field :user_id, :value => current_user.id
     %li#name
       .label= f.label :name
       .field= f.text_field :name, :id => 'name'

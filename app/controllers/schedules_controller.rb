@@ -1,5 +1,4 @@
 class SchedulesController < InheritedResources::Base
-  #belongs_to :user, :optional => true
   before_filter :authenticate_user!, :except => [:show, :index]
 
   def index
@@ -8,7 +7,8 @@ class SchedulesController < InheritedResources::Base
   end
 
   def create
-    debugger
+    @schedule = Schedule.new(params[:schedule])
+    @schedule.user = current_user
     create!
   end
 end

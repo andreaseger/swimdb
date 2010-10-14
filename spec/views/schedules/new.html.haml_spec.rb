@@ -11,6 +11,7 @@ describe '/schedules/new.html.haml' do
     render
     rendered.should have_selector("form") do
       have_selector("ul", :class => "formlist") do
+        #have_selector("input", "schedule[user_id]")
         have_selector("div", "Name")
         have_selector("ul", :id=>"item_fields")
         have_selector("div", "Description")
