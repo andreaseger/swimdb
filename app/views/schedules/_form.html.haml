@@ -15,6 +15,9 @@
     %li#description
       .label= f.label :description
       .field= f.text_area :description, :rows => 7, :cols => 60, :id => 'description'
+    %li#tags
+      .label= f.label :taggings
+      .field= f.text_field :taggings, :id => 'taggings'
     %li.actions
       = f.submit 'Save'
 

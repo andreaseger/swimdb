@@ -3,10 +3,12 @@
     =@schedule.name
   %em
     =@schedule.created_at.strftime('%d. %b, %Y')
+  %em
+    =@schedule.taggings
   %p
     =@schedule.description
   %ul
-    -for item in @schedule.items.sort_by(&:rank)
+    -for item in @schedule.items
       %li
         =item.text
   %ul

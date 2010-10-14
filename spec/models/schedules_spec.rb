@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "schedules.rb" do
+describe Schedule do
 
   describe 'when validate' do
     %w(name description).each do |attrib|
@@ -158,5 +158,16 @@ describe "schedules.rb" do
       schedule.items[1].distance.should_not be_nil
     end
   end
+  describe '#tags' do
+    it 'should get the provided tags an save them in the array' do
+      schedule = Factory(:full_distance_test1, :taggings => "foo, bar baz,lorem")
+      schedule.tags.should == ["foo", "bar", "baz", "lorem"]
+    end
+    it 'should give a string of all assigned tags' do
+      schedule = Factory(:full_distance_test1, :tags=>["foo", "bar", "baz", "lorem"])
+      schedule.taggings.should == "foo bar baz lorem"
+    end
+  end
+
 end
 

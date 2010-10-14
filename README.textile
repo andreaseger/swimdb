@@ -3,24 +3,31 @@ h1. swimdb
 Just messing around with rails 3, mongomapper and BDD
 
 *Newest changes*
+* added tags(embeded) + tag cloud(mapreduce)
 * changed Items to an embedded document, not sure about that change. Had to move all
 the parsing logic into schedule because i cannot use the before_save callback.
-On the good side it completely made my controller changes obsolete, now it back to standart inherited_resources
+On the good side it completely made my controller changes obsolete, now it
+is back to standart inherited_resources
 
 *Features until now*
 * creating and editing a schedule with nested items in one form
 * calculate the complete distance of the schedule
+* tag a schedule
+
 
 *Known Issues*
 * looks awfull because I dont have an stylesheet
 * the standard controller does not set the rank of the items;
-basicly its a array of hashes, so do i need to give them a rank?
+nonIssue because of the array??
+* not really an issue but I not really know how that mapreduce snippet works ;)
+
 
 
 *TODO*
 * add device to the hole site
 * add a commenting system
-* add tags to the schedule
+* search for schedules with tags(scope :where(tag in tags)???)
+* search in general
 * add a original date the the schedule to indicate the original creation of the schedule
 
 *meh*

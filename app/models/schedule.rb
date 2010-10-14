@@ -6,12 +6,19 @@ class Schedule
   key :description, String, :required => true
   many :items, :dependent => :destroy
   #key :original_date, Date
+  key :tags, Array, :index => true
 
   validates_associated :items
   validate :itemscount
 
-
   before_save :parseItems
+
+  def taggings=(value)
+    self.tags = value.split(",").join(" ").split(" ")
+  end
+  def taggings
+    tags.join(" ")
+  end
 
   def full_schedule_distance
     distance = 0
@@ -28,10 +35,8 @@ class Schedule
       elsif item.level == 2
         distance += item.full_distance * last_outer * last_inner
       end
-
       last_outer = item.outer unless (item.outer == nil)
       last_inner = item.inner unless (item.inner == nil)
-
     end
     return distance
   end
