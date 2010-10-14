@@ -1,1 +1,1 @@
-features/auth_managing_schedules.feature:99
+features/guest/tags.feature:6 features/authenticated/managing_schedules.feature:99

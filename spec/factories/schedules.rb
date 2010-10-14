@@ -1,6 +1,10 @@
 Factory.define :schedule do |f|
   f.name "just an test"
   f.description "jaba jaba jaba"
+  #f.items [Factory(:first)]
+end
+
+Factory.define :valid_schedule, :parent => :schedule do |f|
   f.items [Factory(:first)]
 end
 

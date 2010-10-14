@@ -6,5 +6,10 @@ class SchedulesController < InheritedResources::Base
     @schedules = Schedule.all
     @tags = SchedulesHelper::TagCloud.build.find()
   end
+
+  def create
+    debugger
+    create!
+  end
 end
 

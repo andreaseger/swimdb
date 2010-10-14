@@ -23,11 +23,11 @@ describe Schedule do
 
   describe '#date' do
     it 'should deliver the created_at date when nothing else delivered' do
-      schedule = Factory(:schedule)
+      schedule = Factory(:valid_schedule)
       schedule.date.should == schedule.created_at
     end
     it 'should deliver the original date when set' do
-      schedule = Factory(:schedule, :original_date => 2.days.ago)
+      schedule = Factory(:valid_schedule, :original_date => 2.days.ago)
       schedule.date.should == 2.days.ago.to_date
     end
   end
@@ -74,15 +74,15 @@ describe Schedule do
       @amy = Factory(:amy)
     end
     it 'should be available if set' do
-      schedule = Factory(:schedule, :user => @amy)
+      schedule = Factory(:valid_schedule, :user => @amy)
       schedule.user.should == @amy
     end
     it 'should be nil if not set' do
-      schedule = Factory(:schedule)
+      schedule = Factory(:valid_schedule)
       schedule.user.should be_nil
     end
     it 'should be in the list of the users schedules' do
-      schedule = Factory(:schedule, :user => @amy)
+      schedule = Factory(:valid_schedule, :user => @amy)
       @amy.schedules.last.should == schedule
     end
   end
@@ -188,11 +188,11 @@ describe Schedule do
   end
   describe '#tags' do
     it 'should get the provided tags an save them in the array' do
-      schedule = Factory(:full_distance_test1, :taggings => "foo, bar baz,lorem")
+      schedule = Factory(:valid_schedule, :taggings => "foo, bar baz,lorem")
       schedule.tags.should == ["foo", "bar", "baz", "lorem"]
     end
     it 'should give a string of all assigned tags' do
-      schedule = Factory(:full_distance_test1, :tags=>["foo", "bar", "baz", "lorem"])
+      schedule = Factory(:valid_schedule, :tags=>["foo", "bar", "baz", "lorem"])
       schedule.taggings.should == "foo bar baz lorem"
     end
   end
