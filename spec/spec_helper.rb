@@ -9,6 +9,7 @@ Spork.prefork do
   # need to restart spork for it take effect.
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
+  require 'rspec/core'
   require 'rspec/rails'
   require 'database_cleaner'
 

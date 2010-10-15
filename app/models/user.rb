@@ -14,5 +14,7 @@ class User
 
   many :schedules
   validates_associated :schedules
+  many :comments
+  validates_associated :comments
 end
 

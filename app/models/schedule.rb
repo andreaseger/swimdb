@@ -1,16 +1,17 @@
 class Schedule
   include MongoMapper::Document
   timestamps!
+  belongs_to :user
+  #key :user_id, ObjectId, :required => true
 
   key :name, String, :required => true
   key :description, String, :required => true
-  many :items, :dependent => :destroy
   key :original_date, Date
-  belongs_to :user
-  #key :user_id, ObjectId
   key :tags, Array, :index => true
-
+  many :items, :dependent => :destroy
+  many :comments, :dependent => :destroy
   validates_associated :items
+  validates_associated :comments
   validate :itemscount
 
   before_save :parseItems
