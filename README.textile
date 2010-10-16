@@ -4,7 +4,10 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
-* Comments...(see the two branches)
+* moved to ree; runs way faster than 1.9.2 on 'rake spec'
+before it took 26 seconds to completly run 'time rake spec'(16 with spork)
+now it runs in 15 seconds (11 with spork)
+* some commenting to start with but unfinished
 
 h2. Features until now
 
