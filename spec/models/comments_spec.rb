@@ -7,11 +7,14 @@ describe Comment do
       comment.should_not be_valid
     end
     it 'should not need a commenter if a user is given' do
-      comment = Factory.build(:comment, :user => Factory(:bob), :commenter => nil)
+      #comment = Factory.build(:comment, :user => Factory(:bob), :commenter => nil)
+      comment = Comment.new(:body => "lorem", :user => Factory(:bob), :commenter => nil)
       comment.should be_valid
     end
     it 'should not need a user if a commenter is' do
-      comment = Factory.build(:comment, :user => nil, :commenter => "hase")
+      #comment = Factory.build(:comment, :user => nil, :commenter => "hase")
+      # not sure why the Factory doesnot work
+      comment = Comment.new(:body => "lorem", :user => nil, :commenter => "hase")
       comment.should be_valid
     end
     it 'should need the body' do
@@ -24,7 +27,7 @@ describe Comment do
       @user = Factory(:bob)
     end
     it 'should default to the users username if set' do
-      pending
+      pending "cant work because commenter cant be an existing username"
       comment = Factory(:comment, :user => @user)
       comment.commenter.should == @user.username
     end
@@ -39,7 +42,6 @@ describe Comment do
   end
   describe '#email' do
     it 'should at least look like an address' do
-      pending
       comment = Factory(:name_comment, :email => "foo")
       comment.should_not be_valid
     end

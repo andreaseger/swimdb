@@ -7,7 +7,7 @@ h2. Newest changes
 * moved to ree; runs way faster than 1.9.2 on 'rake spec'
 before it took 26 seconds to completly run 'time rake spec'(16 with spork)
 now it runs in 15 seconds (11 with spork)
-* some commenting to start with but unfinished
+* commenting
 
 h2. Features until now
 
@@ -15,12 +15,15 @@ h2. Features until now
 * calculate the complete distance of the schedule
 * tag a schedule
 * authentication(devise)
+* comments
 
 h2. Known Issues
+
 * looks awfull because I dont have an stylesheet
-* the standard controller does not set the rank of the items;
-nonIssue because of the array??
 * not really an issue but I not really know how that mapreduce snippet works ;)
+* no comment creation with ajax
+* I cant show validation errors for the comments
+
 
 h3. to think about
 
@@ -31,12 +34,11 @@ is back to standart inherited_resources
 
 
 h2. TODO
-* add a commenting system (working)
+
 * search for schedules with tags(scope :where(tag in tags)???)
 * search in general
 
 h2. meh
 
-Testing with rspec and cucumber under ruby-1.9.2 and ree-1.8.7,
-think i will switch to ree only in the future because thats on my server
+Testing with rspec and cucumber under ree-1.8.7
 

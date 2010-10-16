@@ -1,7 +1,11 @@
 Swimdb::Application.routes.draw do
   devise_for :users
-  resources :schedules
+  resources :schedules do
+    resources :comments
+  end
   root :to => "schedules#index"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -13,13 +13,15 @@ gem 'mongo_mapper',
 #security
 gem 'devise'
 gem 'devise-mongo_mapper',
-    :git    => "git://github.com/collectiveidea/devise-mongo_mapper"
+    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
 
 group :development do
   gem 'nifty-generators'
+  gem 'rails3-generators'
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
   #gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug'
 end
 
 

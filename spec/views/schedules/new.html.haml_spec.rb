@@ -16,6 +16,7 @@ describe '/schedules/new.html.haml' do
         have_selector("ul", :id=>"item_fields")
         have_selector("div", "Description")
         have_selector("div", "Original Date")
+        have_selector("div", "Tags")
       end
     end
   end

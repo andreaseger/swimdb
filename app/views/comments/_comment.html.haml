@@ -1,0 +1,14 @@
+%li.comment
+  %strong
+    - if comment.user
+      = comment.user.username
+    = comment.commenter
+  %em.date
+    = comment.created_at
+  %br
+  %p.content
+    =comment.body
+  - if user_signed_in? && comment.user == current_user
+    %ul.controls
+      %li= link_to "Destroy", schedule_comment_path(@schedule, comment), :method => :delete, :confirm => "Are you sure?"
+
