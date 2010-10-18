@@ -21,9 +21,8 @@ class Comment
   end
   validate :commenter_user
   def commenter_user
-    errors.add :commenter, "a name is needed to post the comment" if (user == nil && commenter == nil)
+    errors.add :commenter, "a name is needed to post the comment" if (user.nil? && commenter == nil)
   end
-
 
 end
 
