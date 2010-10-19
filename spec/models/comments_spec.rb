@@ -26,11 +26,6 @@ describe Comment do
     before :each do
       @user = Factory(:bob)
     end
-    it 'should default to the users username if set' do
-      pending "cant work because commenter cant be an existing username"
-      comment = Factory(:comment, :user => @user)
-      comment.commenter.should == @user.username
-    end
     it 'should be the entered name if no user' do
       comment = Factory(:name_comment)
       comment.commenter.should == Factory.attributes_for(:name_comment)[:commenter]
