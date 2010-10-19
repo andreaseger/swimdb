@@ -3,7 +3,6 @@ Given /^(?:|I )have no schedules$/ do
 end
 
 Given /^(?:|I )have (\d+) schedules "([^"]*)" and "([^"]*)"$/ do |num, arg2, arg3|
-  Schedule.delete_all
   Schedule.create!(:name => arg2, :description => 'foo', :items => [Item.new(:text => "400m")])
   Schedule.create!(:name => arg3, :description => 'foo', :items => [Item.new(:text => "400m")])
 end
@@ -52,5 +51,9 @@ end
 
 Then /^the schedules user should be "([^"]*)"$/ do |username|
   Schedule.last.user.username.should == username
+end
+
+Given /^I have a schedule "([^"]*)" with the following tags "([^"]*)"$/ do |name, taggings|
+  Schedule.create!(:name => name, :description => "Lorem", :items => [Item.new(:text => "400m")], :taggings => taggings)
 end
 
