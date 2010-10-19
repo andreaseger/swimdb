@@ -6,6 +6,8 @@ gem 'haml-rails'
 gem 'inherited_resources'
 gem 'has_scope'
 
+gem 'capistrano'
+
 #MongoDB
 gem 'bson_ext'
 gem 'mongo_mapper',

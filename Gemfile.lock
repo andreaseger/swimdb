@@ -55,6 +55,12 @@ GEM
     bson (1.1.1)
     bson_ext (1.1.1)
     builder (2.1.2)
+    capistrano (2.5.19)
+      highline
+      net-scp (>= 1.0.0)
+      net-sftp (>= 2.0.0)
+      net-ssh (>= 2.0.14)
+      net-ssh-gateway (>= 1.0.0)
     capybara (0.3.9)
       culerity (>= 0.2.4)
       mime-types (>= 1.16)
@@ -97,6 +103,7 @@ GEM
       haml (~> 3.0)
       railties (~> 3.0)
     has_scope (0.5.0)
+    highline (1.6.1)
     i18n (0.4.1)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
@@ -113,6 +120,13 @@ GEM
     mime-types (1.16)
     mongo (1.1.1)
       bson (>= 1.1.1)
+    net-scp (1.0.4)
+      net-ssh (>= 1.99.1)
+    net-sftp (2.0.5)
+      net-ssh (>= 2.0.9)
+    net-ssh (2.0.23)
+    net-ssh-gateway (1.0.1)
+      net-ssh (>= 1.99.1)
     nifty-generators (0.4.2)
     nokogiri (1.4.3.1)
     plucky (0.3.6)
@@ -181,6 +195,7 @@ DEPENDENCIES
   autotest
   autotest-rails
   bson_ext
+  capistrano
   capybara
   cucumber
   cucumber-rails
