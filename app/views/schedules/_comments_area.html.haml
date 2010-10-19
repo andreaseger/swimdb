@@ -1,0 +1,9 @@
+#comments_area
+  #comments_count
+    - unless @schedule.comments.empty?
+      %h2= pluralize(@schedule.comments.size, 'Comment')
+  %ul#comments
+    = render :partial => @schedule.comments
+  %br
+  = render :partial => "/comments/form"
+

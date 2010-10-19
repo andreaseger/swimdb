@@ -2,15 +2,18 @@ class Schedule
   include MongoMapper::Document
   timestamps!
 
-  key :original_date, Date
   key :name, String, :required => true
   key :description, String, :required => true
-  many :items, :dependent => :destroy
+  key :original_date, Date
   key :tags, Array, :index => true
-  belongs_to :user
+  many :items, :dependent => :destroy
+  many :comments, :dependent => :destroy
 
+  belongs_to :user
   before_save :parseItems
+
   validates_associated :items
+  validates_associated :comments
   validate :itemscount
 
   def self.by_tag(tag)

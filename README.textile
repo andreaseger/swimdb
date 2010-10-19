@@ -5,7 +5,10 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 h2. Newest changes
 
 * search by tags(by clicking on them in the tag cloud)
-
+* moved to ree; runs way faster than 1.9.2 on 'rake spec'
+before it took 26 seconds to completly run 'time rake spec'(16 with spork)
+now it runs in 15 seconds (11 with spork)
+* commenting
 
 h2. Features until now
 
@@ -14,13 +17,15 @@ h2. Features until now
 * tag a schedule
 * authentication(devise)
 * search/filter by tag
+* comments
 
 h2. Known Issues
 
 * looks awfull because I dont have an stylesheet
-* the standard controller does not set the rank of the items;
-nonIssue because of the array??
 * not really an issue but I not really know how that mapreduce snippet works ;)
+* no comment creation with ajax
+* I cant show validation errors for the comments
+
 
 h3. to think about
 
@@ -32,11 +37,10 @@ is back to standart inherited_resources
 
 h2. TODO
 
-* add a commenting system (working)
 * search in general
 * admin area
 
 h2. meh
 
-Testing with rspec and cucumber under ree
+Testing with rspec and cucumber under ree-1.8.7
 

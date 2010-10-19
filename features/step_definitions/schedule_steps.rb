@@ -48,7 +48,13 @@ When /^(?:I )click destroy$/ do
   page.evaluate_script('window.confirm = function() { return true; }')
   page.click('Destroy')
 end
-
+When /^(?:I )click destroy within "([^"]*)"$/ do |selector|
+  page.evaluate_script('window.confirm = function() { return true; }')
+  path = Capybara::XPath.from_css(selector).paths.first
+  within(:xpath, path) do
+    page.click('Destroy')
+  end
+end
 Then /^the schedules user should be "([^"]*)"$/ do |username|
   Schedule.last.user.username.should == username
 end

@@ -16,7 +16,7 @@ gem 'mongo_mapper',
 #security
 gem 'devise'
 gem 'devise-mongo_mapper',
-    :git    => "git://github.com/collectiveidea/devise-mongo_mapper"
+    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
 
 group :development do
   gem 'nifty-generators'
@@ -38,7 +38,7 @@ group :test, :development do
 end
 
 group :test do
-  #gem 'simplecov'
+  #gem 'simplecov', '>= 0.3.5', :require => false
   gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'

@@ -1,22 +1,24 @@
 %div
-  %strong
+  %strong.title
     =@schedule.name
-  %em
+  %em.cinfo
+    =@schedule.user.username if @schedule.user
     =@schedule.date.strftime('%d. %b, %Y')
-  %em
+  %em.tags
     =@schedule.taggings
   %p
     =@schedule.description
-  %ul
+  %ul.items
     -for item in @schedule.items
       %li
         =item.text
-  %ul
-    Volle Distanz
-    =@schedule.full_schedule_distance
+    %li
+      Volle Distanz
+      =@schedule.full_schedule_distance
   %ul.controls
     - if user_signed_in?
       %li= link_to "Edit", edit_schedule_path(@schedule)
       %li= link_to "Destroy", @schedule, :confirm => 'Are you sure?', :method => :delete
-    %li= link_to "View All", schedules_path
+    %li= link_to "Show All", schedules_path
+= render :partial => 'comments_area'
 

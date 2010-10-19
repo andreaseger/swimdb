@@ -1,7 +1,7 @@
 class Item
   include MongoMapper::EmbeddedDocument
-  #key :schedule_id, ObjectId
   belongs_to :schedule
+
   private
     MULTI = '((\d{1,2})(\*|x))?'
     DIST = '(\d+)($|\s|m$|m\s|m,\s)'
