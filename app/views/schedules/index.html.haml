@@ -5,7 +5,7 @@
       %strong
         =schedule.name
       %em
-        =schedule.created_at.strftime('%d. %b, %Y') #format noch falsch gleich über i18 richtig machen
+        =schedule.date.strftime('%d. %b, %Y') #format noch falsch gleich über i18 richtig machen
       = link_to 'show', schedule
 
   - if user_signed_in?

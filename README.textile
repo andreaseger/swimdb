@@ -4,7 +4,8 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
-* Comments...(see the two branches)
+* some kind of search
+
 
 h2. Features until now
 
@@ -14,6 +15,7 @@ h2. Features until now
 * authentication(devise)
 
 h2. Known Issues
+
 * looks awfull because I dont have an stylesheet
 * the standard controller does not set the rank of the items;
 nonIssue because of the array??
@@ -28,6 +30,7 @@ is back to standart inherited_resources
 
 
 h2. TODO
+
 * add a commenting system (working)
 * search for schedules with tags(scope :where(tag in tags)???)
 * search in general

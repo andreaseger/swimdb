@@ -2,5 +2,6 @@
   TagCloud:
 #tag_cloud
   - @tags.each do |tag|
-    = "#{tag['_id']} (#{tag['value'].to_i})"
+    =# "#{tag['_id']} (#{tag['value'].to_i})"
+    = link_to "#{tag['_id']}", params.merge(:tag => tag['_id']), :class => "tag_size_#{tag['value'].to_i}"
 

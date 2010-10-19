@@ -2,11 +2,10 @@ require 'spec_helper'
 
 describe '/schedules/new.html.haml' do
 
-  before(:each) do
+  before do
     #evtl noch schauen wie ich das richitg mocken muss
     @schedule = Factory.build(:schedule)
   end
-
   it 'should have all nesessary fields ' do
     render
     rendered.should have_selector("form") do
@@ -19,6 +18,5 @@ describe '/schedules/new.html.haml' do
       end
     end
   end
-
 end
 

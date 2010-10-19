@@ -1,9 +1,10 @@
 class SchedulesController < InheritedResources::Base
   before_filter :authenticate_user!, :except => [:show, :index]
-
+  has_scope :by_tag
   def index
-    @schedules = Schedule.all
+    @schedules = apply_scopes(Schedule).all
     @tags = SchedulesHelper::TagCloud.build.find()
+    debugger
   end
 
   def create

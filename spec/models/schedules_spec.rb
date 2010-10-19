@@ -9,12 +9,10 @@ describe Schedule do
         schedule.should_not be_valid
       end
     end
-
     it 'should have at least one item' do
       schedule = Factory.build(:schedule, :items =>[])
       schedule.should_not be_valid
     end
-
     it 'should nest items' do
       schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m")])
       schedule.should have(1).items
@@ -31,17 +29,16 @@ describe Schedule do
       schedule.date.should == 2.days.ago.to_date
     end
   end
+
   describe '#full_schedule_distance' do
     it "should calculate the right full distance if all items lvl0" do
       schedule = Factory(:full_distance_test1)
       schedule.full_schedule_distance.should eql(3500)
     end
-
     it "should calculate the right full distance if there is a lvl1 item" do
       schedule = Factory(:full_distance_test2)
       schedule.full_schedule_distance.should eql(3650)
     end
-
     it "should calculate the right full distance if there is a lvl2 item" do
       schedule = Factory(:full_distance_test3)
       schedule.full_schedule_distance.should eql(2250)
@@ -58,7 +55,6 @@ describe Schedule do
       schedule = Factory(:full_distance_test6)
       schedule.full_schedule_distance.should eql(1650)
     end
-
     it "should calculate the right full distance if there is a mix of all the above" do
       schedule = Factory(:full_distance_test7)
       schedule.full_schedule_distance.should eql(6200)
@@ -87,7 +83,6 @@ describe Schedule do
     end
   end
 
-
   describe '#parse_text' do
     before(:each) do
       @schedule = Factory.build(:schedule)
@@ -114,7 +109,6 @@ describe Schedule do
       @schedule.save
       @schedule.items[0].outer.should == 5
     end
-
     it "should find the components in a easy example" do
       item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
       @schedule.items << item
@@ -157,28 +151,7 @@ describe Schedule do
     end
   end
 
-
   describe "nested items" do
-
-    #dont need this tests because its embedded
-    #it "should create the nested Items" do
-    #  Schedule.count.should == 0
-    #  Item.count.should == 0
-    #  schedule = Factory(:full_distance_test1)
-    #  Schedule.count.should == 1
-    #  schedule.should have(3).items
-    #  Item.count.should == 3
-    #end
-    #it "should delete the nested items with the schedule" do
-    #  Schedule.count.should == 0
-    #  Item.count.should == 0
-    #  schedule = Factory(:full_distance_test1)
-    #  # delete it
-    #  schedule.destroy
-    #  Schedule.count.should == 0
-    #  Item.count.should == 0
-    #end
-
     it 'should parse the nested items while saving' do
       Factory(:full_distance_test3)
       schedule = Schedule.last
@@ -186,6 +159,7 @@ describe Schedule do
       schedule.items[1].distance.should_not be_nil
     end
   end
+
   describe '#tags' do
     it 'should get the provided tags an save them in the array' do
       schedule = Factory(:valid_schedule, :taggings => "foo, bar baz,lorem")
@@ -194,6 +168,27 @@ describe Schedule do
     it 'should give a string of all assigned tags' do
       schedule = Factory(:valid_schedule, :tags=>["foo", "bar", "baz", "lorem"])
       schedule.taggings.should == "foo bar baz lorem"
+    end
+  end
+
+  describe '#scopes' do
+    before do
+      Factory(:valid_schedule, :tags => ["GA1", "foo", "bar"])
+      Factory(:valid_schedule, :tags => ["ga1", "SP", "bar"])
+      Factory(:valid_schedule, :tags => ["GA2", "KT", "bar"])
+      Factory(:valid_schedule, :tags => ["KT", "SP", "bar"])
+      Factory(:valid_schedule, :tags => ["CC", "FLY", "bar"])
+    end
+    it 'should only deliver schedules with the tag GA1' do
+      @schedules = Schedule.by_tag("GA1").all
+      @schedules.count.should == 2
+      @schedules.each do |s|
+        s.taggings.should =~ /GA1/i
+      end
+    end
+    it 'should not be case-sensitive' do
+      @schedules = Schedule.by_tag("ga1").all
+      @schedules.count.should == 2
     end
   end
 

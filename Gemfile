@@ -4,6 +4,7 @@ gem 'rails', '3.0.1'
 
 gem 'haml-rails'
 gem 'inherited_resources'
+gem 'has_scope'
 
 #MongoDB
 gem 'bson_ext'
@@ -20,6 +21,7 @@ group :development do
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
   #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'ruby-debug'
 end
 
 
@@ -34,7 +36,7 @@ group :test, :development do
 end
 
 group :test do
-  gem 'simplecov'
+  #gem 'simplecov'
   gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'
