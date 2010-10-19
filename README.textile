@@ -5,17 +5,14 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 h2. Newest changes
 
 * search by tags(by clicking on them in the tag cloud)
-* moved to ree; runs way faster than 1.9.2 on 'rake spec'
-before it took 26 seconds to completly run 'time rake spec'(16 with spork)
-now it runs in 15 seconds (11 with spork)
 * commenting
 
 h2. Features until now
 
 * creating and editing a schedule with nested items in one form
 * calculate the complete distance of the schedule
-* tag a schedule
 * authentication(devise)
+* tag a schedule
 * search/filter by tag
 * comments
 
@@ -23,8 +20,7 @@ h2. Known Issues
 
 * looks awfull because I dont have an stylesheet
 * not really an issue but I not really know how that mapreduce snippet works ;)
-* no comment creation with ajax
-* I cant show validation errors for the comments
+* no comment creation with js
 
 
 h3. to think about
@@ -39,6 +35,8 @@ h2. TODO
 
 * search in general
 * admin area
+* facebook login
+* more JS and perhaps move to jquery
 
 h2. meh
 
