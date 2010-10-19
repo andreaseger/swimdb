@@ -7,7 +7,7 @@ Background:
      And I have a schedule "dddd" with the following tags "Ga2 ga3 baz"
 
 Scenario Outline: searching by tag
-     And I am on the list of schedules
+   Given I am on the list of schedules
     When I follow "<tag>" within "#tag_cloud"
     Then I should see "<possitive>"
      And I should not see "<negative>"
@@ -19,4 +19,14 @@ Scenario Outline: searching by tag
     |  baz   |  dddd      |  cccc    |
     |  kt    |  cccc      |  aaaa    |
     |  sp    |  aaaa      |  dddd    |
+
+Scenario: By clicking on show all it will show all schedules again
+  Given I am on the list of schedules
+    And I follow "foo" within "#tag_cloud"
+   When I follow "Show all" within "#tag_cloud"
+   Then I should be on the list of schedules
+    And I should see "aaaa"
+    And I should see "bbbb"
+    And I should see "cccc"
+    And I should see "dddd"
 

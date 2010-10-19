@@ -4,7 +4,6 @@ class SchedulesController < InheritedResources::Base
   def index
     @schedules = apply_scopes(Schedule).all
     @tags = SchedulesHelper::TagCloud.build.find()
-    debugger
   end
 
   def create
