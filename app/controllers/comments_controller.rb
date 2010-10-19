@@ -2,12 +2,12 @@ class CommentsController < InheritedResources::Base
   belongs_to :schedule
   actions :create, :destroy
   #before_filter :authenticate_user!, :except => [:create]
+
   def create
     @schedule = Schedule.find(params[:schedule_id])
     @comment = @schedule.comments.build(params[:comment])
     @comment.user = current_user if user_signed_in?
     create! do |success, failure|
-         failure.html { redirect_to parent_url, :alert => "dow... #{@comment.errors.full_messages}" }
          success.html { redirect_to parent_url }
     end
   end

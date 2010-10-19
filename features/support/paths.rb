@@ -10,18 +10,20 @@ module NavigationHelpers
 
     when /the home\s?page/
       '/'
-
     when /the list of (.+)/
       "/#{$1}"
-
     when /the schedule page/
-      "/schedules/#{Schedule.last.id.to_s}"
-
+      schedule_path(Schedule.last)
+      #"/schedules/#{Schedule.last.id.to_s}"
     when /the edit schedule page/
-      "/schedules/#{Schedule.last.id.to_s}/edit"
+      edit_schedule_path(Schedule.last)
+      #"/schedules/#{Schedule.last.id.to_s}/edit"
     when /login/
-      "/users/sign_in"
-
+      new_user_session_path
+      #"/users/sign_in"
+    when /the new comment page/
+      schedule_comments_path(Schedule.last)
+      #new_schedule_comment_path(Schedule.last)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

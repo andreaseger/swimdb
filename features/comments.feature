@@ -36,7 +36,8 @@ Scenario: As guest you can create comments by entering a Name and an email
     And I fill in "comment_email" with "foo"
     And I fill in "comment_body" with "Lorem Ipsum"
     And I press "Post Comment"
-   Then I should see "dow..."
+   Then I should be on the new comment page
+    And I should see "error"
 
 Scenario: Users can delete thier own comments
   Given I am a new, authenticated user

@@ -21,7 +21,7 @@ group :development do
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  #gem 'ruby-debug'
+  gem 'ruby-debug'
 end
 
 
