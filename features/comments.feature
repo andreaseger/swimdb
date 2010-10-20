@@ -1,9 +1,7 @@
 Feature: Allow viewers to give feedback about existing schedules
 
 Background:
-  Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-      | level | text      | rank |
-      | 0     | 400m      | 0    |
+  Given I have a schedule "fooo" with the following tags "foo, bar, baz"
 
 Scenario: As guest you can create comments by entering a Name and an email
   Given I am not authenticated

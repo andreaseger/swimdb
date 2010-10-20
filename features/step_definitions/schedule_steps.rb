@@ -2,11 +2,6 @@ Given /^(?:|I )have no schedules$/ do
   Schedule.delete_all
 end
 
-Given /^(?:|I )have (\d+) schedules "([^"]*)" and "([^"]*)"$/ do |num, arg2, arg3|
-  Schedule.create!(:name => arg2, :description => 'foo', :items => [Item.new(:text => "400m")])
-  Schedule.create!(:name => arg3, :description => 'foo', :items => [Item.new(:text => "400m")])
-end
-
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)" within the (\d)(?:st|nd|rd|th) "([^"]*)" ([^"]*)$/ do |field, value, index, selector, tag|
   matcher = "#{tag}#{selector}"
   path = Capybara::XPath.from_css(matcher).paths.first + "[#{index}]"

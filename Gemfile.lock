@@ -1,20 +1,3 @@
-GIT
-  remote: git://github.com/collectiveidea/devise-mongo_mapper
-  revision: fa2f20310e0988295adc192255d3b1cedee1b412
-  specs:
-    devise-mongo_mapper (0.0.1)
-      devise (~> 1.1.0)
-
-GIT
-  remote: git://github.com/jnunemaker/mongomapper.git
-  revision: 827492425e1c4ae35ec7d2ba130f0a52ec34d4e2
-  branch: master
-  specs:
-    mongo_mapper (0.8.6)
-      activesupport (>= 2.3.4)
-      jnunemaker-validatable (~> 1.8.4)
-      plucky (~> 0.3.6)
-
 GEM
   remote: http://rubygems.org/
   specs:
@@ -108,8 +91,6 @@ GEM
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
-    jnunemaker-validatable (1.8.4)
-      activesupport (>= 2.3.4)
     json (1.4.6)
     json_pure (1.4.6)
     linecache (0.43)
@@ -118,8 +99,13 @@ GEM
       mime-types
       treetop (>= 1.4.5)
     mime-types (1.16)
-    mongo (1.1.1)
-      bson (>= 1.1.1)
+    mongo (1.0.9)
+      bson (>= 1.0.5)
+    mongoid (2.0.0.beta.19)
+      activemodel (~> 3.0)
+      mongo (= 1.0.9)
+      tzinfo (~> 0.3.22)
+      will_paginate (~> 3.0.pre)
     net-scp (1.0.4)
       net-ssh (>= 1.99.1)
     net-sftp (2.0.5)
@@ -129,8 +115,6 @@ GEM
       net-ssh (>= 1.99.1)
     nifty-generators (0.4.2)
     nokogiri (1.4.3.1)
-    plucky (0.3.6)
-      mongo (~> 1.1)
     polyglot (0.3.1)
     rack (1.2.1)
     rack-mount (0.6.13)
@@ -187,6 +171,7 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    will_paginate (3.0.pre2)
 
 PLATFORMS
   ruby
@@ -201,12 +186,11 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
-  devise-mongo_mapper!
   factory_girl_rails
   haml-rails
   has_scope
   inherited_resources
-  mongo_mapper!
+  mongoid (>= 2.0.0.beta.19)
   nifty-generators
   rails (= 3.0.1)
   rspec-rails (>= 2.0.0.beta.22)

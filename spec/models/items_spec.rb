@@ -1,15 +1,16 @@
 require 'spec_helper'
 
 describe Item do
-
-  describe 'when validation' do
-
+  before do
+    @schedule = Factory(:valid_schedule)
+  end
+  describe '#validation' do
     it "should validates presence of text" do
       item = Factory.build(:item, :text => nil)
       item.should_not be_valid
     end
     it 'should default level to 0' do
-      item = Factory.build(:item, :level => nil)
+      item = Item.new(:text => '400m')
       item.level.should == 0
     end
 
@@ -19,13 +20,11 @@ describe Item do
       item3 = Factory.build(:item, :level => 4)
       item4 = Factory.build(:item, :level => -3)
       #positive test
-      [item1, item2].each do |item|
-        item.should be_valid
-      end
+      item1.should be_valid
+      item2.should be_valid
       #negative test
-      [item3, item4].each do |item|
-        item.should_not be_valid
-      end
+      item3.should_not be_valid
+      item4.should_not be_valid
     end
 
     it 'should validate the text pattern' do

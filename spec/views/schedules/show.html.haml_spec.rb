@@ -4,7 +4,7 @@ describe "/schedules/show.html.haml" do
   include Devise::TestHelpers
   before do
     assign(:schedule, Factory(:valid_schedule, :user => Factory(:amy)))
-    assign(:comment, Factory(:name_comment))
+    assign(:comment, Factory.stub(:name_comment))
   end
 
   it "should show the basic elements of the schedule" do

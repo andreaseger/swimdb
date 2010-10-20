@@ -13,7 +13,8 @@ Scenario: There are no schedules
     And I should not see "New Schedule"
 
 Scenario: There are some schedules to list
-  Given I have 2 schedules "Foo" and "Bar"
+  Given I have a schedule "Foo" with the following tags "foo, bar, baz"
+    And I have a schedule "Bar" with the following tags "foo, baz"
    When I am on the list of schedules
    Then I should see "Schedules"
     And I should see "Foo"

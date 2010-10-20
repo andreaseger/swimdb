@@ -10,13 +10,14 @@ gem 'capistrano'
 
 #MongoDB
 gem 'bson_ext'
-gem 'mongo_mapper',
-    :git =>"git://github.com/jnunemaker/mongomapper.git", :branch => "master"
+gem 'mongoid', ">= 2.0.0.beta.19"
+#gem 'mongo_mapper',
+#    :git =>"git://github.com/jnunemaker/mongomapper.git", :branch => "master"
 
 #security
 gem 'devise'
-gem 'devise-mongo_mapper',
-    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
+#gem 'devise-mongo_mapper',
+#    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
 
 group :development do
   gem 'nifty-generators'

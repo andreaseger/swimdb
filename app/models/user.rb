@@ -1,7 +1,7 @@
 class User
-  include MongoMapper::Document
-  timestamps!
-  plugin MongoMapper::Devise
+  include Mongoid::Document
+  include Mongoid::Timestamps
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable
   # :confirmable
@@ -10,11 +10,12 @@ class User
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :email, :password, :password_confirmation
 
-  key :username, String, :required => true, :unique => true
+  field :username
+  references_many :schedules
+  references_many :comments
 
-  many :schedules
-  validates_associated :schedules
-  many :comments
-  validates_associated :comments
+  validates_presence_of :username
+  validates_uniqueness_of :username
+  #validates_associated :schedules, :comments
 end
 

@@ -14,7 +14,7 @@ describe Schedule do
       schedule.should_not be_valid
     end
     it 'should nest items' do
-      schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m")])
+      schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :text => "300m")])
       schedule.should have(1).items
     end
   end
@@ -88,13 +88,13 @@ describe Schedule do
       @schedule = Factory.build(:schedule)
     end
     it 'should call parseItems before save' do
-      item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
+      item = Factory.build(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
       @schedule.items << item
       @schedule.should_receive(:parseItems)
       @schedule.save!
     end
     it "should parse the items before save" do
-      item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
+      item = Factory.build(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
       @schedule.items << item
       @schedule.save
       @schedule.items[0].outer.should_not be_nil
@@ -102,7 +102,7 @@ describe Schedule do
       @schedule.items[0].distance.should_not be_nil
     end
     it 'should update the items on schedule update' do
-      item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
+      item = Factory.build(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
       @schedule.items << item
       @schedule.save
       @schedule.items[0].text = "5*400m"
@@ -110,7 +110,7 @@ describe Schedule do
       @schedule.items[0].outer.should == 5
     end
     it "should find the components in a easy example" do
-      item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
+      item = Factory.build(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
       @schedule.items << item
       @schedule.save
       @schedule.items[0].outer.should eq 3
@@ -118,7 +118,7 @@ describe Schedule do
       @schedule.items[0].distance.should eq 200
     end
     it 'should find the components in a more complex one to' do
-      item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul bei ca 80 bis 90%")
+      item = Factory.build(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul bei ca 80 bis 90%")
       @schedule.items << item
       @schedule.save
       @schedule.items[0].outer.should eq 3
@@ -126,7 +126,7 @@ describe Schedule do
       @schedule.items[0].distance.should eq 200
     end
     it 'should also parse this one correct' do
-      item = Factory(:item, :text => "3*200 Kraul mit 50m Antritten")
+      item = Factory.build(:item, :text => "3*200 Kraul mit 50m Antritten")
       @schedule.items << item
       @schedule.save
       @schedule.items[0].outer.should eq 3
@@ -134,7 +134,7 @@ describe Schedule do
       @schedule.items[0].distance.should eq 200
     end
     it 'should switch inner and outer if its a lvl1 item' do
-      item = Factory(:item, :level => 1, :text => "3*200 Kraul mit 50m Antritten")
+      item = Factory.build(:item, :level => 1, :text => "3*200 Kraul mit 50m Antritten")
       @schedule.items << item
       @schedule.save
       @schedule.items[0].outer.should be_nil
@@ -142,7 +142,7 @@ describe Schedule do
       @schedule.items[0].distance.should eq 200
     end
     it 'should set inner and outer to nil if its a lvl2 item' do
-      item = Factory(:item, :level => 2, :text => "200 Kraul mit 50m Antritten")
+      item = Factory.build(:item, :level => 2, :text => "200 Kraul mit 50m Antritten")
       @schedule.items << item
       @schedule.save
       @schedule.items[0].outer.should be_nil

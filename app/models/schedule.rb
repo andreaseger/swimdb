@@ -1,19 +1,21 @@
 class Schedule
-  include MongoMapper::Document
-  timestamps!
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-  key :name, String, :required => true
-  key :description, String, :required => true
-  key :original_date, Date
-  key :tags, Array, :index => true
-  many :items, :dependent => :destroy
-  many :comments, :dependent => :destroy
-
-  belongs_to :user
+  field :name
+  field :description
+  field :original_date, :type => Date
+  field :tags, :type => Array
+  referenced_in :user
+  embeds_many :items
+  embeds_many :comments
+  #belongs_to :user
   before_save :parseItems
 
-  validates_associated :items
-  validates_associated :comments
+  #validates_associated :items
+  #validates_associated :comments
+
+  validates_presence_of :name, :description
   validate :itemscount
 
   def self.by_tag(tag)
@@ -21,10 +23,10 @@ class Schedule
   end
 
   def taggings=(value)
-    self.tags = value.split(",").join(" ").split(" ")
+    self.tags = value.split(",").join(" ").split(" ") if value
   end
   def taggings
-    tags.join(" ")
+    tags.join(" ") if self.tags
   end
 
   def date
@@ -38,7 +40,7 @@ class Schedule
     distance = 0
     last_outer = 1
     last_inner = 1
-    for item in items.sort_by(&:rank)
+    for item in items
       if item.level == 0
         distance += item.full_distance
         last_outer = 1
@@ -61,19 +63,20 @@ class Schedule
   def parseItems
     re = /^#{MULTI}#{MULTI}#{DIST}/i
     self.items.each do |item|
-      parse = re.match item.text
-      case item.level
-        when 0
-          item.outer = parse[2]
-          item.inner = parse[5]
-        when 1
-          item.outer = nil
-          item.inner = parse[2]
-        when 2
-          item.outer = nil
-          item.inner = nil
+      if parse = re.match(item.text)
+        case item.level
+          when 0
+            item.outer = parse[2]
+            item.inner = parse[5]
+          when 1
+            item.outer = nil
+            item.inner = parse[2]
+          when 2
+            item.outer = nil
+            item.inner = nil
+        end
+        item.distance=parse[7]
       end
-      item.distance=parse[7]
     end
     true
   end
