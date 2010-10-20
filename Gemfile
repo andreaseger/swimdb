@@ -11,19 +11,24 @@ gem 'capistrano'
 #MongoDB
 gem 'bson_ext'
 gem 'mongo_mapper',
-    :git =>"git://github.com/jnunemaker/mongomapper.git", :branch => "master"
+    :git =>"git://github.com/jnunemaker/mongomapper.git",
+    :branch => "master"
 
 #security
-gem 'devise'
+gem 'devise',
+    :git => "git://github.com/plataformatec/devise.git",
+    :branch => "omniauth"
 gem 'devise-mongo_mapper',
     :git => "git://github.com/collectiveidea/devise-mongo_mapper"
+gem 'omniauth'
+
 
 group :development do
   gem 'nifty-generators'
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'ruby-debug'
+  #gem 'ruby-debug'
 end
 
 
