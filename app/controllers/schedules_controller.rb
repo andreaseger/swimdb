@@ -13,6 +13,7 @@ class SchedulesController < InheritedResources::Base
   end
 
   def create
+    debugger
     @schedule = Schedule.new(params[:schedule])
     @schedule.user = current_user
     create!

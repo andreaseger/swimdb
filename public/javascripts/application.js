@@ -1,20 +1,25 @@
 // Place your application-specific JavaScript functions and classes here
 // This file is automatically included by javascript_include_tag :defaults
 
+$(function() {
+  $('form a.add_child').click(function() {
+    var assoc   = $(this).attr('data-association');
+    var content = $('#' + assoc + '_fields_template').html();
+    var regexp  = new RegExp('new_' + assoc, 'g');
+    var new_id  = new Date().getTime();
 
-jQuery.ajaxSetup({
-  'beforeSend': function(xhr) {xhr.setRequestHeader("Accept", "text/javascript")}
-})
-
-jQuery.fn.submitWithAjax = function() {
-  this.submit(function() {
-    $.post(this.action, $(this).serialize(), null, "script");
+    $(this).parent().before(content.replace(regexp, new_id));
     return false;
-  })
-  return this;
-};
+  });
 
-$(document).ready(function() {
-  $("#new_comment").submitWithAjax();
+  $('form a.remove_child').live('click', function() {
+    var hidden_field = $(this).prev('input[type=hidden]')[0];
+    if(hidden_field) {
+      hidden_field.value = '1';
+    }
+    //$(this).parents('.fields').hide();
+    $(this).parents('.fields').remove();
+    return false;
+  });
 });
 
