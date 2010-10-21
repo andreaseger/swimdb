@@ -79,10 +79,11 @@ Scenario: I can edit an existing schedule
    When I follow "Edit"
     And I fill in "name" with "Hello World"
     And I follow "(remove)" within the 5th ".item" fieldset
-    And I fill in "text" with "100m" within the 5th ".item" fieldset
+    And I fill in "text" with "700m" within the 5th ".item" fieldset
     And I press "Save"
    Then I should be on the schedule page
     And I should see "Hello World" within "strong"
+    And I should see "700m"
     And I should not see "50m"
 
 Scenario: I will be getting an error when entering something invalid on edit
