@@ -5,6 +5,8 @@
       .label= f.label :name
       .field= f.text_field :name, :id => 'name'
     %li#items
+      = f.fields_for :items do |ff|
+        = render :partial => 'item', :locals => {:f => ff}
       %p= add_child_link "(add item)", :items
       = new_child_fields_template(f, :items)
     %li#description

@@ -4,6 +4,7 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
+* jquery
 * search by tags(by clicking on them in the tag cloud)
 * commenting
 
@@ -36,7 +37,6 @@ h2. TODO
 * search in general
 * admin area
 * facebook login
-* more JS and perhaps move to jquery
 
 h2. meh
 
