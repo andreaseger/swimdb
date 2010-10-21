@@ -5,8 +5,12 @@
       .label= f.label :name
       .field= f.text_field :name, :id => 'name'
     %li#items
-      = add_item_link "(add item)"
-      = render :partial => 'item', :collection => @schedule.items
+      %ul#item_fields
+        = f.fields_for :items, :index => nil do |builder|
+          = render "item_fields", :f => builder
+        = link_to_add_fields "Add Link", f, :items
+      =# add_item_link "(add item)"
+      =# render :partial => 'item', :collection => @schedule.items
     %li#description
       .label= f.label :description
       .field= f.text_area :description, :rows => 7, :cols => 60, :id => 'description'
