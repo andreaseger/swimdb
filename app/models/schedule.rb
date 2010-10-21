@@ -11,7 +11,7 @@ class Schedule
   embeds_many :comments
   #belongs_to :user
   before_save :parseItems
-
+  accepts_nested_attributes_for :tasks, :reject_if => lambda { |a| a.text.blank? }, :allow_destroy => true
   #validates_associated :items
   #validates_associated :comments
 
