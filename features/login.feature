@@ -15,7 +15,7 @@ Scenario: Creating a new User
 
 Scenario: Login an existing user
   Given I am not authenticated
-    And I have one user "tester@email.com" with password "secret" and username "Tester"
+    And I have one user "Tester" with password "secret" and email "tester@email.com"
     And I am on the homepage
    When I follow "Login"
     And I fill in "Tester" for "user_username"

@@ -25,6 +25,15 @@
             = link_to "Logout", destroy_user_session_path
           %li
             = link_to "Edit Profile", edit_user_registration_path
+        - elsif admin_signed_in?
+          #admin_nav
+            %li
+              = link_to "Admin Area", adminarea_users_path
+            %li
+              = "Admin access as #{current_admin.email}"
+              = link_to "Logout Admin", destroy_admin_session_path
+            %li
+              = link_to "Edit Admin Profile", edit_admin_registration_path
         - else
           %li
             = link_to "SignUp", new_user_registration_path

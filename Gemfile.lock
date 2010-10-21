@@ -1,13 +1,27 @@
 GIT
   remote: git://github.com/collectiveidea/devise-mongo_mapper
-  revision: fa2f20310e0988295adc192255d3b1cedee1b412
+  revision: fa2f203
   specs:
     devise-mongo_mapper (0.0.1)
       devise (~> 1.1.0)
 
 GIT
+  remote: git://github.com/jnicklas/capybara.git
+  revision: 8b4857d
+  specs:
+    capybara (0.4.0.rc)
+      celerity (>= 0.7.9)
+      culerity (>= 0.2.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      selenium-webdriver (>= 0.0.27)
+      xpath (~> 0.1.2)
+
+GIT
   remote: git://github.com/jnunemaker/mongomapper.git
-  revision: 827492425e1c4ae35ec7d2ba130f0a52ec34d4e2
+  revision: 8274924
   branch: master
   specs:
     mongo_mapper (0.8.6)
@@ -61,16 +75,9 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.0.0)
-    capybara (0.3.9)
-      culerity (>= 0.2.4)
-      mime-types (>= 1.16)
-      nokogiri (>= 1.3.3)
-      rack (>= 1.0.0)
-      rack-test (>= 0.5.4)
-      selenium-webdriver (>= 0.0.3)
+    celerity (0.8.2)
     childprocess (0.1.3)
       ffi (~> 0.6.3)
-    columnize (0.3.1)
     cucumber (0.9.2)
       builder (~> 2.1.2)
       diff-lcs (~> 1.1.2)
@@ -112,7 +119,6 @@ GEM
       activesupport (>= 2.3.4)
     json (1.4.6)
     json_pure (1.4.6)
-    linecache (0.43)
     mail (2.2.7)
       activesupport (>= 2.3.6)
       mime-types
@@ -164,11 +170,6 @@ GEM
       rspec-expectations (~> 2.0.1)
     rspec-rails (2.0.1)
       rspec (~> 2.0.0)
-    ruby-debug (0.10.3)
-      columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.3.0)
-    ruby-debug-base (0.10.3)
-      linecache (>= 0.3)
     rubyzip (0.9.4)
     selenium-webdriver (0.0.29)
       childprocess (>= 0.0.7)
@@ -187,6 +188,8 @@ GEM
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
+    xpath (0.1.2)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -196,7 +199,7 @@ DEPENDENCIES
   autotest-rails
   bson_ext
   capistrano
-  capybara
+  capybara!
   cucumber
   cucumber-rails
   database_cleaner
@@ -210,6 +213,5 @@ DEPENDENCIES
   nifty-generators
   rails (= 3.0.1)
   rspec-rails (>= 2.0.0.beta.22)
-  ruby-debug
   spork (>= 0.9.0.rc2)
   webrat

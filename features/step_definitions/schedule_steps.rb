@@ -9,7 +9,7 @@ end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)" within the (\d)(?:st|nd|rd|th) "([^"]*)" ([^"]*)$/ do |field, value, index, selector, tag|
   matcher = "#{tag}#{selector}"
-  path = Capybara::XPath.from_css(matcher).paths.first + "[#{index}]"
+  path = XPath.css(matcher).first.to_xpath + "[#{index}]"
   within(:xpath, path) do
     fill_in(field, :with => value)
   end
@@ -17,7 +17,7 @@ end
 
 When /^(?:|I )select "([^"]*)" from "([^"]*)" within the (\d)(?:st|nd|rd|th) "([^"]*)" ([^"]*)$/ do |value, field, index, selector|
   matcher = "#{tag}#{selector}"
-  path = Capybara::XPath.from_css(matcher).paths.first + "[#{index}]"
+  path = XPath.css(matcher).first.to_xpath + "[#{index}]"
   within(:xpath, path) do
     select(value, :from => field)
   end
@@ -29,7 +29,7 @@ end
 
 Given /^(?:|I )have a schedule "([^"]*)" with the description "([^"]*)" and the following items:$/ do |name, description, table|
   # table is a Cucumber::Ast::Table
-  schedule = Schedule.new(:name => name, :description => description)
+  schedule = Schedule.new(:name => name, :description => description, :user => User.last)
   table.hashes.each do |hash|
     schedule.items.build(hash)
   end
@@ -38,21 +38,21 @@ end
 
 When /^(?:|I )follow "([^"]*)" within the (\d)(?:st|nd|rd|th) "([^"]*)" fieldset$/ do |link, index, selector|
   matcher = "fieldset#{selector}"
-  path = Capybara::XPath.from_css(matcher).paths.first + "[#{index}]"
+  path = XPath.css(matcher).first.to_xpath + "[#{index}]"
   within(:xpath, path) do
-    click_link(link)
+    click_link_or_button(link)
   end
 end
 
 When /^(?:I )click destroy$/ do
   page.evaluate_script('window.confirm = function() { return true; }')
-  page.click('Destroy')
+  page.click_link_or_button('Destroy')
 end
 When /^(?:I )click destroy within "([^"]*)"$/ do |selector|
   page.evaluate_script('window.confirm = function() { return true; }')
-  path = Capybara::XPath.from_css(selector).paths.first
+  path = XPath.css(selector).first.to_xpath
   within(:xpath, path) do
-    page.click('Destroy')
+    page.click_link_or_button('Destroy')
   end
 end
 Then /^the schedules user should be "([^"]*)"$/ do |username|

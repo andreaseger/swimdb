@@ -18,11 +18,15 @@ module NavigationHelpers
     when /the edit schedule page/
       edit_schedule_path(Schedule.last)
       #"/schedules/#{Schedule.last.id.to_s}/edit"
-    when /login/
+    when /userlogin/
       new_user_session_path
       #"/users/sign_in"
     when /the new comment page/
       schedule_comments_path(Schedule.last)
+    when /the admin area/
+      adminarea_users_path
+    when /adminlogin/
+      new_admin_session_path
       #new_schedule_comment_path(Schedule.last)
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

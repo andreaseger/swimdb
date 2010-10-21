@@ -8,7 +8,7 @@
   %br
   %p.content
     =comment.body
-  - if user_signed_in? && comment.user == current_user
+  - if (user_signed_in? && comment.user == current_user) || admin_signed_in?
     %ul.controls
       %li= link_to "Destroy", schedule_comment_path(@schedule, comment), :method => :delete, :confirm => "Are you sure?"
 

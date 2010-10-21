@@ -1,4 +1,10 @@
 Swimdb::Application.routes.draw do
+  namespace :adminarea do
+    resources :users
+  end
+  devise_for :admins
+
+
   devise_for :users
   resources :schedules do
     resources :comments

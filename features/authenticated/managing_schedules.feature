@@ -10,14 +10,14 @@ Background:
 Scenario: There are no schedules
   Given I am on the list of schedules
    Then I should see "Schedules"
-    And I should see "New Schedule" within "a"
+    And I should see "New Schedule"
 
 Scenario: There are some schedules to list
   Given I have 2 schedules "Foo" and "Bar"
    When I am on the list of schedules
    Then I should see "Schedules"
     And I should see "Foo"
-    And I should see "Bar" within "ul/li/strong"
+    And I should see "Bar"
     And I should see "New Schedule"
 
 @javascript
@@ -35,10 +35,10 @@ Scenario: I can create a new schedule with 2 Items
     And I press "Save"
    Then I should have 1 schedules
     And I should be on the schedule page
-    And I should see "Foobar" within "strong"
-    And I should see "Lorem Ipsum" within "p"
-    And I should see "400m" within "ul/li"
-    And I should see "200m" within "ul/li"
+    And I should see "Foobar"
+    And I should see "Lorem Ipsum"
+    And I should see "400m"
+    And I should see "200m"
 
 @javascript
 Scenario: I cannot create a new schedule with a invalid Item
@@ -76,7 +76,7 @@ Scenario: I can edit an existing schedule
       | 2     | 50m       | 4    |
       | 0     | 400m      | 5    |
     And I am on the schedule page
-   When I follow "Edit"
+   When I follow "Edit" within "#schedule"
     And I fill in "name" with "Hello World"
     And I follow "(remove)" within the 5th ".item" fieldset
     And I fill in "text" with "700m" within the 5th ".item" fieldset
@@ -92,7 +92,7 @@ Scenario: I will be getting an error when entering something invalid on edit
       | 0     | 400m      | 0    |
       | 0     | 3*200m    | 1    |
     And I am on the schedule page
-   When I follow "Edit"
+   When I follow "Edit" within "#schedule"
     And I fill in "name" with ""
     And I press "Save"
    Then I should see "error"
@@ -109,7 +109,7 @@ Scenario: I will be getting an error when entering an invalid item on edit
       | 2     | 50m       | 4    |
       | 0     | 400m      | 5    |
     And I am on the schedule page
-   When I follow "Edit"
+   When I follow "Edit" within "#schedule"
     And I fill in "text" with "foobar" within the 3nd ".item" fieldset
     And I press "Save"
    Then I should see "error"

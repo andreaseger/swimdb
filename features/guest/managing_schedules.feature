@@ -12,12 +12,13 @@ Scenario: There are no schedules
    Then I should see "Schedules"
     And I should not see "New Schedule"
 
+
 Scenario: There are some schedules to list
   Given I have 2 schedules "Foo" and "Bar"
    When I am on the list of schedules
    Then I should see "Schedules"
     And I should see "Foo"
-    And I should see "Bar" within "ul/li/strong"
+    And I should see "Bar"
     And I should not see "New Schedule"
 
 @allow_rescue

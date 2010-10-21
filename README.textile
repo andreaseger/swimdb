@@ -4,6 +4,8 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
+* Admin Area
+* fixed the issues with capybara 0.40rc, many breackage
 * search by tags(by clicking on them in the tag cloud)
 * commenting
 
@@ -34,9 +36,8 @@ is back to standart inherited_resources
 h2. TODO
 
 * search in general
-* admin area
-* facebook login
-* more JS and perhaps move to jquery
+* facebook login(branch omniauth)
+* more JS and perhaps move to jquery(branch jquery)
 
 h2. meh
 

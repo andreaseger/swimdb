@@ -1,0 +1,23 @@
+-title "Edit User #{@user.username}"
+
+= form_for @user, :url => adminarea_user_path(@user) do |f|
+  = f.error_messages
+  %ul.formList
+    %li
+      = f.label :username
+      = f.text_field :username
+    %li
+      = f.label :email
+      = f.text_field :email
+    %li
+      = f.label :password
+      = f.password_field :password
+    %li
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation
+  = f.submit "Save User"
+
+%ul.controls
+  %li= link_to "Back", :back
+  %li= link_to "Show All", adminarea_users_path
+

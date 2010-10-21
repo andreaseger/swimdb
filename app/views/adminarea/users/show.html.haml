@@ -1,0 +1,10 @@
+-title "User #{@user.username}"
+
+%ul.user
+  %li=@user.username
+  %li=@user.email
+  %li=@user.created_at
+  %li=link_to "Edit User", edit_adminarea_user_path(@user)
+  %li= link_to "Destroy", adminarea_user_path(@user), :confirm => 'Are you sure?', :method => :delete
+%li= link_to "Show All", adminarea_users_path
+

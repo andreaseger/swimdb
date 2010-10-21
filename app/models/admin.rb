@@ -1,4 +1,4 @@
-class User
+class Admin
   include MongoMapper::Document
   timestamps!
   plugin MongoMapper::Devise
@@ -10,18 +10,10 @@ class User
          :recoverable,
          :rememberable,
          :trackable,
-         :validatable,
-         :authentication_keys => [:username]
+         :validatable
          #, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :username, :email, :password, :password_confirmation
-
-  key :username, String, :required => true, :unique => true
-
-  many :schedules
-  validates_associated :schedules
-  many :comments
-  validates_associated :comments
+  attr_accessible :email, :password, :password_confirmation
 end
 
