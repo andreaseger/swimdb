@@ -1,6 +1,6 @@
-Feature: Users are able to login via there twitter accout
-  In Order to give users a easy way to access the site
-    I Want them to be able to use there existing twitter account to register an login
+Feature: Allow Users to use their existing facebook & twitter account to log index
+
+
 
 Scenario: Add an twitter account to an existing user
   Given I am a new, authenticated user

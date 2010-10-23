@@ -18,8 +18,9 @@ gem 'mongo_mapper',
 gem 'devise',
     :git => "git://github.com/plataformatec/devise.git",
     :branch => "omniauth"
-gem 'devise-mongo_mapper',
-    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
+#gem 'devise-mongo_mapper',
+#    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
+gem "oa-oauth", :require => "omniauth/oauth"
 gem 'omniauth'
 
 
@@ -27,8 +28,7 @@ group :development do
   gem 'nifty-generators'
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
-  #gem 'ruby-debug19', :require => 'ruby-debug'
-  #gem 'ruby-debug'
+
 end
 
 
@@ -40,6 +40,8 @@ group :test, :development do
   gem 'autotest-rails'
   gem 'cucumber'
   gem 'cucumber-rails'
+  #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'ruby-debug'
 end
 
 group :test do
