@@ -11,9 +11,9 @@ Devise.setup do |config|
   # ==> ORM configuration
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
-  # available as additional gems.
+  # available as additional
   #require 'devise/orm/mongo_mapper'
-
+  require 'devise_mongo_mapper_adapter'
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating an user. By default is
   # just :email. You can configure it to use [:username, :subdomain], so for

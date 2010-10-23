@@ -1,7 +1,7 @@
 class User
   include MongoMapper::Document
   timestamps!
-  plugin MongoMapper::Devise
+  #plugin MongoMapper::Devise
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable
   # :confirmable

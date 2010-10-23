@@ -1,15 +1,8 @@
 GIT
-  remote: git://github.com/collectiveidea/devise-mongo_mapper
-  revision: fa2f203
-  specs:
-    devise-mongo_mapper (0.0.1)
-      devise (~> 1.1.0)
-
-GIT
   remote: git://github.com/jnicklas/capybara.git
-  revision: 8b4857d
+  revision: d34c2bf10ad18ca4d432534c0664737b1c2fbd91
   specs:
-    capybara (0.4.0.rc)
+    capybara (0.4.0)
       celerity (>= 0.7.9)
       culerity (>= 0.2.4)
       mime-types (>= 1.16)
@@ -21,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/jnunemaker/mongomapper.git
-  revision: 8274924
+  revision: 827492425e1c4ae35ec7d2ba130f0a52ec34d4e2
   branch: master
   specs:
     mongo_mapper (0.8.6)
@@ -204,7 +197,6 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise
-  devise-mongo_mapper!
   factory_girl_rails
   haml-rails
   has_scope

@@ -8,7 +8,7 @@ describe Admin do
     end
     it 'should check uniquess of the email' do
       Factory(:alice)
-      user = Factory.build(:alice, :username => "Frank")
+      user = Factory.build(:alice)
       user.should_not be_valid
     end
   end

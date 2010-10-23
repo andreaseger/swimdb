@@ -15,8 +15,8 @@ gem 'mongo_mapper',
 
 #security
 gem 'devise'
-gem 'devise-mongo_mapper',
-    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
+#gem 'devise-mongo_mapper',
+#    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
 
 group :development do
   gem 'nifty-generators'
@@ -31,7 +31,8 @@ group :test, :development do
   #gem 'mocha'
   gem 'autotest'
   gem 'autotest-rails'
-  gem 'cucumber'
+  gem 'cucumber'#,
+#      :git => 'git://github.com/aslakhellesoy/cucumber.git'
   gem 'cucumber-rails'
   #gem 'ruby-debug19', :require => 'ruby-debug'
   #gem 'ruby-debug'
