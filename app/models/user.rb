@@ -10,7 +10,8 @@ class User
           :rememberable,
           :trackable,
           :validatable,
-          :omniauthable
+          :omniauthable,
+          :authentication_keys => [:username]
           #, :confirmable
 
   # Setup accessible (or protected) attributes for your model
@@ -22,13 +23,11 @@ class User
   validates_associated :schedules
   many :comments
   validates_associated :comments
-
   many :authentications, :dependent => :destroy
   validates_associated :authentications
 
   def self.new_with_session(params, session)
     super.tap do |user|
-
       #case facebook
       if data = session["devise.facebook_data"]
         user.authentications.build(:uid => data["uid"],:provider => data["provider"])
