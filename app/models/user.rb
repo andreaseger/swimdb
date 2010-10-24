@@ -22,32 +22,37 @@ class User
   validates_associated :schedules
   many :comments
   validates_associated :comments
+
   many :authentications, :dependent => :destroy
   validates_associated :authentications
 
   def self.new_with_session(params, session)
     super.tap do |user|
+
+      #case facebook
       if data = session["devise.facebook_data"]
         user.authentications.build(:uid => data["uid"],:provider => data["provider"])
-        user.email = data["extra"]["user_hash"]["email"]
-        if data["user_info"]["nickname"] == ""
-          user.username = data["extra"]["user_hash"]["name"]
-        else
-          user.username = data["user_info"]["nickname"]
+        user.email = data["extra"]["user_hash"]["email"] unless user.email
+        unless user.username
+          if data["user_info"]["nickname"] == ""
+            user.username = data["extra"]["user_hash"]["name"]
+          else
+            user.username = data["user_info"]["nickname"]
+          end
         end
       end
     end
   end
 
   def self.find_for_oauth(omniauth, user)
-    auth = Authentication.find_by_uid_and_provider(omniauth[:uid], omniauth[:provider])
+    auth = Authentication.find_by_uid_and_provider(omniauth["uid"], omniauth["provider"])
     if user
       # the user wants to add fb to his account
       if auth
         return user if auth.user == user
-        #TODO raise DuplicateOAuth
+        raise 'Account already linked to a user'
       else
-        user.authentications.create!(:uid => omniauth[:uid],:provider => omniauth[:provider])
+        user.authentications.create!(:uid => omniauth["uid"],:provider => omniauth["provider"])
       end
     elsif auth
       # return the user
