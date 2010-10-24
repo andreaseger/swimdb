@@ -14,9 +14,14 @@ gem 'mongo_mapper',
     :git =>"git://github.com/jnunemaker/mongomapper.git", :branch => "master"
 
 #security
-gem 'devise'
+gem 'devise',
+    :git => "git://github.com/plataformatec/devise.git",
+    :branch => "omniauth"
 #gem 'devise-mongo_mapper',
-#    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
+#    :git => "git://github.com/collectiveidea/devise-mongo_mapper.git"
+#    :git => "git://github.com/parasew/devise-mongo_mapper.git"
+#gem "oa-oauth", :require => "omniauth/oauth"
+#gem 'omniauth'
 
 group :development do
   gem 'nifty-generators'
@@ -35,7 +40,7 @@ group :test, :development do
 #      :git => 'git://github.com/aslakhellesoy/cucumber.git'
   gem 'cucumber-rails'
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  #gem 'ruby-debug'
+  gem 'ruby-debug'
 end
 
 group :test do

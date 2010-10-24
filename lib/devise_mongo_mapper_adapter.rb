@@ -30,6 +30,14 @@ module Devise
             first(conditions)
           end
 
+          def generate_token(column)
+            loop do
+              token = Devise.friendly_token
+              # break token unless find(:first, :conditions => { column => token })
+              break token unless first({ column => token })
+            end
+          end
+
           # Find an initialize a record setting an error if it can't be found.
           def find_or_initialize_with_error_by(attribute, value, error=:invalid) #:nodoc:
             if value.present?
@@ -67,9 +75,16 @@ module Devise
 end # Devise
 
 class Warden::SessionSerializer
+  def serialize(record)
+    if record.class == [].class
+      record = record[0]
+    end
+    [record.class.name, record.to_key, record.authenticatable_salt]
+  end
   def deserialize(keys)
     klass, id = keys
-    klass.constantize.find(id)
+    record = klass.constantize.find(id)
+    record.class == [].class ? record[0] : record
   end
 end
 
