@@ -27,7 +27,6 @@ class User
 
   def self.new_with_session(params, session)
     super.tap do |user|
-      debugger
       if data = session["devise.facebook_data"]
         user.authentications.build(:uid => data["uid"],:provider => data["provider"])
         user.email = data["extra"]["user_hash"]["email"]
