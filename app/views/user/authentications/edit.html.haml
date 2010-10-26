@@ -1,0 +1,18 @@
+- title "Edit Profile"
+- if current_user
+  = link_to "Edit Details", edit_user_registration_path
+- if @authentications
+  - unless @authentications.empty?
+    = render :partial => 'auth_list'
+  %p
+    %strong
+      Add another service to sign in with:
+- else
+  %p
+    %strong
+      Sign in through one of these services:
+
+=render :partial => 'auth_links'
+
+.clear
+

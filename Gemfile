@@ -16,11 +16,12 @@ gem 'mongo_mapper',
 
 #security
 gem 'devise',
-    :git => "git://github.com/plataformatec/devise.git",
-    :branch => "omniauth"
-#gem 'devise-mongo_mapper',
-#    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
-gem "oa-oauth", :require => "omniauth/oauth"
+    '1.1.3'
+#    :git => "git://github.com/plataformatec/devise.git",
+#    :branch => "omniauth"
+gem 'devise-mongo_mapper',
+    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
+#gem "oa-oauth", :require => "omniauth/oauth"
 gem 'omniauth'
 
 
@@ -28,7 +29,6 @@ group :development do
   gem 'nifty-generators'
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'
-
 end
 
 

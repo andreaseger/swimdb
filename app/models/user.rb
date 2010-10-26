@@ -1,5 +1,6 @@
 class User
   include MongoMapper::Document
+  plugin MongoMapper::Devise
   timestamps!
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable
@@ -10,7 +11,6 @@ class User
           :rememberable,
           :trackable,
           :validatable,
-          :omniauthable,
           :authentication_keys => [:username]
           #, :confirmable
 
@@ -26,20 +26,13 @@ class User
   many :authentications, :dependent => :destroy
   validates_associated :authentications
 
-  after_destroy :clear_authentications
-
-  def clear_authentications
-    debugger
-  end
-
-
   def self.find_for_oauth(omniauth, user)
     auth = Authentication.find_by_uid_and_provider(omniauth["uid"], omniauth["provider"])
     if user
       # the user wants to add fb to his account
       if auth
         return user if auth.user == user
-        raise 'Account already linked to a user'
+        raise 'Account already linked to an other user'
       else
         user.authentications.create!(:uid => omniauth["uid"],:provider => omniauth["provider"])
       end
@@ -57,31 +50,17 @@ class User
     end
   end
 
-  def self.new_with_session(params, session)
-    super.tap do |user|
-      #case facebook
-      if data = session["devise.facebook_data"]
-        user.authentications.build(:uid => data["uid"],:provider => data["provider"])
-        user.email = data["extra"]["user_hash"]["email"] unless user.email || user.email == ""
-        unless user.username || user.username = ""
-            user.username = data["extra"]["user_hash"]["name"]
-        end
-      elsif data = session["devise.twitter_data"]
-        user.authentications.build(:uid => data["uid"],:provider => data["provider"])
-        user.email = data["extra"]["user_hash"]["email"] unless user.email || user.email == ""
-        unless user.username || user.username = ""
-            user.username = data["extra"]["user_hash"]["name"]
-        end
-      end
-    end
-  end
-
   def password_required?
     (authentications.empty? || !password.blank?) && super
   end
 
-  private
+  protected
+  def apply_omniauth(data)
+    self.email = data["extra"]["user_hash"]["email"] if email.blank?
+    authentications.build(:uid => data["uid"],:provider => data["provider"])
+  end
 
+  private
   def self.create_new_fb_user(data)
     u = User.new(:username => data["extra"]["user_hash"]["name"], :email => data["extra"]["user_hash"]["email"])
     u.authentications.build(:uid => data["uid"],:provider => data["provider"])
@@ -91,5 +70,24 @@ class User
       User.new
     end
   end
+
+#  def self.new_with_session(params, session)
+#    super.tap do |user|
+#      #case facebook
+#      if data = session["devise.facebook_data"]
+#        user.authentications.build(:uid => data["uid"],:provider => data["provider"])
+#        user.email = data["extra"]["user_hash"]["email"] unless user.email || user.email == ""
+#        unless user.username || user.username = ""
+#            user.username = data["extra"]["user_hash"]["name"]
+#        end
+#      elsif data = session["devise.twitter_data"]
+#        user.authentications.build(:uid => data["uid"],:provider => data["provider"])
+#        user.email = data["extra"]["user_hash"]["email"] unless user.email || user.email == ""
+#        unless user.username || user.username = ""
+#            user.username = data["extra"]["user_hash"]["name"]
+#        end
+#      end
+#    end
+#  end
 end
 

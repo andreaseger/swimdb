@@ -20,8 +20,16 @@ Given /^(?:|I )am a new, authenticated user(?: named "([^\"]*)"(?: with email "(
   And %{I press "Sign in"}
 end
 
-Then /I should have a user "([^\"]*)" with email "([^\"]*)"/ do |username, email|
+Then /(?:|I )should have a user "([^\"]*)" with email "([^\"]*)"/ do |username, email|
   u = User.find_by_username(username)
   u.email.should == email
+end
+
+Then /^(?:|I )should have a user with "([^\"]*)" authentication$/ do |provider|
+  User.last.authentications.provider.should == provider
+end
+
+Then /^(?:|I )should not have a user "([^"]*)"$/ do |username|
+  User.find_by_username(username).nil?.should be_true
 end
 

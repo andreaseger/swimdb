@@ -54,6 +54,6 @@ Scenario: Users can delete thier own comments
     And I am on the schedule page
     And I fill in "comment_body" with "Lorem Ipsum"
     And I press "Post Comment"
-   When I click destroy within ".comment"
+   When I click "Destroy" within ".comment"
    Then The schedule should have no comments
 

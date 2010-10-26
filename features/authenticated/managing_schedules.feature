@@ -10,14 +10,14 @@ Background:
 Scenario: There are no schedules
   Given I am on the list of schedules
    Then I should see "Schedules"
-    And I should see "New Schedule" within "a"
+    And I should see "New Schedule"
 
 Scenario: There are some schedules to list
   Given I have 2 schedules "Foo" and "Bar"
    When I am on the list of schedules
    Then I should see "Schedules"
     And I should see "Foo"
-    And I should see "Bar" within "ul/li/strong"
+    And I should see "Bar"
     And I should see "New Schedule"
 
 @javascript
@@ -35,10 +35,10 @@ Scenario: I can create a new schedule with 2 Items
     And I press "Save"
    Then I should have 1 schedules
     And I should be on the schedule page
-    And I should see "Foobar" within "strong"
-    And I should see "Lorem Ipsum" within "p"
-    And I should see "400m" within "ul/li"
-    And I should see "200m" within "ul/li"
+    And I should see "Foobar"
+    And I should see "Lorem Ipsum"
+    And I should see "400m"
+    And I should see "200m"
 
 @javascript
 Scenario: I cannot create a new schedule with a invalid Item
@@ -61,7 +61,7 @@ Scenario: I can delete a schedule
       | level | text      | rank |
       | 0     | 400m      | 0    |
     And I am on the schedule page
-   When I click destroy
+   When I click "Destroy"
    Then I should have 0 schedules
     And I should be on the list of schedules
 

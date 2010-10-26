@@ -36,7 +36,7 @@ describe User do
       user = Factory(:bob)
       user.authentications.build(:uid => '123456789012345', :provider => 'dummy')
       user.save
-      User.last.delete
+      user.delete
       User.count.should == 0
       Authentication.count.should == 0
     end

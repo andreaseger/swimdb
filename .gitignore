@@ -3,5 +3,5 @@ db/*.sqlite3
 log/*.log
 tmp/**/*
 coverage/**/*
-config/initializers/devise.rb
+config/initializers/omniauth.rb
 
