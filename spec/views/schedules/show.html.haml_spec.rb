@@ -39,16 +39,10 @@ describe "/schedules/show.html.haml" do
       end
     end
     describe 'guest' do
-      #it 'should show the comments form' do
-      #  render
-      #  rendered.should have_selector("form") do
-      #    have_selector("ul", :class => "formlist") do
-      #      have_selector("div", "Commenter")
-      #      have_selector("div", "email")
-      #      have_selector("div", "Body")
-      #    end
-      #  end
-      #end
+      it 'should not show the comments form' do
+        render
+        rendered.should_not have_selector("form")
+      end
     end
   end
 end

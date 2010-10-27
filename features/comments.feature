@@ -40,7 +40,6 @@ Background:
 #   Then I should be on the new comment page
 #    And I should see "error"
 
-@wip
 Scenario: Guest cant write comments
   Given I am not authenticated
     And The schedule has no comments

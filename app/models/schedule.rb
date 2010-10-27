@@ -8,7 +8,9 @@ class Schedule
   key :tags, Array, :index => true
   many :items, :dependent => :destroy
   many :comments, :dependent => :destroy
+  #cache
   key :cached_user, String
+
 
   belongs_to :user
   before_save :parseItems
@@ -22,6 +24,12 @@ class Schedule
     where(:tags => /#{tag}/i)
   end
 
+  #atomic comment update
+  def self.addComment(schedule_id, comment)
+    collection.update({'_id' => schedule_id},{'$push' => {'comments' => comment}})
+  end
+
+  #virtual attributes
   def taggings=(value)
     self.tags = value.split(",").join(" ").split(" ")
   end

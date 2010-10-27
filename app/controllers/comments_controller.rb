@@ -8,9 +8,12 @@ class CommentsController < InheritedResources::Base
     @comment = @schedule.comments.build(params[:comment])
     @comment.user = current_user
     create! do |success, failure|
-         success.html { redirect_to parent_url }
+      success.html { redirect_to parent_url }
+      failure.html { redirect_to parent_url }
     end
   end
+
+
   def destroy
     @schedule = Schedule.find(params[:schedule_id])
     @comment = @schedule.comments.find(params[:id])

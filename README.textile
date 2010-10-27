@@ -21,7 +21,6 @@ h2. Features until now
 
 h2. Known Issues
 
-* I get a wierd zombie comment when creating a new schedule, cant delete it either
 * looks awfull because I dont have an stylesheet
 * not really an issue but I not really know how that mapreduce snippet works ;)
 * no comment creation with js
