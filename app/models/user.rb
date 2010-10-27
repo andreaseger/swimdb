@@ -18,6 +18,7 @@ class User
   attr_accessible :username, :email, :password, :password_confirmation
 
   key :username, String, :required => true, :unique => true
+  key :image, String
 
   many :schedules
   validates_associated :schedules
@@ -45,6 +46,7 @@ class User
       when "facebook"
         create_new_fb_user(omniauth)
       when "twitter"
+        #twitter does not deliver a email so i cant create a user on the fly
         User.new
       end
     end
@@ -54,9 +56,15 @@ class User
     (authentications.empty? || !password.blank?) && super
   end
 
-  protected
   def apply_omniauth(data)
-    self.email = data["extra"]["user_hash"]["email"] if email.blank?
+    case data["provider"]
+    when 'facebook'
+      self.username = data["extra"]["user_hash"]["name"] if username.blank?
+      self.email = data["extra"]["user_hash"]["email"] if email.blank?
+    when 'twitter'
+      self.username = data["user_info"]["name"] if username.blank?
+      self.image = data["user_info"]["image"] if image.blank?
+    end
     authentications.build(:uid => data["uid"],:provider => data["provider"])
   end
 

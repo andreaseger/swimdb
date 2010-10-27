@@ -8,9 +8,11 @@ class Schedule
   key :tags, Array, :index => true
   many :items, :dependent => :destroy
   many :comments, :dependent => :destroy
+  key :cached_user, String
 
   belongs_to :user
   before_save :parseItems
+  before_save :cacheUser
 
   validates_associated :items
   validates_associated :comments
@@ -76,6 +78,10 @@ class Schedule
       item.distance=parse[7]
     end
     true
+  end
+
+  def cacheUser
+    self.cached_user = self.user.username
   end
 
   def itemscount

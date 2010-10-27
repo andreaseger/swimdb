@@ -1,13 +1,6 @@
 = form_for [@schedule, @comment] do |f|
   = f.error_messages
   %ul.formList
-    - unless user_signed_in?
-      %li
-        = f.label :commenter
-        = f.text_field :commenter
-      %li
-        = f.label :email
-        = f.text_field :email
     %li
       = f.label :body, "Comment"
       = f.text_area :body, :rows => 6, :cols => 42

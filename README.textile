@@ -4,8 +4,9 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
-* search by tags(by clicking on them in the tag cloud)
-* commenting
+* you have to be logged in to comment - signup/login is now ridiculous easy
+* twitter login/Signup
+* facebook login/signup
 
 h2. Features until now
 
@@ -15,9 +16,12 @@ h2. Features until now
 * tag a schedule
 * search/filter by tag
 * comments
+* external login/signup
+
 
 h2. Known Issues
 
+* I get a wierd zombie comment when creating a new schedule, cant delete it either
 * looks awfull because I dont have an stylesheet
 * not really an issue but I not really know how that mapreduce snippet works ;)
 * no comment creation with js
@@ -35,7 +39,6 @@ h2. TODO
 
 * search in general
 * admin area
-* facebook login
 * more JS and perhaps move to jquery
 
 h2. meh
