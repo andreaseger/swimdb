@@ -57,3 +57,12 @@ Scenario: Users can delete thier own comments
    When I click destroy within ".comment"
    Then The schedule should have no comments
 
+@javascript
+Scenario: A User should also be able to create a comment through js
+  Given I am a new, authenticated user
+    And The schedule has no comments
+    And I am on the schedule page
+   When I fill in "comment_body" with "Banananana"
+    And I press "Post Comment"
+   Then I should see "Banananana"
+

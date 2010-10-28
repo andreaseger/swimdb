@@ -41,8 +41,7 @@ end
 group :test do
   #gem 'simplecov', '>= 0.3.5', :require => false
   gem 'webrat'
-  gem 'capybara',
-      :git => 'git://github.com/jnicklas/capybara.git'
+  gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
 end

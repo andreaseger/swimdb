@@ -1,4 +1,4 @@
-= form_for [@schedule, @comment] do |f|
+= form_for [@schedule, @comment], :remote =>true do |f|
   = f.error_messages
   %ul.formList
     - unless user_signed_in?

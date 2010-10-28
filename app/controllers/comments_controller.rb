@@ -7,9 +7,20 @@ class CommentsController < InheritedResources::Base
     @schedule = Schedule.find(params[:schedule_id])
     @comment = @schedule.comments.build(params[:comment])
     @comment.user = current_user if user_signed_in?
+
     create! do |success, failure|
-         success.html { redirect_to parent_url }
+      success.html {redirect_to parent_url}
+      success.js
     end
+    #respond_to do |format|
+    #  if @comment.save
+    #    flash[:notice] = 'Comment was successfully created.'
+    #    format.html { redirect_to schedule_path(@schedule) }
+    #    format.js
+    #  else
+    #    @schedule
+    #  end
+    #end
   end
   def destroy
     @schedule = Schedule.find(params[:schedule_id])

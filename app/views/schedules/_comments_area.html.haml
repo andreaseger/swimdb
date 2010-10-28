@@ -3,7 +3,7 @@
     - unless @schedule.comments.empty?
       %h2= pluralize(@schedule.comments.size, 'Comment')
   %ul#comments
-    = render :partial => @schedule.comments
+    = render :partial => @schedule.comments.sort_by(&:created_at)
   %br
   = render :partial => "/comments/form"
 

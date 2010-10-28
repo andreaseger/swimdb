@@ -5,7 +5,9 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 h2. Newest changes
 
 * Admin Area
-* fixed the issues with capybara 0.40rc, many breackage
+* fixed the issues with capybara 0.40
+* comment posting via js
+* jquery, working
 * search by tags(by clicking on them in the tag cloud)
 * commenting
 
@@ -22,7 +24,7 @@ h2. Known Issues
 
 * looks awfull because I dont have an stylesheet
 * not really an issue but I not really know how that mapreduce snippet works ;)
-* no comment creation with js
+* when a failure while the comment creation happens it does just nothing(with JS)
 
 
 h3. to think about
@@ -37,7 +39,6 @@ h2. TODO
 
 * search in general
 * facebook login(branch omniauth)
-* more JS and perhaps move to jquery(branch jquery)
 
 h2. meh
 
