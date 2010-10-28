@@ -23,10 +23,6 @@ When /^(?:|I )select "([^"]*)" from "([^"]*)" within the (\d)(?:st|nd|rd|th) "([
   end
 end
 
-Then /^(?:|I )should have (\d+) schedules$/ do |number|
-  Schedule.count.should == number.to_f
-end
-
 Given /^(?:|I )have a schedule "([^"]*)" with the description "([^"]*)" and the following items:$/ do |name, description, table|
   # table is a Cucumber::Ast::Table
   schedule = Schedule.new(:name => name, :description => description)

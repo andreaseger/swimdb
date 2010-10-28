@@ -1,13 +1,13 @@
 GIT
   remote: git://github.com/collectiveidea/devise-mongo_mapper
-  revision: fa2f20310e0988295adc192255d3b1cedee1b412
+  revision: fa2f203
   specs:
     devise-mongo_mapper (0.0.1)
       devise (~> 1.1.0)
 
 GIT
   remote: git://github.com/jnunemaker/mongomapper.git
-  revision: 827492425e1c4ae35ec7d2ba130f0a52ec34d4e2
+  revision: 8274924
   branch: master
   specs:
     mongo_mapper (0.8.6)
@@ -47,6 +47,7 @@ GEM
       activesupport (= 3.0.1)
     activesupport (3.0.1)
     addressable (2.2.2)
+    archive-tar-minitar (0.5.2)
     arel (1.0.1)
       activesupport (~> 3.0.0)
     autotest (4.4.1)
@@ -120,7 +121,8 @@ GEM
       activesupport (>= 2.3.4)
     json (1.4.6)
     json_pure (1.4.6)
-    linecache (0.43)
+    linecache19 (0.5.11)
+      ruby_core_source (>= 0.1.4)
     mail (2.2.9)
       activesupport (>= 2.3.6)
       i18n (~> 0.4.1)
@@ -215,14 +217,19 @@ GEM
       rspec-expectations (~> 2.0.1)
     rspec-rails (2.0.1)
       rspec (~> 2.0.0)
-    ruby-debug (0.10.3)
-      columnize (>= 0.1)
-      ruby-debug-base (~> 0.10.3.0)
-    ruby-debug-base (0.10.3)
-      linecache (>= 0.3)
+    ruby-debug-base19 (0.11.24)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby_core_source (>= 0.1.4)
+    ruby-debug19 (0.11.6)
+      columnize (>= 0.3.1)
+      linecache19 (>= 0.5.11)
+      ruby-debug-base19 (>= 0.11.19)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
       ruby-openid (>= 2.1.7)
+    ruby_core_source (0.1.4)
+      archive-tar-minitar (>= 0.5.2)
     rubyntlm (0.1.1)
     rubyzip (0.9.4)
     selenium-webdriver (0.0.29)
@@ -268,6 +275,6 @@ DEPENDENCIES
   omniauth
   rails (= 3.0.1)
   rspec-rails (>= 2.0.0.beta.22)
-  ruby-debug
+  ruby-debug19
   spork (>= 0.9.0.rc2)
   webrat
