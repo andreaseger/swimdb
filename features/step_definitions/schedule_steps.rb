@@ -23,10 +23,6 @@ When /^(?:|I )select "([^"]*)" from "([^"]*)" within the (\d)(?:st|nd|rd|th) "([
   end
 end
 
-Then /^(?:|I )should have (\d+) schedules$/ do |number|
-  Schedule.count.should == number.to_f
-end
-
 Given /^(?:|I )have a schedule "([^"]*)" with the description "([^"]*)" and the following items:$/ do |name, description, table|
   # table is a Cucumber::Ast::Table
   schedule = Schedule.new(:name => name, :description => description, :user => User.last)
@@ -44,17 +40,6 @@ When /^(?:|I )follow "([^"]*)" within the (\d)(?:st|nd|rd|th) "([^"]*)" fieldset
   end
 end
 
-When /^(?:I )click destroy$/ do
-  page.evaluate_script('window.confirm = function() { return true; }')
-  page.click_link_or_button('Destroy')
-end
-When /^(?:I )click destroy within "([^"]*)"$/ do |selector|
-  page.evaluate_script('window.confirm = function() { return true; }')
-  path = XPath.css(selector).first.to_xpath
-  within(:xpath, path) do
-    page.click_link_or_button('Destroy')
-  end
-end
 Then /^the schedules user should be "([^"]*)"$/ do |username|
   Schedule.last.user.username.should == username
 end

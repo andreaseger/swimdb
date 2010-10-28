@@ -9,6 +9,7 @@
     = f.label :email
     %br/
     = f.text_field :email
+  - if @user.password_required?
   %p
     = f.label :password
     %br/

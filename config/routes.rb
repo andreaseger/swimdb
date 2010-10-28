@@ -1,11 +1,18 @@
 Swimdb::Application.routes.draw do
+
+  match 'auth/:provider/callback' => "users/authentications#create"
   namespace :adminarea do
     resources :users
   end
   devise_for :admins
+  devise_for :users, :controllers => {:registrations => 'users/registrations'}# :omniauth_callbacks => "users/omniauth_callbacks" }
+
+  namespace :users do
+    resources :authentications
+  end
 
 
-  devise_for :users
+
   resources :schedules do
     resources :comments
   end

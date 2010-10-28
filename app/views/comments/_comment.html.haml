@@ -1,8 +1,6 @@
 %li.comment
   %strong
-    - if comment.user
-      = comment.user.username
-    = comment.commenter
+    = comment.cached_user
   %em.date
     = comment.created_at
   %br

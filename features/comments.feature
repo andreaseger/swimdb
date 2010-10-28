@@ -5,39 +5,46 @@ Background:
       | level | text      | rank |
       | 0     | 400m      | 0    |
 
-Scenario: As guest you can create comments by entering a Name and an email
-  Given I am not authenticated
-    And The schedule has no comments
-    And I am on the schedule page
-   When I fill in "comment_commenter" with "Hase"
-    And I fill in "comment_email" with "hase@hase.com"
-    And I fill in "comment_body" with "Lorem Ipsum"
-    And I press "Post Comment"
-   Then I should see "Comment was successfully created."
-    And I should see "Lorem Ipsum"
-    And I should see "Hase"
+#depricated
+#Scenario: As guest you can create comments by entering a Name and an email
+#  Given I am not authenticated
+#    And The schedule has no comments
+#    And I am on the schedule page
+#   When I fill in "comment_commenter" with "Hase"
+#    And I fill in "comment_email" with "hase@hase.com"
+#    And I fill in "comment_body" with "Lorem Ipsum"
+#    And I press "Post Comment"
+#   Then I should see "Comment was successfully created."
+#    And I should see "Lorem Ipsum"
+#    And I should see "Hase"
+#
+#Scenario: As guest you can create comments by entering a Name
+#  Given I am not authenticated
+#    And The schedule has no comments
+#    And I am on the schedule page
+#   When I fill in "comment_commenter" with "Hase"
+#    And I fill in "comment_body" with "Lorem Ipsum"
+#    And I press "Post Comment"
+#   Then I should see "Comment was successfully created."
+#    And I should see "Hase"
+#    And I should see "Lorem Ipsum"
+#
+#Scenario: As guest you can create comments by entering a Name and an email
+#  Given I am not authenticated
+#    And The schedule has no comments
+#    And I am on the schedule page
+#   When I fill in "comment_commenter" with "Hase"
+#    And I fill in "comment_email" with "foo"
+#    And I fill in "comment_body" with "Lorem Ipsum"
+#    And I press "Post Comment"
+#   Then I should be on the new comment page
+#    And I should see "error"
 
-Scenario: As guest you can create comments by entering a Name
+Scenario: Guest cant write comments
   Given I am not authenticated
     And The schedule has no comments
-    And I am on the schedule page
-   When I fill in "comment_commenter" with "Hase"
-    And I fill in "comment_body" with "Lorem Ipsum"
-    And I press "Post Comment"
-   Then I should see "Comment was successfully created."
-    And I should see "Hase"
-    And I should see "Lorem Ipsum"
-
-Scenario: As guest you can create comments by entering a Name and an email
-  Given I am not authenticated
-    And The schedule has no comments
-    And I am on the schedule page
-   When I fill in "comment_commenter" with "Hase"
-    And I fill in "comment_email" with "foo"
-    And I fill in "comment_body" with "Lorem Ipsum"
-    And I press "Post Comment"
-   Then I should be on the new comment page
-    And I should see "error"
+   When I am on the schedule page
+   Then I should not see "Post Comment"
 
 Scenario: Users can delete thier own comments
   Given I am a new, authenticated user
@@ -54,7 +61,7 @@ Scenario: Users can delete thier own comments
     And I am on the schedule page
     And I fill in "comment_body" with "Lorem Ipsum"
     And I press "Post Comment"
-   When I click destroy within ".comment"
+   When I click "Destroy" within ".comment"
    Then The schedule should have no comments
 
 @javascript

@@ -1,16 +1,18 @@
 class CommentsController < InheritedResources::Base
   belongs_to :schedule
   actions :create, :destroy
-  #before_filter :authenticate_user!, :except => [:create]
+  before_filter :authenticate_user!#, :except => [:create]
 
   def create
     @schedule = Schedule.find(params[:schedule_id])
     @comment = @schedule.comments.build(params[:comment])
-    @comment.user = current_user if user_signed_in?
+    @comment.user = current_user
 
     create! do |success, failure|
       success.html {redirect_to parent_url}
       success.js
+      failure.html { redirect_to parent_url }
+      failure.js  { redirect_to parent_url(:format => 'html') }
     end
     #respond_to do |format|
     #  if @comment.save
@@ -22,6 +24,8 @@ class CommentsController < InheritedResources::Base
     #  end
     #end
   end
+
+
   def destroy
     @schedule = Schedule.find(params[:schedule_id])
     @comment = @schedule.comments.find(params[:id])

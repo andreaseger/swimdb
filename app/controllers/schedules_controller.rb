@@ -5,7 +5,6 @@ class SchedulesController < InheritedResources::Base
 
   def show
     @schedule = Schedule.find(params[:id])
-    @comment = @schedule.comments.build
   end
 
   def index

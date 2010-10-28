@@ -23,5 +23,24 @@ describe User do
     end
   end
 
+  describe '#authentications' do
+    it 'should save authentications' do
+      user = Factory(:bob)
+      user.authentications.build(:uid => '123456789012345', :provider => 'dummy')
+      user.save
+      user.should have(1).authentications
+      Authentication.count.should == 1
+    end
+
+    it 'should delete the authentications on delete' do
+      user = Factory(:bob)
+      user.authentications.build(:uid => '123456789012345', :provider => 'dummy')
+      user.save
+      user.delete
+      User.count.should == 0
+      Authentication.count.should == 0
+    end
+  end
+
 end
 

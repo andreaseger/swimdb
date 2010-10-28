@@ -2,7 +2,7 @@
   %strong.title
     =@schedule.name
   %em.cinfo
-    =@schedule.user.username if @schedule.user
+    =@schedule.cached_user
     =@schedule.date.strftime('%d. %b, %Y')
   %em.tags
     =@schedule.taggings

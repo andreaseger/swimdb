@@ -1,0 +1,16 @@
+- title "Login or SignUp"
+%p
+  %strong
+    Sign in through one of these services:
+
+=render :partial => 'auth_links'
+
+.clear
+%p
+  %strong
+    or
+    = link_to "Login", new_user_session_path
+    |
+    = link_to "SignUp", new_user_registration_path
+    with username and password
+

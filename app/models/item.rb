@@ -28,5 +28,6 @@ class Item
     o = (self.outer == nil) ? 1 : self.outer
     self.distance * i * o
   end
+
 end
 

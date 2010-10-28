@@ -61,7 +61,7 @@ Scenario: I can delete a schedule
       | level | text      | rank |
       | 0     | 400m      | 0    |
     And I am on the schedule page
-   When I click destroy
+   When I click "Destroy"
    Then I should have 0 schedules
     And I should be on the list of schedules
 

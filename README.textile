@@ -4,12 +4,14 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
+* you have to be logged in to comment - signup/login is now ridiculous easy
+* twitter login/Signup
+* facebook login/signup
 * Admin Area
 * fixed the issues with capybara 0.40
 * comment posting via js
 * jquery, working
-* search by tags(by clicking on them in the tag cloud)
-* commenting
+
 
 h2. Features until now
 
@@ -19,6 +21,8 @@ h2. Features until now
 * tag a schedule
 * search/filter by tag
 * comments
+* external login/signup
+
 
 h2. Known Issues
 
@@ -38,7 +42,6 @@ is back to standart inherited_resources
 h2. TODO
 
 * search in general
-* facebook login(branch omniauth)
 
 h2. meh
 

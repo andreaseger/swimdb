@@ -8,9 +8,13 @@ class Schedule
   key :tags, Array, :index => true
   many :items, :dependent => :destroy
   many :comments, :dependent => :destroy
+  #cache
+  key :cached_user, String
+
 
   belongs_to :user
   before_save :parseItems
+  before_save :cacheUser
 
   validates_associated :items
   validates_associated :comments
@@ -20,6 +24,12 @@ class Schedule
     where(:tags => /#{tag}/i)
   end
 
+  #atomic comment update
+  def self.addComment(schedule_id, comment)
+    collection.update({'_id' => schedule_id},{'$push' => {'comments' => comment}})
+  end
+
+  #virtual attributes
   def taggings=(value)
     self.tags = value.split(",").join(" ").split(" ")
   end
@@ -76,6 +86,10 @@ class Schedule
       item.distance=parse[7]
     end
     true
+  end
+
+  def cacheUser
+    self.cached_user = self.user.username
   end
 
   def itemscount
