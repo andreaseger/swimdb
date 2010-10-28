@@ -4,6 +4,7 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
+* comment posting via js
 * jquery, working
 * search by tags(by clicking on them in the tag cloud)
 * commenting
@@ -21,7 +22,7 @@ h2. Known Issues
 
 * looks awfull because I dont have an stylesheet
 * not really an issue but I not really know how that mapreduce snippet works ;)
-* no comment creation with js
+* when a failure while the comment creation happens it does just nothing(with JS)
 
 
 h3. to think about
