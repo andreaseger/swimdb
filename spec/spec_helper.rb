@@ -33,10 +33,6 @@ Spork.prefork do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.orm = "mongo_mapper"
 
-    config.before(:suite) do
-      DatabaseCleaner.clean_with(:truncation)
-    end
-
     config.before(:each) do
       DatabaseCleaner.clean
     end

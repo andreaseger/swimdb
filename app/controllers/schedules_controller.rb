@@ -30,6 +30,6 @@ class SchedulesController < InheritedResources::Base
     unless admin_signed_in?
       warden.authenticate!(:scope => :user)
     end
-
+  end
 end
 
