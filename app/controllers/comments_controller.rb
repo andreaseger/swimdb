@@ -9,6 +9,7 @@ class CommentsController < InheritedResources::Base
     @comment.user = current_user if user_signed_in?
     create! do |success, failure|
          success.html { redirect_to parent_url }
+         success.js
     end
   end
   def destroy
