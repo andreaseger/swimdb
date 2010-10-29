@@ -21,8 +21,22 @@ Scenario: I can edit a user
   Given I have one user "Bob"
     And I am a new, authenticated admin
     And I am on the admin area
-    And I follow "Edit Bob"
+    And I follow "Bob"
+    And I follow "Edit User"
    When I fill in "user_username" with "Alice"
     And I press "Save User"
    Then I should have a user named "Alice"
+
+@javascript
+Scenario: Admins can delete random comments
+  Given I am a new, authenticated user
+    And The schedule has no comments
+    And I am on the schedule page
+    And I fill in "comment_body" with "Lorem Ipsum"
+    And I press "Post Comment"
+    And I am not authenticated
+    And I am a new, authenticated admin
+   When I am on the schedule page
+    And I click "Destroy" within ".comment"
+   Then The schedule should have no comments
 

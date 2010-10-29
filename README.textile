@@ -4,25 +4,19 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
-* you have to be logged in to comment - signup/login is now ridiculous easy
-* twitter login/Signup
-* facebook login/signup
-* Admin Area
-* fixed the issues with capybara 0.40
-* comment posting via js
-* jquery, working
-
+* merge with jquery and omniauth
 
 h2. Features until now
 
 * creating and editing a schedule with nested items in one form
 * calculate the complete distance of the schedule
-* authentication(devise)
 * tag a schedule
 * search/filter by tag
-* comments
-* external login/signup
-
+* comments, now also via js
+* authentication(devise)
+* twitter-facebook login/Signup
+* Admin Area
+* jquery
 
 h2. Known Issues
 
@@ -42,6 +36,11 @@ is back to standart inherited_resources
 h2. TODO
 
 * search in general
+* compass
+* allow items to have just text so users can just add infos to thier last items
+* js Calendar in schedule form
+* caching
+* deploying - capistrano
 
 h2. meh
 

@@ -1,6 +1,6 @@
 class SchedulesController < InheritedResources::Base
-  before_filter :auth_user_admin, :except => [:show, :index]
-  #before_filter :authenticate_user!, :except => []
+  include AuthUserAdmin
+  before_filter :auth_user_admin!, :except => [:show, :index]
   has_scope :by_tag
 
   def show
@@ -22,13 +22,6 @@ class SchedulesController < InheritedResources::Base
   def update
     params[:schedule][:items].delete_if{|i| i[:text] == ""}
     update!
-  end
-
-  private
-  def auth_user_admin
-    unless admin_signed_in?
-      warden.authenticate!(:scope => :user)
-    end
   end
 end
 

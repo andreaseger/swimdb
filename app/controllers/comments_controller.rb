@@ -1,7 +1,9 @@
 class CommentsController < InheritedResources::Base
+  include AuthUserAdmin
   belongs_to :schedule
   actions :create, :destroy
-  before_filter :authenticate_user!#, :except => [:create]
+  before_filter :auth_user_admin!
+  #before_filter :authenticate_user!
 
   def create
     @schedule = Schedule.find(params[:schedule_id])
@@ -12,7 +14,7 @@ class CommentsController < InheritedResources::Base
       success.html {redirect_to parent_url}
       success.js
       failure.html { redirect_to parent_url }
-      failure.js  { redirect_to parent_url(:format => 'html') }
+      failure.js  { render :text => @comment.errors.full_messages }
     end
     #respond_to do |format|
     #  if @comment.save

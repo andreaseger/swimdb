@@ -39,6 +39,9 @@
         %li.last About
 
     #content
+      - if admin_signed_in?
+        %h2.admin
+          Admin Access
       =yield
 
     #footer

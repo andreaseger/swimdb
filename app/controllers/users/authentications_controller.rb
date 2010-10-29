@@ -1,5 +1,9 @@
 class Users::AuthenticationsController < InheritedResources::Base
+  include AuthUserAdmin
   actions :index, :destroy
+  before_filter :auth_user_admin!, :only => [:edit, :update, :destroy]
+  #before_filter :authenticate_user!
+
   def create
     case params[:provider]
     when 'facebook', 'twitter'
@@ -10,16 +14,28 @@ class Users::AuthenticationsController < InheritedResources::Base
   end
 
   def edit
-    @authentications = current_user.authentications
+    if admin_signed_in?
+      # if admin show me the authentications of the choosen user
+      @user = User.find(params[:id])
+      @authentications = @user.authentications
+    else
+      # else show them of the current_user
+      @authentications = current_user.authentications
+    end
+  end
+
+  def destroy
+    destroy!{edit_users_authentication_path}
   end
 
   private
+
   def oauth
     # You need to implement the method below in your model
     @user = User.find_for_oauth(env["omniauth.auth"], current_user)
     # reditect to the profile if the user was logged in
     if current_user
-      redirect_to edit_user_authentication_path(current_user)
+      redirect_to edit_users_authentication_path(current_user)
       return
     end
     #else login or redirect to the signup page

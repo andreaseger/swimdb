@@ -1,6 +1,9 @@
 - title "Edit Profile"
-- if current_user
+- if user_signed_in?
   = link_to "Edit Details", edit_user_registration_path
+- if admin_signed_in?
+  .admin
+    = "Editing User #{@user.username} | #{@user.email}"
 - if @authentications
   - unless @authentications.empty?
     = render :partial => 'auth_list'
