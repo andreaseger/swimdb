@@ -6,8 +6,6 @@ gem 'haml-rails'
 gem 'inherited_resources'
 gem 'has_scope'
 
-gem 'capistrano'
-
 #MongoDB
 gem 'bson_ext'
 gem 'mongo_mapper',
@@ -25,6 +23,7 @@ gem 'devise-mongo_mapper',
 gem 'omniauth'
 
 group :development do
+  gem 'capistrano'
   gem 'nifty-generators'
   #gem "hpricot", "0.8.2" # Only required for 'rails g devise:views'
   #gem "ruby_parser", "2.0.5" # Only required for 'rails g devise:views'

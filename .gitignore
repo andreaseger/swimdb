@@ -4,4 +4,5 @@ log/*.log
 tmp/**/*
 coverage/**/*
 config/initializers/omniauth.rb
+config/initializers/deploy.rb
 
