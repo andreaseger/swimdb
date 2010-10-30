@@ -4,6 +4,7 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
+* created a working capistrano script, but yeah I wont upload it here
 * merge with jquery and omniauth
 
 h2. Features until now
@@ -40,7 +41,6 @@ h2. TODO
 * allow items to have just text so users can just add infos to thier last items, ignore level on these items and ignore them while full schedule distance calculation; it should be allowed to enter something like "50m delfin, 50m Kraul" as item description. not shure if I can do that with a regex or if i need a additional flag
 * js Calendar in schedule form, should be not many work
 * caching - memcache? bin? ... how to set it up on the server?
-* deploying - capistrano
 
 h2. meh
 
