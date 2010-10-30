@@ -4,45 +4,52 @@
     %title
       = "- SwimDB - | " << (yield(:title) || "Untitled")
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
-    = stylesheet_link_tag :all
+    =# stylesheet_link_tag :all
+    -# compass stylesheets
+    = stylesheet_link_tag 'compiled/screen.css', :media => 'screen, projection'
+    = stylesheet_link_tag 'compiled/print.css', :media => 'print'
+    /[if lt IE 8]
+      = stylesheet_link_tag 'compiled/ie.css', :media => 'screen, projection'
     = javascript_include_tag :defaults    #jquery
     = csrf_meta_tag
     = yield(:head)
 
   %body
-    - flash.each do |name, msg|
-      = content_tag :div, msg, :id => "flash_#{name}"
+    #container
+      #header
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}"
 
-    - if show_title?
-      %h1= yield(:title)
-    #user_nav
-      %ul
-        %li.first= link_to "Home", root_url
-        - if user_signed_in?
-          %li
-            = "Signed in as #{current_user.username}. Not you?"
-            = link_to "Logout", destroy_user_session_path
-          %li
-            = link_to "Edit Profile", edit_users_authentication_path(current_user)
-        - elsif admin_signed_in?
-          #admin_nav
-            %li
-              = link_to "Admin Area", adminarea_users_path
-            %li
-              = "Admin access as #{current_admin.email}"
-              = link_to "Logout Admin", destroy_admin_session_path
-            %li
-              = link_to "Edit Admin Profile", edit_admin_registration_path
-        - else
-          %li
-            = link_to "Login or SignUp", users_authentications_path
-        %li.last About
-
-    #content
-      - if admin_signed_in?
-        %h2.admin
-          Admin Access
-      =yield
-
-    #footer
+        #banner
+          banner
+        #user_nav
+          %ul
+            %li.first= link_to "Home", root_url
+            - if user_signed_in?
+              %li
+                = "Signed in as #{current_user.username}. Not you?"
+                = link_to "Logout", destroy_user_session_path
+              %li
+                = link_to "Edit Profile", edit_users_authentication_path(current_user)
+            - elsif admin_signed_in?
+              #admin_nav
+                %li
+                  = link_to "Admin Area", adminarea_users_path
+                %li
+                  = "Admin access as #{current_admin.email}"
+                  = link_to "Logout Admin", destroy_admin_session_path
+                %li
+                  = link_to "Edit Admin Profile", edit_admin_registration_path
+            - else
+              %li
+                = link_to "Login or SignUp", users_authentications_path
+            %li.last About
+      #content
+        - if show_title?
+          %h2= yield(:title)
+        - if admin_signed_in?
+          %h2.admin
+            Admin Access
+        =yield
+      #footer
 

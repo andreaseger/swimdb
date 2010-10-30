@@ -18,7 +18,7 @@ $(function() {
       hidden_field.value = '1';
     }
     //$(this).parents('.fields').hide();
-    $(this).parents('.fields').remove();
+    $(this).parents('.item').remove();
     return false;
   });
 });

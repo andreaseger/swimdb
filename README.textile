@@ -4,6 +4,7 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
+* compass; sass
 * created a working capistrano script, but yeah I wont upload it here
 * merge with jquery and omniauth
 

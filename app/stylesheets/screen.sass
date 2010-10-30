@@ -1,0 +1,168 @@
+// This import applies a global reset to any page that imports this stylesheet.
+@import "blueprint/reset"
+// To configure blueprint, edit the partials/base.sass file.
+@import partials/base.scss
+//@import partials/flash_error.sass
+// Import all the default blueprint modules so that we can access their mixins.
+@import blueprint
+// Import the non-default scaffolding module.
+@import "blueprint/scaffolding"
+@import compass/utilities
+
+// To generate css equivalent to the blueprint css but with your configuration applied, uncomment:
+// +blueprint
+
+//Recommended Blueprint configuration with scoping and semantic layout:
++blueprint-typography
++blueprint-scaffolding
++blueprint-utilities
+//+blueprint-debug
++blueprint-interaction
+
+body
+  background-color: $almost_black
+  font-family: Verdana, Helvetica, Arial
+  font-size: 14px
+  line-height: 18px
+  #container
+    +container
+    :padding 20px 40px
+    :margin 0 auto
+    :margin-top 20px
+    :background-color $white
+    :border solid 1px black
+
+    .admin
+      color: #F00
+
+    ul
+      +no-bullets
+    .controls
+      +horizontal-list
+      :margin-bottom 15px
+
+    #header
+      +column(24)
+      :position relative
+
+      #flash_notice, #flash_error, #flash_alert
+        padding: 5px 8px
+        margin: 10px 0
+
+      #flash_notice
+        background-color: #ccffcc
+        border: solid 1px #66cc66
+
+      #flash_error, #flash_alert
+        background-color: #ffcccc
+        border: solid 1px #cc6666
+
+      .fieldWithErrors
+        display: inline
+
+      .error_messages
+        width: 400px
+        border: 2px solid #cf0000
+        padding: 0
+        padding-bottom: 12px
+        margin-bottom: 20px
+        background-color: #f0f0f0
+        font-size: 12px
+        h2
+          text-align: left
+          padding: 5px 5px 5px 15px
+          margin: 0
+          font-weight: bold
+          font-size: 12px
+          background-color: #cc0000
+          color: white
+        p
+          margin: 8px 10px
+        ul
+          margin: 0
+      #banner
+        +replace-text("http://dummyimage.com/715x115/777.png&text=swimDB")
+        :width 715px
+        :height 115px
+        :margin-left 2 * $blueprint-grid-width
+        :margin-bottom 2em
+
+    #user_nav
+      ul
+        +horizontal-list
+        :padding-left 5px
+      :font-size 12px
+
+    #content
+      +column(20, true)
+      :padding-top 20px
+
+      .horizontal
+        +horizontal-list
+
+      #tag_cloud
+        .tag_size_1
+          font-size: 0.6em
+        .tag_size_2
+          font-size: 1em
+        .tag_size_3
+          font-size: 1.4em
+        .tag_size_4
+          font-size: 1.8em
+        .tag_size_5
+          font-size: 2.2em
+        .tag_size_6
+          font-size: 2.6em
+    #footer
+
+
+    // fancy look for the authentications
+    .authentications
+      margin-bottom: 30px
+
+    .authentication
+      width: 130px
+      float: left
+      background-color: #EEE
+      border: solid 1px #999
+      padding: 5px 10px
+      -moz-border-radius: 8px
+      -webkit-border-radius: 8px
+      position: relative
+      margin-right: 10px
+      .remove
+        text-decoration: none
+        position: absolute
+        top: 3px
+        right: 3px
+        color: #333
+        padding: 2px 4px
+        font-size: 10px
+        &:hover
+          color: #CCC
+          background-color: #777
+          -moz-border-radius: 6px
+          -webkit-border-radius: 6px
+      img
+        float: left
+        margin-right: 10px
+      .provider
+        font-weight: bold
+      .uid
+        color: #666
+        font-size: 11px
+
+    .auth_provider
+      img
+        display: block
+      float: left
+      text-decoration: none
+      margin-right: 20px
+      text-align: center
+      margin-bottom: 10px
+
+    .clear
+      clear: both
+      height: 0
+      overflow: hidden
+
