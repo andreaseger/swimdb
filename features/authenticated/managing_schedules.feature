@@ -82,7 +82,7 @@ Scenario: I can edit an existing schedule
     And I fill in "text" with "700m" within the 5th ".item" fieldset
     And I press "Save"
    Then I should be on the schedule page
-    And I should see "Hello World" within "strong"
+    And I should see "Hello World" within "h2"
     And I should see "700m"
     And I should not see "50m"
 

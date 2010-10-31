@@ -723,11 +723,15 @@ body #container #content #tag_cloud .tag_size_5 {
 body #container #content #tag_cloud .tag_size_6 {
   font-size: 2.6em;
 }
-/* line 120, ../../../app/stylesheets/screen.sass */
+/* line 119, ../../../app/stylesheets/screen.sass */
+body #container div .ui-widget {
+  font-size: 62.5%;
+}
+/* line 127, ../../../app/stylesheets/screen.sass */
 body #container .authentications {
   margin-bottom: 30px;
 }
-/* line 123, ../../../app/stylesheets/screen.sass */
+/* line 130, ../../../app/stylesheets/screen.sass */
 body #container .authentication {
   width: 130px;
   float: left;
@@ -739,7 +743,7 @@ body #container .authentication {
   position: relative;
   margin-right: 10px;
 }
-/* line 133, ../../../app/stylesheets/screen.sass */
+/* line 140, ../../../app/stylesheets/screen.sass */
 body #container .authentication .remove {
   text-decoration: none;
   position: absolute;
@@ -749,28 +753,28 @@ body #container .authentication .remove {
   padding: 2px 4px;
   font-size: 10px;
 }
-/* line 141, ../../../app/stylesheets/screen.sass */
+/* line 148, ../../../app/stylesheets/screen.sass */
 body #container .authentication .remove:hover {
   color: #cccccc;
   background-color: #777777;
   -moz-border-radius: 6px;
   -webkit-border-radius: 6px;
 }
-/* line 146, ../../../app/stylesheets/screen.sass */
+/* line 153, ../../../app/stylesheets/screen.sass */
 body #container .authentication img {
   float: left;
   margin-right: 10px;
 }
-/* line 149, ../../../app/stylesheets/screen.sass */
+/* line 156, ../../../app/stylesheets/screen.sass */
 body #container .authentication .provider {
   font-weight: bold;
 }
-/* line 151, ../../../app/stylesheets/screen.sass */
+/* line 158, ../../../app/stylesheets/screen.sass */
 body #container .authentication .uid {
   color: #666666;
   font-size: 11px;
 }
-/* line 155, ../../../app/stylesheets/screen.sass */
+/* line 162, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider {
   float: left;
   text-decoration: none;
@@ -778,11 +782,11 @@ body #container .auth_provider {
   text-align: center;
   margin-bottom: 10px;
 }
-/* line 156, ../../../app/stylesheets/screen.sass */
+/* line 163, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider img {
   display: block;
 }
-/* line 164, ../../../app/stylesheets/screen.sass */
+/* line 171, ../../../app/stylesheets/screen.sass */
 body #container .clear {
   clear: both;
   height: 0;
