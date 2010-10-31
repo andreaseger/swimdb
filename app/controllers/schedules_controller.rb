@@ -10,6 +10,7 @@ class SchedulesController < InheritedResources::Base
   def index
     @schedules = apply_scopes(Schedule).all
     @tags = SchedulesHelper::TagCloud.build.find()
+    render :layout => 'with_tagcloud'
   end
 
   def create
