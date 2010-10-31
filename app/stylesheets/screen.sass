@@ -23,9 +23,9 @@ body
   background-color: $almost_black
   font-family: Verdana, Helvetica, Arial
   font-size: 14px
-  line-height: 18px
   #container
     +container
+    +showgrid
     :padding 20px 40px
     :margin 0 auto
     :margin-top 20px
@@ -34,6 +34,18 @@ body
 
     .admin
       color: #F00
+
+    #schedule
+      .user
+        font-size: 12px
+      .tags,
+      .date
+        font-size: 12px
+        color: $steel
+      .description
+        margin: 10px
+      .items
+        font-size: 15px
 
     ul
       +no-bullets
@@ -101,18 +113,19 @@ body
         +horizontal-list
 
       #tag_cloud
+        font-style: bold
         .tag_size_1
           font-size: 0.6em
         .tag_size_2
-          font-size: 1em
+          font-size: 0.9em
         .tag_size_3
-          font-size: 1.4em
+          font-size: 1.2em
         .tag_size_4
-          font-size: 1.8em
+          font-size: 1.5em
         .tag_size_5
-          font-size: 2.2em
+          font-size: 1.8em
         .tag_size_6
-          font-size: 2.6em
+          font-size: 2.1em
 
     div
       .ui-datepicker
@@ -133,8 +146,7 @@ body
       background-color: #EEE
       border: solid 1px #999
       padding: 5px 10px
-      -moz-border-radius: 8px
-      -webkit-border-radius: 8px
+      border-radius: 8px
       position: relative
       margin-right: 10px
       .remove
@@ -148,8 +160,7 @@ body
         &:hover
           color: #CCC
           background-color: #777
-          -moz-border-radius: 6px
-          -webkit-border-radius: 6px
+          border-radius: 6px
       img
         float: left
         margin-right: 10px
@@ -167,6 +178,10 @@ body
       margin-right: 20px
       text-align: center
       margin-bottom: 10px
+      &:hover
+        color: #fff
+        background-color: #000
+        border-radius: 6px
 
     .clear
       clear: both

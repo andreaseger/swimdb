@@ -4,6 +4,7 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
+* js calendar, new tagcloud
 * compass; sass
 * created a working capistrano script, but yeah I wont upload it here
 * merge with jquery and omniauth
@@ -22,7 +23,6 @@ h2. Features until now
 
 h2. Known Issues
 
-* looks awfull because I dont have an stylesheet
 * not really an issue but I not really know how that mapreduce snippet works ;)
 * when a failure while the comment creation happens it does just nothing(with JS)
 
