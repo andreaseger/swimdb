@@ -24,11 +24,6 @@ class Schedule
     where(:tags => /#{tag}/i)
   end
 
-  #atomic comment update
-  def self.addComment(schedule_id, comment)
-    collection.update({'_id' => schedule_id},{'$push' => {'comments' => comment}})
-  end
-
   #virtual attributes
   def taggings=(value)
     self.tags = value.split(",").join(" ").split(" ")

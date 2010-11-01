@@ -13,9 +13,9 @@ describe '/schedules/index.html.haml' do
   end
   it 'should show a link for each tag' do
     render
-    rendered.should have_selector("a",{:content => "foo", :class => 'tag_size_2'})
-    rendered.should have_selector("a",{:content => "bar",  :class => 'tag_size_1'})
-    rendered.should have_selector("a",{:content => "baz",  :class => 'tag_size_5'})
+    rendered.should have_selector("a",{:content => "foo"})
+    rendered.should have_selector("a",{:content => "bar"})
+    rendered.should have_selector("a",{:content => "baz"})
   end
 end
 

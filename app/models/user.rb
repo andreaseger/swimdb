@@ -44,9 +44,8 @@ class User
       user = case omniauth["provider"]
       when "facebook"
         create_new_fb_user(omniauth)
-      when "twitter"
-        #twitter does not deliver a email so i cant create a user on the fly
-        User.new
+      else
+        User.new()
       end
     end
   end

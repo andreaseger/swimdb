@@ -40,14 +40,16 @@ group :test, :development do
 #      :git => 'git://github.com/aslakhellesoy/cucumber.git'
   gem 'cucumber-rails'
   #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'ruby-debug'
+  #gem 'ruby-debug'
 end
 
 group :test do
-  #gem 'simplecov', '>= 0.3.5', :require => false
+  gem 'simplecov', '>= 0.3.5', :require => false
   gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
+  gem 'rack-test',
+    :git => 'git://github.com/brynary/rack-test.git'
 end
 

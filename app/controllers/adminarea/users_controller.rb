@@ -7,9 +7,11 @@ class Adminarea::UsersController < InheritedResources::Base
 
   def update
     #delete the password field if empty => it will stay unchanged
-    params[:user].delete(:password) if params[:user][:password]==""
-    params[:user].delete(:password_confirmation) if params[:user][:password_confirmation]==""
-    update!
+    if params && params[:user]
+      params[:user].delete(:password) if params[:user][:password]==""
+      params[:user].delete(:password_confirmation) if params[:user][:password_confirmation]==""
+    end
+    update!{resource_url}
   end
 
 end

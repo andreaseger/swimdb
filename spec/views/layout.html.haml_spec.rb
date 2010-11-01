@@ -1,5 +1,4 @@
 require 'spec_helper'
-#require 'devise/test_helpers'
 
 describe '/layouts/application.html.haml' do
   include Devise::TestHelpers
