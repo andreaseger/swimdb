@@ -16,33 +16,26 @@ describe Comment do
       comment.should_not be_valid
     end
   end
-  #describe '#commenter' do
-  #  before :each do
-  #    @user = Factory(:bob)
-  #  end
-  #  it 'should be the entered name if no user' do
-  #    comment = Factory(:name_comment)
-  #    comment.commenter.should == Factory.attributes_for(:name_comment)[:commenter]
-  #  end
-  #  it 'should not exist a user with the same username' do
-  #    comment = Factory.build(:comment, :commenter => @user.username)
-  #    comment.should_not be_valid
-  #  end
-  #end
-  #describe '#email' do
-  #  it 'should at least look like an address' do
-  #    comment = Factory(:name_comment, :email => "foo")
-  #    comment.should_not be_valid
-  #  end
-  #end
   describe '#timestamp' do
-    before :each do
+    before do
       @schedule = Factory(:valid_schedule, :user=>Factory(:bob))
+      @user = Factory(:amy)
     end
     it 'should have an individual created_at timestamp' do
-      @schedule.comments.build(:commenter => "amy", :body => "hase")
+      @schedule.comments.build(:user => @user, :body => "hase")
       @schedule.save
       @schedule.created_at.should_not == @schedule.comments[0].created_at
+    end
+  end
+  describe '#cache_user' do
+    before do
+      @schedule = Factory(:valid_schedule, :user=>Factory(:bob))
+      @user = Factory(:amy)
+    end
+    it 'should save the username' do
+      @schedule.comments.build(:user => @user, :body => "hase")
+      @schedule.save
+      @schedule.comments[0].cached_user.should == @user.username
     end
   end
 end

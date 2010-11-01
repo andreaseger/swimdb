@@ -28,6 +28,10 @@ describe Schedule do
       schedule = Factory(:valid_schedule, :original_date => 2.days.ago)
       schedule.date.should == 2.days.ago.to_date
     end
+    it 'should set original_date if date is given' do
+      schedule = Factory(:valid_schedule, :date => 2.days.ago)
+      schedule.original_date.should == 2.days.ago.to_date
+    end
   end
 
   describe '#full_schedule_distance' do

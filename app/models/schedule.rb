@@ -36,7 +36,7 @@ class Schedule
     original_date == nil ? created_at : original_date
   end
   def date=(value)
-    original_date = Date.parse(value) unless value.empty?
+    self.original_date = value.to_date if value
   end
 
   def full_schedule_distance

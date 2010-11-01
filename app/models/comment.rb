@@ -7,9 +7,9 @@ class Comment
   key :created_at, Time, :default => Proc.new {Time.now}
   key :cached_user, String
   validates_presence_of :user
-  before_save :cached_user
+  before_save :cache_user
 
-  def cached_user
+  def cache_user
     self.cached_user = self.user.username
   end
 
