@@ -197,5 +197,14 @@ describe Schedule do
     end
   end
 
+  describe '#cached_user' do
+    before do
+      @user = Factory(:bob)
+    end
+    it 'should cache the username' do
+      @schedule = Factory(:valid_schedule, :user => @user)
+      @schedule.cached_user.should == @user.username
+    end
+  end
 end
 

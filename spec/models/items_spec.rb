@@ -12,8 +12,8 @@ describe Item do
     it 'should default level to 0' do
       item = Factory(:item, :level => nil)
       @schedule.items << item
-      @schedule.save
-      @scheudle.items[-1].level.should == 0
+      @schedule.save!
+      @schedule.items[-1].level.should == 0
     end
 
     it 'should validates that the level is in 0..2' do

@@ -39,7 +39,7 @@ group :test, :development do
   gem 'autotest-rails'
   gem 'cucumber'
   gem 'cucumber-rails'
-  #gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'ruby-debug19', :require => 'ruby-debug'
   #gem 'ruby-debug'
 end
 

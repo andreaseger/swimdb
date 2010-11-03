@@ -11,8 +11,8 @@ class Comment
   before_create :cache_user
 
   def cache_user
-    if user
-      self.cached_user = user.username
+    unless self.user == nil
+      self.cached_user = self.user.username
     end
   end
 end

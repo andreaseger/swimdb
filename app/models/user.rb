@@ -28,7 +28,7 @@ class User
   #validates_associated :authentications
 
   def self.find_for_oauth(omniauth, user)
-    auth = Authentication.where(:uid => omniauth["uid"], :provoder => omniauth["provider"])
+    auth = Authentication.where(:uid => omniauth["uid"], :provider => omniauth["provider"]).first
     if user
       # the user wants to add fb to his account
       if auth

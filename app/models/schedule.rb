@@ -85,8 +85,8 @@ class Schedule
   end
 
   def cacheUser
-    if user
-      self.cached_user = user.username
+    unless self.user == nil
+      self.cached_user = self.user.username
     end
   end
 
