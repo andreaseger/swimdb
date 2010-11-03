@@ -1,8 +1,8 @@
 class Authentication
-  include MongoMapper::Document
-  belongs_to :user
-  key :provider, String
-  key :uid, String
+  include Mongoid::Document
+  referenced_in :user
+  field :provider
+  field :uid
 
   #for each provider the uid has to be unique
   validates_uniqueness_of :uid, :scope => :provider

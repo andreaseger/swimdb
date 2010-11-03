@@ -8,19 +8,20 @@ gem 'has_scope'
 
 #MongoDB
 gem 'bson_ext'
-gem 'mongo_mapper',
-    :git =>"git://github.com/jnunemaker/mongomapper.git",
-    :branch => "master"
+gem 'mongoid', '>= 2.0.0.beta.20'
+#gem 'mongo_mapper',
+#    :git =>"git://github.com/jnunemaker/mongomapper.git",
+#    :branch => "master"
 
 #security
-gem 'devise',
-    '1.1.3'
+gem 'devise'
+gem 'omniauth'
+
 #    :git => "git://github.com/plataformatec/devise.git",
 #    :branch => "omniauth"
-gem 'devise-mongo_mapper',
-    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
-#gem "oa-oauth", :require => "omniauth/oauth"
-gem 'omniauth'
+
+#gem 'devise-mongo_mapper',
+#    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
 
 group :development do
   gem 'capistrano'
@@ -36,8 +37,7 @@ group :test, :development do
   #gem 'mocha'
   gem 'autotest'
   gem 'autotest-rails'
-  gem 'cucumber'#,
-#      :git => 'git://github.com/aslakhellesoy/cucumber.git'
+  gem 'cucumber'
   gem 'cucumber-rails'
   #gem 'ruby-debug19', :require => 'ruby-debug'
   #gem 'ruby-debug'
@@ -49,7 +49,7 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-  gem 'rack-test',
-    :git => 'git://github.com/brynary/rack-test.git'
+#  gem 'rack-test',
+#    :git => 'git://github.com/brynary/rack-test.git'
 end
 

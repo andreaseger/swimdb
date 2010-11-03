@@ -1,4 +1,4 @@
-Factory.define :item do |f|
+Factory.define :item, :default_strategy => :build do |f|
   f.level 0
   f.text '100m'
   f.rank 0

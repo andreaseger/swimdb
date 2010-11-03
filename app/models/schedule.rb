@@ -1,23 +1,24 @@
 class Schedule
-  include MongoMapper::Document
-  timestamps!
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-  key :name, String, :required => true
-  key :description, String, :required => true
-  key :original_date, Date
-  key :tags, Array, :index => true
-  many :items, :dependent => :destroy
-  many :comments, :dependent => :destroy
+  referenced_in :user
+  field :name
+  field :description
+  validates_presence_of :name, :description
+  field :original_date, :type => Date
+
+  field :tags, :type => Array
+  embeds_many :items
+  embeds_many :comments
   #cache
-  key :cached_user, String
+  field :cached_user
 
-
-  belongs_to :user
   before_save :parseItems
   before_save :cacheUser
 
-  validates_associated :items
-  validates_associated :comments
+  #validates_associated :items
+  #validates_associated :comments
   validate :itemscount
 
   def self.by_tag(tag)
@@ -29,7 +30,7 @@ class Schedule
     self.tags = value.split(",").join(" ").split(" ")
   end
   def taggings
-    tags.join(" ")
+    tags.join(" ") if tags
   end
 
   def date

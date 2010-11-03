@@ -9,7 +9,7 @@ module ApplicationHelper
   end
 
   def new_child_fields_template(form_builder, association, options = {})
-    options[:object] ||= form_builder.object.class.associations[association].klass.new
+    options[:object] ||= form_builder.object.class.reflect_on_association(association).klass.new
     options[:partial] ||= association.to_s.singularize
     options[:form_builder_local] ||= :f
 

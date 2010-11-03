@@ -12,7 +12,8 @@ Devise.setup do |config|
   # Load and configure the ORM. Supports :active_record (default) and
   # :mongoid (bson_ext recommended) by default. Other ORMs may be
   # available as additional
-  require 'devise/orm/mongo_mapper'
+  #require 'devise/orm/mongo_mapper'
+  require 'devise/orm/mongoid'
   #require 'devise_mongo_mapper_adapter'
 
   # ==> Configuration for any authentication mechanism
