@@ -7,10 +7,10 @@ class Admin
   # :confirmable
   devise :registerable,
          :database_authenticatable,
-         :recoverable,
          :rememberable,
          :trackable,
          :validatable
+         #:recoverable,
          #, :confirmable
 
   # Setup accessible (or protected) attributes for your model

@@ -14,7 +14,7 @@ class CommentsController < InheritedResources::Base
       success.html {redirect_to parent_url}
       success.js
       failure.html { redirect_to parent_url }
-      failure.js  { render :text => @comment.errors.full_messages }
+      failure.js  { head :unprocessable_entity }
     end
     #respond_to do |format|
     #  if @comment.save
