@@ -2,10 +2,12 @@ Factory.define :schedule do |f|
   f.name "just an test"
   f.description "jaba jaba jaba"
   #f.items [Factory(:first)]
+  #f.user {Factory(:bob)}
 end
 
 Factory.define :valid_schedule, :parent => :schedule do |f|
-  f.items [Factory(:first)]
+  f.items [Factory(:first),
+           Factory(:second, :rank => 1)]
 end
 
 Factory.define :full_distance_test1, :parent => :schedule do |f|

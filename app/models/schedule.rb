@@ -85,7 +85,9 @@ class Schedule
   end
 
   def cacheUser
-    self.cached_user = self.user.username
+    if user
+      self.cached_user = user.username
+    end
   end
 
   def itemscount

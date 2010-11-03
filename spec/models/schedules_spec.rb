@@ -78,7 +78,7 @@ describe Schedule do
       schedule.user.should == @amy
     end
     it 'should be nil if not set' do
-      schedule = Factory(:valid_schedule)
+      schedule = Factory(:valid_schedule, :user => nil)
       schedule.user.should be_nil
     end
     it 'should be in the list of the users schedules' do
@@ -177,11 +177,12 @@ describe Schedule do
 
   describe '#scopes' do
     before do
-      Factory(:valid_schedule, :tags => ["GA1", "foo", "bar"])
-      Factory(:valid_schedule, :tags => ["ga1", "SP", "bar"])
-      Factory(:valid_schedule, :tags => ["GA2", "KT", "bar"])
-      Factory(:valid_schedule, :tags => ["KT", "SP", "bar"])
-      Factory(:valid_schedule, :tags => ["CC", "FLY", "bar"])
+      @user = Factory(:amy)
+      Factory(:valid_schedule, :user => @user, :tags => ["GA1", "foo", "bar"])
+      Factory(:valid_schedule, :user => @user, :tags => ["ga1", "SP", "bar"])
+      Factory(:valid_schedule, :user => @user, :tags => ["GA2", "KT", "bar"])
+      Factory(:valid_schedule, :user => @user, :tags => ["KT", "SP", "bar"])
+      Factory(:valid_schedule, :user => @user, :tags => ["CC", "FLY", "bar"])
     end
     it 'should only deliver schedules with the tag GA1' do
       @schedules = Schedule.by_tag("GA1").all
