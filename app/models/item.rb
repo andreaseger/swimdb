@@ -16,7 +16,6 @@ class Item
   validates_format_of :text, :key => :lvl0, :with =>PAT0, :if => Proc.new { level == 0 }
   validates_format_of :text, :key => :lvl1, :with =>PAT1, :if => Proc.new { level == 1 }
   validates_format_of :text, :key => :lvl2, :with =>PAT2, :if => Proc.new { level == 2 }
-  key :rank, Integer, :required => true, :only_integer => true, :greater_than_or_equal => 0, :default => 0
 
   #parsed
   key :outer, Integer, :only_integer => true, :greater_than_or_equal => 0
