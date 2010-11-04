@@ -20,9 +20,23 @@ class SchedulesController < InheritedResources::Base
     @schedule.user = current_user
     create!
   end
+
+  #def update
+  #  params[:schedule][:items].delete_if{|i| i[:text] == ""}
+  #  @schedule = Schedule.find(params[:id])
+  #  if @schedule.update_attributes(params[:schedule])
+  #    flash[:notice] = "Successfully updated genre."
+  #    redirect_to @schedule
+  #  else
+  #    render :action => 'edit'
+  #  end
+  #end
+
+
+
   def update
     params[:schedule][:items].delete_if{|i| i[:text] == ""}
-    debugger
+    #debugger
     update!
   end
 end
