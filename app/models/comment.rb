@@ -4,16 +4,23 @@ class Comment
   referenced_in :user
 
   field :body
-  field :created_at, :type => Time, :default => Proc.new {Time.now}
+  field :created_at, :type => Time
   field :cached_user
   validates_presence_of :user, :body
 
-  before_create :cache_user
+  after_validation :cache_user
+  after_validation :set_created_at
+
+  def set_created_at
+    self.created_at = Time.now
+    true
+  end
 
   def cache_user
     unless self.user == nil
       self.cached_user = self.user.username
     end
+    true
   end
 end
 

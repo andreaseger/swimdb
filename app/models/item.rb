@@ -11,7 +11,7 @@ class Item
     PAT2 = /^#{DIST}/i
   public
 
-  field :level, :type => Integer, :default => 0
+  field :level, :type => Integer#, :default => 0
   field :text
   field :rank, :type => Integer
 
@@ -52,6 +52,8 @@ class Item
                             :only_integer => true,
                             :allow_nil => true
 
+  after_validation :parse_text
+  before_validation :set_level
 
   def full_distance
     i = (self.inner == nil) ? 1 : self.inner
@@ -59,5 +61,30 @@ class Item
     self.distance * i * o
   end
 
+  private
+
+  def set_level
+    if self.level == nil
+      self.level = 0
+    end
+  end
+
+  def parse_text
+    re = PAT0
+    parse = re.match self.text
+    case self.level
+      when 0
+        self.outer = parse[2]
+        self.inner = parse[5]
+      when 1
+        self.outer = nil
+        self.inner = parse[2]
+      when 2
+        self.outer = nil
+        self.inner = nil
+    end
+    self.distance=parse[7]
+    true
+  end
 end
 

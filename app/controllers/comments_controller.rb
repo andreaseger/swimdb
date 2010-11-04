@@ -29,16 +29,7 @@ class CommentsController < InheritedResources::Base
 
 
   def destroy
-    @schedule = Schedule.find(params[:schedule_id])
-    @comment = @schedule.comments.find(params[:id])
-
-    @schedule.comments.delete_if{|comment| comment.id == @comment.id}
-    if @schedule.save
-      flash[:notice] = "Successfully destroyed comment."
-      redirect_to @schedule
-    else
-      flash[:error] = "dag, yo."
-    end
+    destroy!{ parent_url }
   end
 end
 

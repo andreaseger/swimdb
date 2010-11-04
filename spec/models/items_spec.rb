@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Item do
   before do
-    @schedule = Factory(:valid_schedule)
+    @schedule = Factory.build(:schedule)
   end
   describe 'when validation' do
     it "should validates presence of text" do
@@ -11,8 +11,10 @@ describe Item do
     end
     it 'should default level to 0' do
       item = Factory(:item, :level => nil)
+      #@schedule.update_attributes(:items => [item])
       @schedule.items << item
       @schedule.save!
+      @schedule.items.count.should == 1
       @schedule.items[-1].level.should == 0
     end
 
@@ -76,6 +78,19 @@ describe Item do
     it 'should calculate the correct if inner and outer is nil' do
       item = Factory(:item, :inner => nil, :outer => nil, :distance => 50)
       item.full_distance.should eq 50
+    end
+  end
+
+  describe '#callbacks' do
+    it 'should call #set_level' do
+      item = Factory(:item, :level => 2, :text => '100m')
+      item.should_receive(:set_level)
+      item.valid?
+    end
+    it 'should call #parse_text' do
+      item = Factory(:item, :level => 2, :text => '100m')
+      item.should_receive(:parse_text)
+      item.valid?
     end
   end
 end

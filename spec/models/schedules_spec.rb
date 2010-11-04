@@ -91,12 +91,12 @@ describe Schedule do
     before(:each) do
       @schedule = Factory.build(:schedule)
     end
-    it 'should call parseItems before save' do
-      item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
-      @schedule.items << item
-      @schedule.should_receive(:parseItems)
-      @schedule.save!
-    end
+    #it 'should call parseItems before save' do
+    #  item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
+    #  @schedule.items << item
+    #  @schedule.should_receive(:parseItems)
+    #  @schedule.save!
+    #end
     it "should parse the items before save" do
       item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
       @schedule.items << item
@@ -107,6 +107,7 @@ describe Schedule do
     end
     it 'should update the items on schedule update' do
       item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
+      pending 'deprecated because the controller uses update_attributes for that'
       @schedule.items << item
       @schedule.save
       @schedule.items[0].text = "5*400m"
@@ -153,6 +154,16 @@ describe Schedule do
       @schedule.items[0].inner.should be_nil
       @schedule.items[0].distance.should eq 200
     end
+
+    it 'should update the items on schedule update with update_attributes' do
+      item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
+      @schedule.items << item
+      @schedule.save
+      @schedule.items[0].update_attributes(:text => "5*400m")
+      #@schedule.save
+      @schedule.items[0].outer.should == 5
+    end
+
   end
 
   describe "nested items" do

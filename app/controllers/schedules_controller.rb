@@ -9,6 +9,7 @@ class SchedulesController < InheritedResources::Base
 
   def index
     @schedules = apply_scopes(Schedule).all
+    #@tags = []
     @tags = SchedulesHelper::TagCloud.build.find()
   end
 
@@ -21,6 +22,7 @@ class SchedulesController < InheritedResources::Base
   end
   def update
     params[:schedule][:items].delete_if{|i| i[:text] == ""}
+    debugger
     update!
   end
 end

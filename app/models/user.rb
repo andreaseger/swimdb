@@ -23,9 +23,10 @@ class User
   references_many :schedules
   references_many :comments
   references_many :authentications, :dependent => :destroy
-  #validates_associated :comments
+
+  #validates_associated :comments, :allow_nil => true
   #validates_associated :schedules
-  #validates_associated :authentications
+  validate :validate_authentications, :unless => Proc.new {self.authentications == []}
 
   def self.find_for_oauth(omniauth, user)
     auth = Authentication.where(:uid => omniauth["uid"], :provider => omniauth["provider"]).first
@@ -75,6 +76,14 @@ class User
       return u
     else
       User.new
+    end
+  end
+
+  def validate_authentications
+    authentications.each do |auth|
+      if auth.valid? == false
+        errors.add :authentication, auth.errors.full_messages
+      end
     end
   end
 

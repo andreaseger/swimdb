@@ -18,14 +18,13 @@ describe Comment do
   end
   describe '#timestamp' do
     before do
-      @schedule = Factory(:valid_schedule, :user=>Factory(:bob))
+      @schedule = Factory(:valid_schedule, :user=>Factory(:bob), :created_at => 3.days.ago)
       @user = Factory(:amy)
     end
     it 'should have an individual created_at timestamp' do
-      pending 'not possible in mongoid'
-      @schedule.comments.build(:user => @user, :body => "hase")
-      @schedule.save
-      @schedule.created_at.should_not == @schedule.comments[0].created_at
+      #pending 'not possible in mongoid'
+      @schedule.comments.create!(:user => @user, :body => "hase")
+      @schedule.created_at.should_not == @schedule.comments[-1].created_at
     end
   end
   describe '#cache_user' do
@@ -34,8 +33,7 @@ describe Comment do
       @user = Factory(:amy)
     end
     it 'should save the username' do
-      @schedule.comments.build(:user => @user, :body => "hase")
-      @schedule.save
+      @schedule.comments.create!(:user => @user, :body => "hase")
       @schedule.comments[0].cached_user.should == @user.username
     end
   end

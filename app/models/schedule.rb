@@ -10,15 +10,26 @@ class Schedule
 
   field :tags, :type => Array
   embeds_many :items
+  accepts_nested_attributes_for :items
+
   embeds_many :comments
   #cache
   field :cached_user
 
-  before_save :parseItems
   before_save :cacheUser
+  #validate :validate_items, :on => :create
+#
+  #def validate_items
+  #  self.items.each do |item|
+  #    if item.valid? == false
+  #      errors.add :item, item.errors.full_messages
+  #    end
+  #  end
+  #end
 
-  #validates_associated :items
-  #validates_associated :comments
+  validates_associated :items#, :allow_nil => true
+  validates_associated :comments, :allow_nil => true
+
   validate :itemscount
 
   def self.by_tag(tag)
@@ -62,27 +73,6 @@ class Schedule
   end
 
   private
-  MULTI = '((\d{1,2})(\*|x))?'
-  DIST = '(\d+)($|\s|m$|m\s|m,\s)'
-  def parseItems
-    re = /^#{MULTI}#{MULTI}#{DIST}/i
-    self.items.each do |item|
-      parse = re.match item.text
-      case item.level
-        when 0
-          item.outer = parse[2]
-          item.inner = parse[5]
-        when 1
-          item.outer = nil
-          item.inner = parse[2]
-        when 2
-          item.outer = nil
-          item.inner = nil
-      end
-      item.distance=parse[7]
-    end
-    true
-  end
 
   def cacheUser
     unless self.user == nil
