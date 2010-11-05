@@ -5,6 +5,7 @@ class Item
   private
     MULTI = '((\d{1,2})(\*|x))?'
     DIST = '(\d+)($|\s|m$|m\s|m,\s)'
+    INFO = '=>\s?.+'
 
     PAT0 = /^#{MULTI}#{MULTI}#{DIST}/i
     PAT1 = /^#{MULTI}#{DIST}/i
@@ -26,6 +27,30 @@ class Item
     i = (self.inner == nil) ? 1 : self.inner
     o = (self.outer == nil) ? 1 : self.outer
     self.distance * i * o
+  end
+
+  after_validation :parse_text
+
+  private
+  def parse_text
+    if text
+      parse = PAT0.match self.text
+      case self.level
+        when 0
+          self.outer = parse[2]
+          self.inner = parse[5]
+        when 1
+          self.outer = nil
+          self.inner = parse[2]
+        when 2
+          self.outer = nil
+          self.inner = nil
+      end
+      self.distance=parse[7]
+      true
+    else
+      false
+    end
   end
 
 end

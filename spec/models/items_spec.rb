@@ -51,6 +51,16 @@ describe Item do
       item = Factory.build(:item, :level => 0, :text => '10*20x100m')
       item.should be_valid
     end
+    it 'should allow to add additional infos via a extra item' do
+      item = Factory.build(:item, :level => 0, :text => '=> 50m Beine + 50m Arme')
+      item.should be_valid
+    end
+
+    it 'should call #parse_text after_validation' do
+      item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
+      item.should_receive(:parse_text)
+      item.valid?
+    end
   end
 
   describe 'when full_distance' do

@@ -13,7 +13,6 @@ class Schedule
 
 
   belongs_to :user
-  before_save :parseItems
   before_save :cacheUser
 
   validates_associated :items
@@ -61,27 +60,6 @@ class Schedule
   end
 
   private
-  MULTI = '((\d{1,2})(\*|x))?'
-  DIST = '(\d+)($|\s|m$|m\s|m,\s)'
-  def parseItems
-    re = /^#{MULTI}#{MULTI}#{DIST}/i
-    self.items.each do |item|
-      parse = re.match item.text
-      case item.level
-        when 0
-          item.outer = parse[2]
-          item.inner = parse[5]
-        when 1
-          item.outer = nil
-          item.inner = parse[2]
-        when 2
-          item.outer = nil
-          item.inner = nil
-      end
-      item.distance=parse[7]
-    end
-    true
-  end
 
   def cacheUser
     self.cached_user = self.user.username
