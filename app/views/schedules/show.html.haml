@@ -1,17 +1,20 @@
 %div#schedule
   %strong.title
-    =@schedule.name
+    = @schedule.name
   %em.cinfo
-    =@schedule.cached_user
-    =@schedule.date.strftime('%d. %b, %Y')
+    = @schedule.cached_user
+    = @schedule.date.strftime('%d. %b, %Y')
   %em.tags
-    =@schedule.taggings
+    = @schedule.taggings
   %p
-    =@schedule.description
+    = @schedule.description
   %ul.items
     -for item in @schedule.items
       %li
-        =item.text
+        - if item.info
+          = item.info
+        - else
+          = item.text
     %li
       Volle Distanz
       =@schedule.full_schedule_distance

@@ -27,4 +27,7 @@ Factory.define :forth_lvl1, :parent => :item do |f|
   f.level 1
   f.text "2x50m"
 end
+Factory.define :info, :parent => :item do |f|
+  f.text "=> foo"
+end
 

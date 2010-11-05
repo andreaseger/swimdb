@@ -22,7 +22,7 @@ describe Schedule do
   describe '#date' do
     it 'should deliver the created_at date when nothing else delivered' do
       schedule = Factory(:valid_schedule)
-      schedule.date.should == schedule.created_at
+      schedule.date.should == schedule.created_at.to_date
     end
     it 'should deliver the original date when set' do
       schedule = Factory(:valid_schedule, :original_date => 2.days.ago)
@@ -66,6 +66,10 @@ describe Schedule do
     it "should calculate the right full distance if there is a mix of all the above2" do
       schedule = Factory(:full_distance_test7ext)
       schedule.full_schedule_distance.should eql(8300)
+    end
+    it "should calculate the right full distance with a info item" do
+      schedule = Factory(:full_distance_with_info)
+      schedule.full_schedule_distance.should eql(3650)
     end
   end
 

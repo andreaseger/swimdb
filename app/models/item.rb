@@ -7,9 +7,10 @@ class Item
     DIST = '(\d+)($|\s|m$|m\s|m,\s)'
     INFO = '=>\s?.+'
 
-    PAT0 = /^#{MULTI}#{MULTI}#{DIST}/i
-    PAT1 = /^#{MULTI}#{DIST}/i
-    PAT2 = /^#{DIST}/i
+    REGEX = "#{MULTI}#{MULTI}#{DIST}"
+    PAT0 = /^(#{INFO}|#{REGEX})/i
+    PAT1 = /^(#{INFO}|#{MULTI}#{DIST})/i
+    PAT2 = /^(#{INFO}|#{DIST})/i
   public
 
   key :level, Integer, :required => true, :only_integer => true, :in => 0..2, :default => 0
@@ -22,6 +23,9 @@ class Item
   key :outer, Integer, :only_integer => true, :greater_than_or_equal => 0
   key :inner, Integer, :only_integer => true, :greater_than_or_equal => 0
   key :distance, Integer, :only_integer => true, :greater_than_or_equal => 0
+  key :info, String
+
+  attr_accessible :level, :text, :full_distance, :info
 
   def full_distance
     i = (self.inner == nil) ? 1 : self.inner
@@ -33,8 +37,8 @@ class Item
 
   private
   def parse_text
-    if text
-      parse = PAT0.match self.text
+    if parse = (/^#{REGEX}/i).match(self.text)
+      # a valid item is given
       case self.level
         when 0
           self.outer = parse[2]
@@ -47,9 +51,11 @@ class Item
           self.inner = nil
       end
       self.distance=parse[7]
+      self.info = nil
       true
-    else
-      false
+    elsif parse = (/=>\s?(.+)/i).match(self.text)
+      # a info item is given
+      self.info = parse[1]
     end
   end
 

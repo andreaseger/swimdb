@@ -13,6 +13,7 @@ Factory.define :full_distance_test1, :parent => :schedule do |f|
            Factory(:second),
            Factory(:third)]
 end
+
 Factory.define :full_distance_test2, :parent => :schedule do |f|
   f.items [Factory(:first),
            Factory(:second),
@@ -49,6 +50,7 @@ Factory.define :full_distance_test7, :parent => :schedule do |f|
             Factory(:forth_lvl2),
             Factory(:forth_lvl1)]
 end
+
 Factory.define :full_distance_test7ext, :parent => :schedule do |f|
   f.items [ Factory(:first),
             Factory(:second),
@@ -61,5 +63,13 @@ Factory.define :full_distance_test7ext, :parent => :schedule do |f|
             Factory(:forth_lvl2),
             Factory(:first),
             Factory(:third_lvl1)]
+end
+
+Factory.define :full_distance_with_info, :parent => :schedule do |f|
+  f.items [Factory(:first),
+           Factory(:second),
+           Factory(:info),
+           Factory(:third),
+           Factory(:third_lvl1)]
 end
 

@@ -13,7 +13,7 @@ class Schedule
 
 
   belongs_to :user
-  before_save :cacheUser
+  before_save :cache_user
 
   validates_associated :items
   validates_associated :comments
@@ -32,26 +32,34 @@ class Schedule
   end
 
   def date
-    original_date == nil ? created_at : original_date
+    if original_date == nil
+      created_at.to_date if created_at
+    else
+      original_date
+    end
   end
   def date=(value)
-    self.original_date = value.to_date if value
+    self.original_date = value if value
   end
 
   def full_schedule_distance
     distance = 0
     last_outer = 1
     last_inner = 1
-    for item in items.sort_by(&:rank)
-      if item.level == 0
-        distance += item.full_distance
-        last_outer = 1
-        last_inner = 1
-      elsif item.level == 1
-        distance += item.full_distance * last_outer
-        last_inner = 1
-      elsif item.level == 2
-        distance += item.full_distance * last_outer * last_inner
+    for item in items
+      if item.info
+        next
+      end
+      case item.level
+        when 0
+          distance += item.full_distance
+          last_outer = 1
+          last_inner = 1
+        when 1
+          distance += item.full_distance * last_outer
+          last_inner = 1
+        when 2
+          distance += item.full_distance * last_outer * last_inner
       end
       last_outer = item.outer unless (item.outer == nil)
       last_inner = item.inner unless (item.inner == nil)
@@ -61,7 +69,7 @@ class Schedule
 
   private
 
-  def cacheUser
+  def cache_user
     self.cached_user = self.user.username
   end
 
