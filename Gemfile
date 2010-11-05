@@ -7,7 +7,7 @@ gem 'inherited_resources'
 gem 'has_scope'
 
 # Style
- gem "compass", ">= 0.10.6"
+gem "compass", ">= 0.10.6"
 
 #MongoDB
 gem 'bson_ext'
@@ -42,8 +42,8 @@ group :test, :development do
   gem 'cucumber'#,
 #      :git => 'git://github.com/aslakhellesoy/cucumber.git'
   gem 'cucumber-rails'
-  #gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'ruby-debug'
+  gem 'ruby-debug19', :require => 'ruby-debug'
+  #gem 'ruby-debug'
 end
 
 group :test do
