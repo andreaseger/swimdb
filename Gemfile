@@ -6,6 +6,9 @@ gem 'haml-rails'
 gem 'inherited_resources'
 gem 'has_scope'
 
+# Style
+gem "compass", ">= 0.10.6"
+
 #MongoDB
 gem 'bson_ext'
 gem 'mongo_mapper',
@@ -19,8 +22,8 @@ gem 'devise',
 #    :branch => "omniauth"
 gem 'devise-mongo_mapper',
     :git => "git://github.com/collectiveidea/devise-mongo_mapper"
-#gem "oa-oauth", :require => "omniauth/oauth"
 gem 'omniauth'
+
 
 group :development do
   gem 'capistrano'

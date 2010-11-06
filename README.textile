@@ -5,6 +5,8 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 h2. Newest changes
 
 * now you can create a info item when add a leading '=>' to the text
+* js calendar, new tagcloud
+* compass; sass
 * created a working capistrano script, but yeah I wont upload it here
 * merge with jquery and omniauth
 
@@ -22,7 +24,6 @@ h2. Features until now
 
 h2. Known Issues
 
-* looks awfull because I dont have an stylesheet
 * not really an issue but I not really know how that mapreduce snippet works ;)
 * when a failure while the comment creation happens it does just nothing(with JS)
 
@@ -39,7 +40,11 @@ h2. TODO
 
 * search in general
 * compass - sass
+<<<<<<< HEAD
 * js Calendar in schedule form, should be not many work
+=======
+* allow items to have just text so users can just add infos to thier last items, ignore level on these items and ignore them while full schedule distance calculation; it should be allowed to enter something like "50m delfin, 50m Kraul" as item description. not shure if I can do that with a regex or if i need a additional flag
+>>>>>>> compass
 * caching - memcache? bin? ... how to set it up on the server?
 
 h2. meh

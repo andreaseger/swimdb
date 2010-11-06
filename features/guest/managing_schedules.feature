@@ -29,32 +29,32 @@ Scenario: I am not able to create a schedule
 
 Scenario: I dont see the destroy link
   Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-      | level | text      | rank |
-      | 0     | 400m      | 0    |
+      | level | text      |
+      | 0     | 400m      |
    When I am on the schedule page
    Then I should not see "Destroy"
 
 #@allow_rescue
 #Scenario: I am not able to delete a schedule
 #  Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-#      | level | text      | rank |
-#      | 0     | 400m      | 0    |
+#      | level | text      |
+#      | 0     | 400m      |
 #    And I am on the schedule page
 #   When I go to the destroy schedule page
 #   Then I should see "You need to sign in or sign up before continuing."
 
 Scenario: I dont see the edit link
   Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-      | level | text      | rank |
-      | 0     | 400m      | 0    |
+      | level | text      |
+      | 0     | 400m      |
    When I am on the schedule page
    Then I should not see "Edit"
 
 @allow_rescue
 Scenario: I am not able to edit an existing schedule
   Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-      | level | text      | rank |
-      | 0     | 400m      | 0    |
+      | level | text      |
+      | 0     | 400m      |
     And I am on the schedule page
    When I go to the edit schedule page
    Then I should see "You need to sign in or sign up before continuing."

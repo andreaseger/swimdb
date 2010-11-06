@@ -2,8 +2,8 @@ Feature: Allow viewers to give feedback about existing schedules
 
 Background:
   Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-      | level | text      | rank |
-      | 0     | 400m      | 0    |
+      | level | text      |
+      | 0     | 400m      |
 
 #depricated
 #Scenario: As guest you can create comments by entering a Name and an email

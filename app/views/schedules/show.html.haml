@@ -1,13 +1,14 @@
-%div#schedule
-  %strong.title
-    = @schedule.name
-  %em.cinfo
-    = @schedule.cached_user
-    = @schedule.date.strftime('%d. %b, %Y')
-  %em.tags
-    = @schedule.taggings
-  %p
-    = @schedule.description
+- title @schedule.name
+#schedule
+  %strong.user
+    =@schedule.cached_user
+  %div
+    %em.date
+      =@schedule.date.strftime('%d. %b, %Y')
+    %em.tags
+      =@schedule.taggings
+  %p.description
+    =@schedule.description
   %ul.items
     -for item in @schedule.items
       %li
@@ -16,8 +17,9 @@
         - else
           = item.text
     %li
-      Volle Distanz
+      Volle Distanz:
       =@schedule.full_schedule_distance
+      m
   %ul.controls
     - if (user_signed_in? && @schedule.user == current_user) || admin_signed_in?
       %li= link_to "Edit", edit_schedule_path(@schedule)

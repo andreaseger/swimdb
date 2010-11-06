@@ -68,13 +68,13 @@ Scenario: I can delete a schedule
 @javascript
 Scenario: I can edit an existing schedule
   Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-      | level | text      | rank |
-      | 0     | 400m      | 0    |
-      | 0     | 3*200m    | 1    |
-      | 0     | 4*200m    | 2    |
-      | 1     | 2*100m    | 3    |
-      | 2     | 50m       | 4    |
-      | 0     | 400m      | 5    |
+      | level | text      |
+      | 0     | 400m      |
+      | 0     | 3*200m    |
+      | 0     | 4*200m    |
+      | 1     | 2*100m    |
+      | 2     | 50m       |
+      | 0     | 400m      |
     And I am on the schedule page
    When I follow "Edit" within "#schedule"
     And I fill in "name" with "Hello World"
@@ -82,15 +82,15 @@ Scenario: I can edit an existing schedule
     And I fill in "text" with "700m" within the 5th ".item" fieldset
     And I press "Save"
    Then I should be on the schedule page
-    And I should see "Hello World" within "strong"
+    And I should see "Hello World" within "h2"
     And I should see "700m"
     And I should not see "50m"
 
 Scenario: I will be getting an error when entering something invalid on edit
   Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-      | level | text      | rank |
-      | 0     | 400m      | 0    |
-      | 0     | 3*200m    | 1    |
+      | level | text      |
+      | 0     | 400m      |
+      | 0     | 3*200m    |
     And I am on the schedule page
    When I follow "Edit" within "#schedule"
     And I fill in "name" with ""
@@ -101,13 +101,13 @@ Scenario: I will be getting an error when entering something invalid on edit
 @javascript
 Scenario: I will be getting an error when entering an invalid item on edit
   Given I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-      | level | text      | rank |
-      | 0     | 400m      | 0    |
-      | 0     | 3*200m    | 1    |
-      | 0     | 4*200m    | 2    |
-      | 1     | 2*100m    | 3    |
-      | 2     | 50m       | 4    |
-      | 0     | 400m      | 5    |
+      | level | text      |
+      | 0     | 400m      |
+      | 0     | 3*200m    |
+      | 0     | 4*200m    |
+      | 1     | 2*100m    |
+      | 2     | 50m       |
+      | 0     | 400m      |
     And I am on the schedule page
    When I follow "Edit" within "#schedule"
     And I fill in "text" with "foobar" within the 3nd ".item" fieldset
