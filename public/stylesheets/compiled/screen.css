@@ -504,11 +504,10 @@ body #container {
   margin: 0 auto;
   overflow: hidden;
   *zoom: 1;
-  background: url('/images/grid.png?1288960632');
   padding: 20px 40px;
   margin: 0 auto;
   margin-top: 20px;
-  background-color: white;
+  background-color: #d8dcd6;
   border: solid 1px black;
 }
 /* line 35, ../../../app/stylesheets/screen.sass */

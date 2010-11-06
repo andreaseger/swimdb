@@ -9,8 +9,11 @@ class SchedulesController < InheritedResources::Base
 
   def index
     @schedules = apply_scopes(Schedule).all
-    @tags = SchedulesHelper::TagCloud.build.find()
-    render :layout => 'with_tagcloud'
+
+    unless @schedules.count == 0
+      @tags = SchedulesHelper::TagCloud.build.find()
+      render :layout => 'with_tagcloud'
+    end
   end
 
   def create
