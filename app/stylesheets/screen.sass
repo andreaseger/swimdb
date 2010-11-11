@@ -23,14 +23,112 @@ body
   background-color: $light_grey
   font-family: Verdana, Helvetica, Arial
   font-size: 14px
+
+  #header
+    background-color: $midnight_blue
+    margin:
+      top: 2px
+      bottom: 0
+      left: 2px
+      right: 2px
+    #banner
+      +replace-text("dummyimage_990x30.png")
+      width: 990px
+      height: 30px
+      margin: 0 auto
+
+    #user_nav
+      ul
+        +horizontal-list
+        width: $blueprint-container-size
+        margin: 0 auto
+        padding:
+          left: 10px
+          right: 20px
+        #logo
+          +replace-text("logo30.png")
+          height: 30px
+          width: 30px
+          float: left
+          margin:
+            :right 10px
+
+
+        li
+          margin: auto
+          padding:
+            top: 6px
+            bottom: 6px
+          a
+            padding: 3px 6px
+            color: white
+            text-decoration: none
+            border:
+              color: black
+              style: solid
+              width: 2px
+              radius: 11px
+            &:hover
+              background-color: black
+              border-color: white
+      font-size: 12px
+      background-color: black
+      border:
+        radius: 6px
+      padding:
+        top: 10px
+        left: 35px
+        bottom: 10px
+        right: 35px
+      color: white
+
   #container
     +container
     //+showgrid
-    :padding 1.5em
-    :margin 0 auto
-    //:margin-top 0
-    :background-color white
-    :border-style none
+    padding:
+      top: 0
+      left: 20px
+      right: 20px
+    margin: 0 auto
+    //margin-top 0
+    background-color: white
+    border-style: none
+
+    #flash_notice, #flash_error, #flash_alert
+      padding: 5px 8px
+      margin: 10px 0
+
+    #flash_notice
+      background-color: #ccffcc
+      border: solid 1px #66cc66
+
+    #flash_error, #flash_alert
+      background-color: #ffcccc
+      border: solid 1px #cc6666
+
+    .fieldWithErrors
+      display: inline
+
+    .error_messages
+      width: 400px
+      border: 2px solid #cf0000
+      padding: 0
+      padding-bottom: 12px
+      margin-bottom: 20px
+      background-color: #f0f0f0
+      font-size: 12px
+      h2
+        text-align: left
+        padding: 5px 5px 5px 15px
+        margin: 0
+        font-weight: bold
+        font-size: 12px
+        background-color: #cc0000
+        color: white
+      p
+        margin: 8px 10px
+      ul
+        margin: 0
 
     .admin
       color: #F00
@@ -56,7 +154,7 @@ body
       ul.formlist
         .label
           :float left
-          :width 8em
+          width: 8em
         .field
           //:float right
 
@@ -65,92 +163,15 @@ body
       +no-bullets
     .controls
       +horizontal-list
-      :margin-bottom 15px
-
-    #header
-      +column(24)
-      :position relative
-
-      #flash_notice, #flash_error, #flash_alert
-        padding: 5px 8px
-        margin: 10px 0
-
-      #flash_notice
-        background-color: #ccffcc
-        border: solid 1px #66cc66
-
-      #flash_error, #flash_alert
-        background-color: #ffcccc
-        border: solid 1px #cc6666
-
-      .fieldWithErrors
-        display: inline
-
-      .error_messages
-        width: 400px
-        border: 2px solid #cf0000
-        padding: 0
-        padding-bottom: 12px
-        margin-bottom: 20px
-        background-color: #f0f0f0
-        font-size: 12px
-        h2
-          text-align: left
-          padding: 5px 5px 5px 15px
-          margin: 0
-          font-weight: bold
-          font-size: 12px
-          background-color: #cc0000
-          color: white
-        p
-          margin: 8px 10px
-        ul
-          margin: 0
-      #banner
-        +replace-text("logo_dummy.png")
-        :width 715px
-        :height 115px
-        :margin-left 2 * $blueprint-grid-width
-        :margin-bottom 2em
-
-    #user_nav
-      ul
-        +horizontal-list
-        :padding-left 5px
-        li
-          :padding
-            :top 0.5em
-            :bottom 0.5em
-      :font-size 12px
-      :background-color black
-      :border
-        :radius 0.5em
-      :padding
-        :top 0.7em
-        :left 2.5em
-        :bottom 0.7em
-        :right 2.5em
-      :color white
-      a
-        :padding 3px 6px
-        :color white
-        :text-decoration none
-        :border
-          :color black
-          :style solid
-          :width 0.15em
-          :radius 0.8em
-        &:hover
-          :background-color black
-          :border-color white
+      margin-bottom 15px
 
 
 
     #content
       +column(15)
-      :margin
-        :top 1.5em
-        :left 1.5em
+      margin:
+        top: 20px
+        left: 20px
 
       .horizontal
         +horizontal-list
@@ -158,9 +179,9 @@ body
       #comments_area
         +column(10)
         h2
-          :margin-bottom 12px
-        :font-size 12px
-        :padding 0 20px
+          margin-bottom 12px
+        font-size: 12px
+        padding: 0 20px
         background-color: $steel
         border-radius: 5px
         #comments
@@ -173,8 +194,8 @@ body
             padding-left: 10px
             padding-top: 10px
             .date
-              :color #000
-              :font-size 0.7em
+              color: #000
+              font-size: 0.7em
         #new_comment
           ul
             padding-left: 20px
@@ -184,7 +205,30 @@ body
 
     #tag_cloud
       +column(8, true)
-      padding-top: 19px
+      margin:
+        top: 20px
+      padding:
+        left: 5px
+        right: 5px
+      border:
+        radius: 8px
+        width: 3px
+        color: $steel
+        style: solid
+      background-color: $silver
+      a
+        text-decoration: none
+        color: black
+        &:hover
+          color: white
+          background-color: black
+          border-radius: 5px
+
+      h3
+        text-align: center
+        margin:
+          top: 21px
+          bottom: 19px
       .tag_size_1
         font-size: 0.6em
       .tag_size_2
@@ -250,7 +294,7 @@ body
       text-align: center
       margin-bottom: 10px
       &:hover
-        color: #fff
+        color: white
         background-color: #000
         border-radius: 6px
 
