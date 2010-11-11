@@ -1,6 +1,7 @@
 %fieldset.item
   %ul.horizontal
-    %li= f.number_field :level, :in => 0..2, :step => 1, :id => 'level', :class => 'item-level', :size => 10, :name => 'schedule[items][][level]'
     %li= f.text_field :text,                             :id => 'text',  :class => 'item-text',  :size => 40, :name => 'schedule[items][][text]'
+    -#%li= f.number_field :level, :in => 0..2, :step => 1, :id => 'level', :class => 'item-level', :size => 10, :name => 'schedule[items][][level]'
+    %li= f.select :level, %w[0 1 2], {}, {:id => 'level', :class => 'item-level', :name => 'schedule[items][][level]'}
     %li= remove_child_link "(remove)", f
 

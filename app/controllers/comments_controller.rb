@@ -35,10 +35,10 @@ class CommentsController < InheritedResources::Base
     @schedule.comments.delete_if{|comment| comment.id == @comment.id}
     if @schedule.save
       flash[:notice] = "Successfully destroyed comment."
-      redirect_to @schedule
     else
       flash[:error] = "dag, yo."
     end
+    redirect_to @schedule
   end
 end
 

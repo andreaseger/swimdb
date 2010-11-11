@@ -13,7 +13,7 @@ Scenario: I can create a Schedule with tags
      | description      | Lorem Ipsum |
      | taggings         | foo bar baz |
     And I follow "(add item)"
-    And I fill in "level" with "0" within the 1st ".item" fieldset
+    And I select "0" from "level" within the 1st ".item" fieldset
     And I fill in "text" with "200m" within the 1st ".item" fieldset
     And I press "Save"
    Then I should have 1 schedules

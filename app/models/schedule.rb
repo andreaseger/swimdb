@@ -25,7 +25,7 @@ class Schedule
 
   #virtual attributes
   def taggings=(value)
-    self.tags = value.split(",").join(" ").split(" ")
+    self.tags = value.scan(/\w+|,|\./).delete_if{|t| t =~ /,|\./}
   end
   def taggings
     tags.join(" ")

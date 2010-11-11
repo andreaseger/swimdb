@@ -25,7 +25,7 @@ module ApplicationHelper
       tags = tags.to_a
     end
 
-    max_count = tags.sort_by {|t| t["value"]}.last["value"].to_f
+    max_count = tags.sort_by {|t| t["value"] }.last["value"].to_f
 
     tags.each do |tag|
       index = ((tag["value"].to_f / max_count) * (classes.size - 1)).round

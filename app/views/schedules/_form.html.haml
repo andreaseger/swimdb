@@ -1,8 +1,9 @@
 - stylesheet 'jqueryui/jquery-ui-1.8.5.custom'
-- javascript 'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.5/jquery-ui.min.js'
+- javascript 'jquery/jqueryui-1.8.5.min.js'
+
 = form_for @schedule do |f|
   = f.error_messages
-  %ul.formList
+  %ul.formlist
     %li#name
       .label= f.label :name
       .field= f.text_field :name, :id => 'name'

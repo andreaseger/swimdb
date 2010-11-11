@@ -26,11 +26,11 @@ body
   #container
     +container
     //+showgrid
-    :padding 20px 40px
+    :padding 1.5em
     :margin 0 auto
-    :margin-top 20px
-    :background-color $white
-    :border solid 1px black
+    //:margin-top 0
+    :background-color white
+    :border-style none
 
     .admin
       color: #F00
@@ -43,15 +43,23 @@ body
         font-size: 12px
         color: $steel
       .tags
-        background-color: $forest_green
-        border-radius: 5px
-        padding: 3px 10px
+        color: $maroon
       .description
         margin: 10px
       .items
         padding-left: 10px
         margin-left: 30px
         font-size: 15px
+
+    #new_schedule,
+    #edit_schedule
+      ul.formlist
+        .label
+          :float left
+          :width 8em
+        .field
+          //:float right
+
 
     ul
       +no-bullets
@@ -99,7 +107,7 @@ body
         ul
           margin: 0
       #banner
-        +replace-text("http://dummyimage.com/715x115/777.png&text=swimDB")
+        +replace-text("logo_dummy.png")
         :width 715px
         :height 115px
         :margin-left 2 * $blueprint-grid-width
@@ -109,27 +117,40 @@ body
       ul
         +horizontal-list
         :padding-left 5px
+        li
+          :padding
+            :top 0.5em
+            :bottom 0.5em
       :font-size 12px
-      :background-color $black
-      :border-radius 2px
-      :padding 10px 25px
-      :color $white
-      :height 20px
+      :background-color black
+      :border
+        :radius 0.5em
+      :padding
+        :top 0.7em
+        :left 2.5em
+        :bottom 0.7em
+        :right 2.5em
+      :color white
       a
         :padding 3px 6px
-        :color $white
-        :border-color $black
-        :border-style solid
-        :border-width 2px
+        :color white
+        :text-decoration none
+        :border
+          :color black
+          :style solid
+          :width 0.15em
+          :radius 0.8em
         &:hover
-          :color $white
-          :background-color $black
-          :border-color $white
-          :border-radius 6px
+          :background-color black
+          :border-color white
+
+
 
     #content
       +column(15)
-      :padding-top 20px
+      :margin
+        :top 1.5em
+        :left 1.5em
 
       .horizontal
         +horizontal-list

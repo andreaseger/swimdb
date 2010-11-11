@@ -179,6 +179,18 @@ describe Schedule do
       schedule = Factory(:valid_schedule, :tags=>["foo", "bar", "baz", "lorem"])
       schedule.taggings.should == "foo bar baz lorem"
     end
+    it 'should split strings with a dot correctly' do
+      schedule = Factory(:valid_schedule, :taggings => "foo. lorem")
+      schedule.tags.should == ["foo", "lorem"]
+    end
+    it 'should split strings with a comma correctly' do
+      schedule = Factory(:valid_schedule, :taggings => "foo, lorem")
+      schedule.tags.should == ["foo", "lorem"]
+    end
+    it 'should split strings with a space correctly' do
+      schedule = Factory(:valid_schedule, :taggings => "foo lorem")
+      schedule.tags.should == ["foo", "lorem"]
+    end
   end
 
   describe '#scopes' do

@@ -8,11 +8,11 @@ describe '/schedules/index.html.haml' do
   end
 
   it 'should show the tag cloud' do
-    render
+    render :template => '/schedules/index', :layout => "layouts/with_tagcloud"
     rendered.should have_selector('div', :id =>'tag_cloud')
   end
   it 'should show a link for each tag' do
-    render
+    render :template => '/schedules/index', :layout => "layouts/with_tagcloud"
     rendered.should have_selector("a",{:content => "foo"})
     rendered.should have_selector("a",{:content => "bar"})
     rendered.should have_selector("a",{:content => "baz"})

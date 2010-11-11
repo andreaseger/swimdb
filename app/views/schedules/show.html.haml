@@ -5,8 +5,8 @@
   %div
     %em.date
       =@schedule.date.strftime('%d. %b, %Y')
-    %em.tags
-      =@schedule.taggings
+  .tags
+    =@schedule.taggings
   %p.description
     =@schedule.description
   %ul.items
