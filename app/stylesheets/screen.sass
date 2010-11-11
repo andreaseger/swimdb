@@ -20,7 +20,7 @@
 +blueprint-interaction
 
 body
-  background-color: $almost_black
+  background-color: $light_grey
   font-family: Verdana, Helvetica, Arial
   font-size: 14px
   #container
@@ -29,7 +29,7 @@ body
     :padding 20px 40px
     :margin 0 auto
     :margin-top 20px
-    :background-color $light_grey
+    :background-color $white
     :border solid 1px black
 
     .admin
@@ -110,17 +110,22 @@ body
         +horizontal-list
         :padding-left 5px
       :font-size 12px
-      background-color: $royal_blue
-      border-radius: 10px
-      padding: 6px 25px
-      color: $white
+      :background-color $black
+      :border-radius 2px
+      :padding 10px 25px
+      :color $white
+      :height 20px
       a
-        padding: 3px 6px
-        color: $white
+        :padding 3px 6px
+        :color $white
+        :border-color $black
+        :border-style solid
+        :border-width 2px
         &:hover
-          color: #fff
-          background-color: $midnight_blue
-          border-radius: 6px
+          :color $white
+          :background-color $black
+          :border-color $white
+          :border-radius 6px
 
     #content
       +column(15)
@@ -140,7 +145,7 @@ body
         #comments
           padding-left: 15px
           .comment
-            border-bottom: solid 2px $almost_black
+            border-bottom: solid 2px $black
             margin: 5px 0
             background-color: $silver
             border-radius: 5px
