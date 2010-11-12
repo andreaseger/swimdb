@@ -11,7 +11,8 @@
     =@schedule.description
   %ul.items
     -for item in @schedule.items
-      %li
+      -#%li{:class => "item-lvl#{item.level}"}
+      %li{:class => [!item.info? && "itemlvl#{item.level}", item.info? && "itemlvl#{item.level + 1}"]}
         - if item.info
           = item.info
         - else
