@@ -32,6 +32,12 @@ describe Comment do
       @schedule = Factory(:valid_schedule, :user=>Factory(:bob))
       @user = Factory(:amy)
     end
+    it 'should call cache_user before_save' do
+      @comment = @schedule.comments.build(:user => @user, :body => "hase")
+      @comment.should_receive(:cache_user)
+      @schedule.save
+    end
+
     it 'should save the username' do
       @schedule.comments.build(:user => @user, :body => "hase")
       @schedule.save

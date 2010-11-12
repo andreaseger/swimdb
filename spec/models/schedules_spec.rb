@@ -213,6 +213,5 @@ describe Schedule do
       @schedules.count.should == 2
     end
   end
-
 end
 

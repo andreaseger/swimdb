@@ -10,7 +10,7 @@ class Schedule
   many :comments, :dependent => :destroy
   #cache
   key :cached_user, String
-
+  key :comments_count, Integer, :default => 0
 
   belongs_to :user
   before_save :cache_user

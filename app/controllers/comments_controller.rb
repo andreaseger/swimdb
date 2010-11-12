@@ -11,8 +11,10 @@ class CommentsController < InheritedResources::Base
     @comment.user = current_user
 
     create! do |success, failure|
-      success.html {redirect_to parent_url}
-      success.js
+      success.html {
+        Schedule.increment(@schedule.id, :comments_count => 1)
+        redirect_to parent_url}
+      success.js { Schedule.increment(@schedule.id, :comments_count => 1) }
       failure.html { redirect_to parent_url }
       failure.js  { head :unprocessable_entity }
     end
@@ -34,6 +36,7 @@ class CommentsController < InheritedResources::Base
 
     @schedule.comments.delete_if{|comment| comment.id == @comment.id}
     if @schedule.save
+      Schedule.decrement(@schedule.id, :comments_count => 1)
       flash[:notice] = "Successfully destroyed comment."
     else
       flash[:error] = "dag, yo."

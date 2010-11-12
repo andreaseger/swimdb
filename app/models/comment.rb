@@ -1,6 +1,6 @@
 class Comment
   include MongoMapper::EmbeddedDocument
-  belongs_to :schedule
+  embedded_in :schedule
   belongs_to :user
 
   key :body, String, :required => true
