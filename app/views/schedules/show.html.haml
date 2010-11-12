@@ -11,13 +11,12 @@
     =@schedule.description
   %ul.items
     -for item in @schedule.items
-      -#%li{:class => "item-lvl#{item.level}"}
-      %li{:class => [!item.info? && "itemlvl#{item.level}", item.info? && "itemlvl#{item.level + 1}"]}
+      %li{:class => [!item.info? && ["textitem", "textlvl#{item.level}"], item.info? && ["infoitem", "infolvl#{item.level}"]]}
         - if item.info
           = item.info
         - else
           = item.text
-    %li
+    %li.distance
       Volle Distanz:
       =@schedule.full_schedule_distance
       m
