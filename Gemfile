@@ -25,6 +25,11 @@ gem 'devise-mongo_mapper',
 gem 'omniauth'
 
 
+#monitoring
+gem 'newrelic_rpm'
+gem 'rpm_contrib'
+
+
 group :development do
   gem 'capistrano'
   gem 'nifty-generators'

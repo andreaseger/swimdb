@@ -146,6 +146,7 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
+    newrelic_rpm (2.13.3)
     nifty-generators (0.4.2)
     nokogiri (1.4.3.1)
     oa-basic (0.1.6)
@@ -208,6 +209,8 @@ GEM
     responders (0.6.2)
     rest-client (1.6.1)
       mime-types (>= 1.16)
+    rpm_contrib (1.0.13)
+      newrelic_rpm (>= 2.13.1)
     rspec (2.0.1)
       rspec-core (~> 2.0.1)
       rspec-expectations (~> 2.0.1)
@@ -268,10 +271,12 @@ DEPENDENCIES
   has_scope
   inherited_resources
   mongo_mapper!
+  newrelic_rpm
   nifty-generators
   omniauth
   rack-test!
   rails (= 3.0.1)
+  rpm_contrib
   rspec-rails (>= 2.0.0.beta.22)
   simplecov (>= 0.3.5)
   spork (>= 0.9.0.rc2)
