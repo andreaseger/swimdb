@@ -26,8 +26,9 @@ gem 'omniauth'
 
 
 #monitoring
-gem 'newrelic_rpm'
 gem 'rpm_contrib'
+#gem 'newrelic_rpm'
+
 
 
 group :development do
