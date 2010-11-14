@@ -5,11 +5,11 @@ class Admin
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable
   # :confirmable
-  devise :registerable,
-         :database_authenticatable,
+  devise :database_authenticatable,
          :rememberable,
          :trackable,
          :validatable
+         #:registerable,
          #:recoverable,
          #, :confirmable
 

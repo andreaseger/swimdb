@@ -1,7 +1,7 @@
 Given /^(?:|I )have one\s+admin "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
-  Admin.new(:email => email,
+  Admin.create!(:email => email,
            :password => password,
-           :password_confirmation => password).save!
+           :password_confirmation => password)
 end
 
 Given /^(?:|I )am a new, authenticated admin(?: with email "([^\"]*)"(?: and password "([^\"]*)")?)?$/ do |email, password|

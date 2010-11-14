@@ -6,8 +6,8 @@ Swimdb::Application.routes.draw do
   end
   devise_for :admins
 
-  #get 'admins/edit' => 'admins/registrations#edit', :as => 'edit_admin_registration'
-  #put 'admins' => 'admins/registrations#update', :as => 'admin_registration'
+  get 'admins/edit' => 'admins/registrations#edit', :as => 'edit_admin_registration'
+  put 'admins' => 'admins/registrations#update', :as => 'admin_registration'
 
   devise_for :users, :controllers => {:registrations => 'users/registrations'}# :omniauth_callbacks => "users/omniauth_callbacks" }
 

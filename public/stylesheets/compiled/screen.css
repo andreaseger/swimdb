@@ -511,7 +511,7 @@ body #header #banner {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
-  background-image: url('/images/dummyimage_990x30.png?1289515656');
+  background-image: url('/images/dummyimage_990x30.png?1289763297');
   background-repeat: no-repeat;
   background-position: 50% 50%;
   width: 990px;
@@ -566,7 +566,7 @@ body #header #user_nav ul #logo {
   text-indent: -119988px;
   overflow: hidden;
   text-align: left;
-  background-image: url('/images/logo30.png?1289517515');
+  background-image: url('/images/logo30.png?1289763297');
   background-repeat: no-repeat;
   background-position: 50% 50%;
   height: 30px;
@@ -608,118 +608,20 @@ body #container {
   background-color: white;
   border-style: none;
 }
-/* line 97, ../../../app/stylesheets/screen.sass */
-body #container #flash_notice, body #container #flash_error, body #container #flash_alert {
-  padding: 5px 8px;
-  margin: 10px 0;
-}
-/* line 101, ../../../app/stylesheets/screen.sass */
-body #container #flash_notice {
-  background-color: #ccffcc;
-  border: solid 1px #66cc66;
-}
-/* line 105, ../../../app/stylesheets/screen.sass */
-body #container #flash_error, body #container #flash_alert {
-  background-color: #ffcccc;
-  border: solid 1px #cc6666;
-}
-/* line 109, ../../../app/stylesheets/screen.sass */
-body #container .fieldWithErrors {
-  display: inline;
-}
-/* line 112, ../../../app/stylesheets/screen.sass */
-body #container .error_messages {
-  width: 400px;
-  border: 2px solid #cf0000;
-  padding: 0;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  font-size: 0.8em;
-}
-/* line 120, ../../../app/stylesheets/screen.sass */
-body #container .error_messages h2 {
-  text-align: left;
-  padding: 5px 5px 5px 15px;
-  margin: 0;
-  font-weight: bold;
-  font-size: 0.8em;
-  background-color: #cc0000;
-  color: white;
-}
-/* line 128, ../../../app/stylesheets/screen.sass */
-body #container .error_messages p {
-  margin: 8px 10px;
-}
-/* line 130, ../../../app/stylesheets/screen.sass */
-body #container .error_messages ul {
-  margin: 0;
-}
-/* line 133, ../../../app/stylesheets/screen.sass */
-body #container .admin {
-  color: red;
-}
-/* line 137, ../../../app/stylesheets/screen.sass */
-body #container #schedule .user {
-  font-size: 0.8em;
-}
-/* line 139, ../../../app/stylesheets/screen.sass */
-body #container #schedule .tags,
-body #container #schedule .date {
-  font-size: 0.8em;
-  color: #738595;
-}
-/* line 143, ../../../app/stylesheets/screen.sass */
-body #container #schedule .tags {
-  color: #6e750e;
-}
-/* line 145, ../../../app/stylesheets/screen.sass */
-body #container #schedule .description {
-  margin: 10px;
-}
-/* line 147, ../../../app/stylesheets/screen.sass */
-body #container #schedule .items {
-  padding-left: 10px;
-  margin-left: 30px;
-  font-size: 1.1em;
-}
-/* line 151, ../../../app/stylesheets/screen.sass */
-body #container #schedule .items .infoitem {
-  color: #033500;
-  font-weight: bold;
-}
-/* line 154, ../../../app/stylesheets/screen.sass */
-body #container #schedule .items .textitem {
-  color: #650021;
-  font-weight: bolder;
-}
-/* line 159, ../../../app/stylesheets/screen.sass */
-body #container #schedule .items .textlvl1 {
-  padding-left: 1.3em;
-}
-/* line 161, ../../../app/stylesheets/screen.sass */
-body #container #schedule .items .textlvl2 {
-  padding-left: 2.6em;
-}
-/* line 164, ../../../app/stylesheets/screen.sass */
-body #container #schedule .items .infolvl0 {
-  padding-left: 1em;
-}
-/* line 166, ../../../app/stylesheets/screen.sass */
-body #container #schedule .items .infolvl1 {
-  padding-left: 2em;
-}
-/* line 168, ../../../app/stylesheets/screen.sass */
-body #container #schedule .items .infolvl2 {
-  padding-left: 3em;
-}
-/* line 174, ../../../app/stylesheets/screen.sass */
-body #container #new_schedule ul.formlist .label,
-body #container #edit_schedule ul.formlist .label {
+/* line 98, ../../../app/stylesheets/screen.sass */
+body #container ul.formlist .label {
   float: left;
-  width: 8em;
+  width: 168px;
 }
-/* line 181, ../../../app/stylesheets/screen.sass */
+/* line 102, ../../../app/stylesheets/screen.sass */
+body #container ul.formlist .remember {
+  margin-left: 168px;
+}
+/* line 104, ../../../app/stylesheets/screen.sass */
+body #container ul.formlist .actions {
+  margin-left: 168px;
+}
+/* line 106, ../../../app/stylesheets/screen.sass */
 body #container ul {
   list-style: none;
 }
@@ -729,7 +631,7 @@ body #container ul li {
   list-style-type: none;
   margin-left: 0px;
 }
-/* line 183, ../../../app/stylesheets/screen.sass */
+/* line 108, ../../../app/stylesheets/screen.sass */
 body #container .controls {
   margin: 0;
   padding: 0;
@@ -757,7 +659,128 @@ body #container .controls li:first-child, body #container .controls li.first {
 body #container .controls li:last-child, body #container .controls li.last {
   padding-right: 0;
 }
-/* line 189, ../../../app/stylesheets/screen.sass */
+/* line 112, ../../../app/stylesheets/screen.sass */
+body #container i {
+  color: #c5c9c7;
+  font-size: 0.7em;
+}
+/* line 117, ../../../app/stylesheets/screen.sass */
+body #container #flash_notice, body #container #flash_error, body #container #flash_alert {
+  padding: 5px 8px;
+  margin: 10px 0;
+}
+/* line 121, ../../../app/stylesheets/screen.sass */
+body #container #flash_notice {
+  background-color: #ccffcc;
+  border: solid 1px #66cc66;
+}
+/* line 125, ../../../app/stylesheets/screen.sass */
+body #container #flash_error, body #container #flash_alert {
+  background-color: #ffcccc;
+  border: solid 1px #cc6666;
+}
+/* line 129, ../../../app/stylesheets/screen.sass */
+body #container .fieldWithErrors {
+  display: inline;
+}
+/* line 132, ../../../app/stylesheets/screen.sass */
+body #container .error_messages {
+  width: 400px;
+  border: 2px solid #cf0000;
+  padding: 0;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  font-size: 0.8em;
+}
+/* line 140, ../../../app/stylesheets/screen.sass */
+body #container .error_messages h2 {
+  text-align: left;
+  padding: 5px 5px 5px 15px;
+  margin: 0;
+  font-weight: bold;
+  font-size: 0.8em;
+  background-color: #cc0000;
+  color: white;
+}
+/* line 148, ../../../app/stylesheets/screen.sass */
+body #container .error_messages p {
+  margin: 8px 10px;
+}
+/* line 150, ../../../app/stylesheets/screen.sass */
+body #container .error_messages ul {
+  margin: 0;
+}
+/* line 153, ../../../app/stylesheets/screen.sass */
+body #container .admin {
+  color: red;
+}
+/* line 157, ../../../app/stylesheets/screen.sass */
+body #container #schedule .user {
+  font-size: 0.8em;
+}
+/* line 159, ../../../app/stylesheets/screen.sass */
+body #container #schedule .tags,
+body #container #schedule .date {
+  font-size: 0.8em;
+  color: #738595;
+}
+/* line 163, ../../../app/stylesheets/screen.sass */
+body #container #schedule .tags {
+  color: #6e750e;
+}
+/* line 165, ../../../app/stylesheets/screen.sass */
+body #container #schedule .description {
+  margin: 10px;
+}
+/* line 167, ../../../app/stylesheets/screen.sass */
+body #container #schedule .items {
+  padding-left: 10px;
+  margin-left: 30px;
+  font-size: 1.1em;
+}
+/* line 171, ../../../app/stylesheets/screen.sass */
+body #container #schedule .items .infoitem {
+  color: #033500;
+  font-weight: bold;
+}
+/* line 174, ../../../app/stylesheets/screen.sass */
+body #container #schedule .items .textitem {
+  color: #650021;
+  font-weight: bolder;
+}
+/* line 179, ../../../app/stylesheets/screen.sass */
+body #container #schedule .items .textlvl1 {
+  padding-left: 1.3em;
+}
+/* line 181, ../../../app/stylesheets/screen.sass */
+body #container #schedule .items .textlvl2 {
+  padding-left: 2.6em;
+}
+/* line 184, ../../../app/stylesheets/screen.sass */
+body #container #schedule .items .infolvl0 {
+  padding-left: 1em;
+}
+/* line 186, ../../../app/stylesheets/screen.sass */
+body #container #schedule .items .infolvl1 {
+  padding-left: 2em;
+}
+/* line 188, ../../../app/stylesheets/screen.sass */
+body #container #schedule .items .infolvl2 {
+  padding-left: 3em;
+}
+/* line 194, ../../../app/stylesheets/screen.sass */
+body #container #new_schedule ul.formlist .label,
+body #container #edit_schedule ul.formlist .label {
+  float: left;
+  width: 112px;
+}
+/* line 201, ../../../app/stylesheets/screen.sass */
+body #container #admin_edit i,
+body #container #user_edit i {
+  margin-left: 168px;
+}
+/* line 204, ../../../app/stylesheets/screen.sass */
 body #container #content {
   display: inline;
   float: left;
@@ -770,7 +793,7 @@ body #container #content {
 * html body #container #content {
   overflow-x: hidden;
 }
-/* line 195, ../../../app/stylesheets/screen.sass */
+/* line 210, ../../../app/stylesheets/screen.sass */
 body #container #content .horizontal {
   margin: 0;
   padding: 0;
@@ -798,7 +821,7 @@ body #container #content .horizontal li:first-child, body #container #content .h
 body #container #content .horizontal li:last-child, body #container #content .horizontal li.last {
   padding-right: 0;
 }
-/* line 198, ../../../app/stylesheets/screen.sass */
+/* line 213, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area {
   display: inline;
   float: left;
@@ -813,11 +836,11 @@ body #container #content #comments_area {
 * html body #container #content #comments_area {
   overflow-x: hidden;
 }
-/* line 206, ../../../app/stylesheets/screen.sass */
+/* line 221, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #comments {
   padding-left: 15px;
 }
-/* line 208, ../../../app/stylesheets/screen.sass */
+/* line 223, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #comments .comment {
   border-bottom: solid 2px black;
   margin: 5px 0;
@@ -826,21 +849,21 @@ body #container #content #comments_area #comments .comment {
   padding-left: 10px;
   padding-top: 10px;
 }
-/* line 215, ../../../app/stylesheets/screen.sass */
+/* line 230, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #comments .comment .date {
   color: black;
   font-size: 0.7em;
 }
-/* line 219, ../../../app/stylesheets/screen.sass */
+/* line 234, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #new_comment ul {
   padding-left: 20px;
 }
-/* line 221, ../../../app/stylesheets/screen.sass */
+/* line 236, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #new_comment textarea {
   height: 100px;
   width: 320px;
 }
-/* line 225, ../../../app/stylesheets/screen.sass */
+/* line 240, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud {
   display: inline;
   float: left;
@@ -859,56 +882,56 @@ body #container #tag_cloud {
 * html body #container #tag_cloud {
   overflow-x: hidden;
 }
-/* line 238, ../../../app/stylesheets/screen.sass */
+/* line 253, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud a {
   text-decoration: none;
   color: black;
 }
-/* line 241, ../../../app/stylesheets/screen.sass */
+/* line 256, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud a:hover {
   color: white;
   background-color: black;
   border-radius: 5px;
 }
-/* line 246, ../../../app/stylesheets/screen.sass */
+/* line 261, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud h3 {
   text-align: center;
   margin-top: 21px;
   margin-bottom: 19px;
 }
-/* line 251, ../../../app/stylesheets/screen.sass */
+/* line 266, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_1 {
   font-size: 0.6em;
 }
-/* line 253, ../../../app/stylesheets/screen.sass */
+/* line 268, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_2 {
   font-size: 0.9em;
 }
-/* line 255, ../../../app/stylesheets/screen.sass */
+/* line 270, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_3 {
   font-size: 1.2em;
 }
-/* line 257, ../../../app/stylesheets/screen.sass */
+/* line 272, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_4 {
   font-size: 1.5em;
 }
-/* line 259, ../../../app/stylesheets/screen.sass */
+/* line 274, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_5 {
   font-size: 1.8em;
 }
-/* line 261, ../../../app/stylesheets/screen.sass */
+/* line 276, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_6 {
   font-size: 2.1em;
 }
-/* line 266, ../../../app/stylesheets/screen.sass */
+/* line 281, ../../../app/stylesheets/screen.sass */
 body #container div .ui-widget {
   font-size: 62.5%;
 }
-/* line 274, ../../../app/stylesheets/screen.sass */
+/* line 289, ../../../app/stylesheets/screen.sass */
 body #container .authentications {
   margin-bottom: 30px;
 }
-/* line 277, ../../../app/stylesheets/screen.sass */
+/* line 292, ../../../app/stylesheets/screen.sass */
 body #container .authentication {
   width: 130px;
   float: left;
@@ -919,7 +942,7 @@ body #container .authentication {
   position: relative;
   margin-right: 10px;
 }
-/* line 286, ../../../app/stylesheets/screen.sass */
+/* line 301, ../../../app/stylesheets/screen.sass */
 body #container .authentication .remove {
   text-decoration: none;
   position: absolute;
@@ -929,27 +952,27 @@ body #container .authentication .remove {
   padding: 2px 4px;
   font-size: 0.7em;
 }
-/* line 294, ../../../app/stylesheets/screen.sass */
+/* line 309, ../../../app/stylesheets/screen.sass */
 body #container .authentication .remove:hover {
   color: #cccccc;
   background-color: #777777;
   border-radius: 6px;
 }
-/* line 298, ../../../app/stylesheets/screen.sass */
+/* line 313, ../../../app/stylesheets/screen.sass */
 body #container .authentication img {
   float: left;
   margin-right: 10px;
 }
-/* line 301, ../../../app/stylesheets/screen.sass */
+/* line 316, ../../../app/stylesheets/screen.sass */
 body #container .authentication .provider {
   font-weight: bold;
 }
-/* line 303, ../../../app/stylesheets/screen.sass */
+/* line 318, ../../../app/stylesheets/screen.sass */
 body #container .authentication .uid {
   color: #666666;
   font-size: 0.75em;
 }
-/* line 307, ../../../app/stylesheets/screen.sass */
+/* line 322, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider {
   float: left;
   text-decoration: none;
@@ -957,23 +980,23 @@ body #container .auth_provider {
   text-align: center;
   margin-bottom: 10px;
 }
-/* line 308, ../../../app/stylesheets/screen.sass */
+/* line 323, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider img {
   display: block;
 }
-/* line 315, ../../../app/stylesheets/screen.sass */
+/* line 330, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider:hover {
   color: white;
   background-color: black;
   border-radius: 6px;
 }
-/* line 320, ../../../app/stylesheets/screen.sass */
+/* line 335, ../../../app/stylesheets/screen.sass */
 body #container .clear {
   clear: both;
   height: 0;
   overflow: hidden;
 }
-/* line 327, ../../../app/stylesheets/screen.sass */
+/* line 342, ../../../app/stylesheets/screen.sass */
 body .ui-datepicker-calendar thead th {
   background-color: black;
 }

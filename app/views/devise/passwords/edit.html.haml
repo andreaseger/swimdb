@@ -2,13 +2,14 @@
 = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
   = devise_error_messages!
   = f.hidden_field :reset_password_token
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %p= f.submit "Change my password"
+  %ul.formlist
+    %li
+      .label= f.label :password
+      .field= f.password_field :password
+    %li
+      .label= f.label :password_confirmation
+      .field= f.password_field :password_confirmation
+    %li
+      .actions= f.submit "Change my password"
 = render :partial => "devise/shared/links"
+

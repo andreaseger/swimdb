@@ -94,6 +94,26 @@ body
     background-color: white
     border-style: none
 
+    ul.formlist
+      .label
+        :float left
+        width: 168px
+      .field
+      .remember
+        margin-left: 168px
+      .actions
+        margin-left: 168px
+    ul
+      +no-bullets
+    .controls
+      +horizontal-list
+      margin-bottom 15px
+
+    i
+      color: $silver
+      font-size: 0.7em
+
+
     #flash_notice, #flash_error, #flash_alert
       padding: 5px 8px
       margin: 10px 0
@@ -173,18 +193,13 @@ body
       ul.formlist
         .label
           :float left
-          width: 8em
+          width: 112px
         .field
-          //:float right
 
-
-    ul
-      +no-bullets
-    .controls
-      +horizontal-list
-      margin-bottom 15px
-
-
+    #admin_edit,
+    #user_edit
+      i
+        margin-left: 168px
 
     #content
       +column(15)

@@ -1,23 +1,20 @@
 - title "Sign Up #{resource_name.to_s.humanize}"
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
-  %p
-    = f.label :username
-    %br/
-    = f.text_field :username
-  %p
-    = f.label :email
-    %br/
-    = f.text_field :email
-  - if @user.password_required?
-  %p
-    = f.label :password
-    %br/
-    = f.password_field :password
-  %p
-    = f.label :password_confirmation
-    %br/
-    = f.password_field :password_confirmation
-  %p= f.submit "Sign up"
+  %ul.formlist
+    %li
+      .label= f.label :username
+      .field= f.text_field :username
+    %li
+      .label= f.label :email
+      .field= f.text_field :email
+    %li
+      .label= f.label :password
+      .field= f.password_field :password
+    %li
+      .label= f.label :password_confirmation
+      .field= f.password_field :password_confirmation
+    %li
+      .actions= f.submit "Sign up"
 = render :partial => "devise/shared/links"
 
