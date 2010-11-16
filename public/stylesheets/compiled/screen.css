@@ -779,12 +779,17 @@ body #container #edit_schedule ul.formlist .label {
   float: left;
   width: 112px;
 }
-/* line 202, ../../../app/stylesheets/screen.sass */
+/* line 199, ../../../app/stylesheets/screen.sass */
+body #container #new_schedule ul.formlist .actions,
+body #container #edit_schedule ul.formlist .actions {
+  margin-left: 112px;
+}
+/* line 203, ../../../app/stylesheets/screen.sass */
 body #container #admin_edit i,
 body #container #user_edit i {
   margin-left: 168px;
 }
-/* line 205, ../../../app/stylesheets/screen.sass */
+/* line 206, ../../../app/stylesheets/screen.sass */
 body #container #content {
   display: inline;
   float: left;
@@ -797,7 +802,7 @@ body #container #content {
 * html body #container #content {
   overflow-x: hidden;
 }
-/* line 211, ../../../app/stylesheets/screen.sass */
+/* line 212, ../../../app/stylesheets/screen.sass */
 body #container #content .horizontal {
   margin: 0;
   padding: 0;
@@ -825,7 +830,7 @@ body #container #content .horizontal li:first-child, body #container #content .h
 body #container #content .horizontal li:last-child, body #container #content .horizontal li.last {
   padding-right: 0;
 }
-/* line 214, ../../../app/stylesheets/screen.sass */
+/* line 215, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area {
   display: inline;
   float: left;
@@ -840,11 +845,11 @@ body #container #content #comments_area {
 * html body #container #content #comments_area {
   overflow-x: hidden;
 }
-/* line 222, ../../../app/stylesheets/screen.sass */
+/* line 223, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #comments {
   padding-left: 15px;
 }
-/* line 224, ../../../app/stylesheets/screen.sass */
+/* line 225, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #comments .comment {
   border-bottom: solid 2px black;
   margin: 5px 0;
@@ -853,21 +858,21 @@ body #container #content #comments_area #comments .comment {
   padding-left: 10px;
   padding-top: 10px;
 }
-/* line 231, ../../../app/stylesheets/screen.sass */
+/* line 232, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #comments .comment .date {
   color: black;
   font-size: 0.7em;
 }
-/* line 235, ../../../app/stylesheets/screen.sass */
+/* line 236, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #new_comment ul {
   padding-left: 20px;
 }
-/* line 237, ../../../app/stylesheets/screen.sass */
+/* line 238, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #new_comment textarea {
   height: 100px;
   width: 320px;
 }
-/* line 241, ../../../app/stylesheets/screen.sass */
+/* line 242, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud {
   display: inline;
   float: left;
@@ -886,56 +891,56 @@ body #container #tag_cloud {
 * html body #container #tag_cloud {
   overflow-x: hidden;
 }
-/* line 254, ../../../app/stylesheets/screen.sass */
+/* line 255, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud a {
   text-decoration: none;
   color: black;
 }
-/* line 257, ../../../app/stylesheets/screen.sass */
+/* line 258, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud a:hover {
   color: white;
   background-color: black;
   border-radius: 5px;
 }
-/* line 262, ../../../app/stylesheets/screen.sass */
+/* line 263, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud h3 {
   text-align: center;
   margin-top: 21px;
   margin-bottom: 19px;
 }
-/* line 267, ../../../app/stylesheets/screen.sass */
+/* line 268, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_1 {
   font-size: 0.6em;
 }
-/* line 269, ../../../app/stylesheets/screen.sass */
+/* line 270, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_2 {
   font-size: 0.9em;
 }
-/* line 271, ../../../app/stylesheets/screen.sass */
+/* line 272, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_3 {
   font-size: 1.2em;
 }
-/* line 273, ../../../app/stylesheets/screen.sass */
+/* line 274, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_4 {
   font-size: 1.5em;
 }
-/* line 275, ../../../app/stylesheets/screen.sass */
+/* line 276, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_5 {
   font-size: 1.8em;
 }
-/* line 277, ../../../app/stylesheets/screen.sass */
+/* line 278, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_6 {
   font-size: 2.1em;
 }
-/* line 282, ../../../app/stylesheets/screen.sass */
+/* line 283, ../../../app/stylesheets/screen.sass */
 body #container div .ui-widget {
   font-size: 62.5%;
 }
-/* line 290, ../../../app/stylesheets/screen.sass */
+/* line 291, ../../../app/stylesheets/screen.sass */
 body #container .authentications {
   margin-bottom: 30px;
 }
-/* line 293, ../../../app/stylesheets/screen.sass */
+/* line 294, ../../../app/stylesheets/screen.sass */
 body #container .authentication {
   width: 130px;
   float: left;
@@ -946,7 +951,7 @@ body #container .authentication {
   position: relative;
   margin-right: 10px;
 }
-/* line 302, ../../../app/stylesheets/screen.sass */
+/* line 303, ../../../app/stylesheets/screen.sass */
 body #container .authentication .remove {
   text-decoration: none;
   position: absolute;
@@ -956,27 +961,27 @@ body #container .authentication .remove {
   padding: 2px 4px;
   font-size: 0.7em;
 }
-/* line 310, ../../../app/stylesheets/screen.sass */
+/* line 311, ../../../app/stylesheets/screen.sass */
 body #container .authentication .remove:hover {
   color: #cccccc;
   background-color: #777777;
   border-radius: 6px;
 }
-/* line 314, ../../../app/stylesheets/screen.sass */
+/* line 315, ../../../app/stylesheets/screen.sass */
 body #container .authentication img {
   float: left;
   margin-right: 10px;
 }
-/* line 317, ../../../app/stylesheets/screen.sass */
+/* line 318, ../../../app/stylesheets/screen.sass */
 body #container .authentication .provider {
   font-weight: bold;
 }
-/* line 319, ../../../app/stylesheets/screen.sass */
+/* line 320, ../../../app/stylesheets/screen.sass */
 body #container .authentication .uid {
   color: #666666;
   font-size: 0.75em;
 }
-/* line 323, ../../../app/stylesheets/screen.sass */
+/* line 324, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider {
   float: left;
   text-decoration: none;
@@ -984,23 +989,23 @@ body #container .auth_provider {
   text-align: center;
   margin-bottom: 10px;
 }
-/* line 324, ../../../app/stylesheets/screen.sass */
+/* line 325, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider img {
   display: block;
 }
-/* line 331, ../../../app/stylesheets/screen.sass */
+/* line 332, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider:hover {
   color: white;
   background-color: black;
   border-radius: 6px;
 }
-/* line 336, ../../../app/stylesheets/screen.sass */
+/* line 337, ../../../app/stylesheets/screen.sass */
 body #container .clear {
   clear: both;
   height: 0;
   overflow: hidden;
 }
-/* line 343, ../../../app/stylesheets/screen.sass */
+/* line 344, ../../../app/stylesheets/screen.sass */
 body .ui-datepicker-calendar thead th {
   background-color: black;
 }

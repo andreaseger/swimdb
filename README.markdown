@@ -20,7 +20,7 @@ Features until now
 - search/filter by tag
 - comments, now also via js
 - authentication(devise)
-- twitter-facebook login/Signup
+- twitter-facebook login/signup
 - Admin Area
 - jquery
 - js calendar, new tagcloud
