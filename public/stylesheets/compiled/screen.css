@@ -684,7 +684,8 @@ body #container .fieldWithErrors {
   display: inline;
 }
 /* line 132, ../../../app/stylesheets/screen.sass */
-body #container .error_messages {
+body #container .error_messages,
+body #container #error_explanation {
   width: 400px;
   border: 2px solid #cf0000;
   padding: 0;
@@ -693,8 +694,9 @@ body #container .error_messages {
   background-color: #f0f0f0;
   font-size: 0.8em;
 }
-/* line 140, ../../../app/stylesheets/screen.sass */
-body #container .error_messages h2 {
+/* line 141, ../../../app/stylesheets/screen.sass */
+body #container .error_messages h2,
+body #container #error_explanation h2 {
   text-align: left;
   padding: 5px 5px 5px 15px;
   margin: 0;
@@ -703,84 +705,86 @@ body #container .error_messages h2 {
   background-color: #cc0000;
   color: white;
 }
-/* line 148, ../../../app/stylesheets/screen.sass */
-body #container .error_messages p {
+/* line 149, ../../../app/stylesheets/screen.sass */
+body #container .error_messages p,
+body #container #error_explanation p {
   margin: 8px 10px;
 }
-/* line 150, ../../../app/stylesheets/screen.sass */
-body #container .error_messages ul {
+/* line 151, ../../../app/stylesheets/screen.sass */
+body #container .error_messages ul,
+body #container #error_explanation ul {
   margin: 0;
 }
-/* line 153, ../../../app/stylesheets/screen.sass */
+/* line 154, ../../../app/stylesheets/screen.sass */
 body #container .admin {
   color: red;
 }
-/* line 157, ../../../app/stylesheets/screen.sass */
+/* line 158, ../../../app/stylesheets/screen.sass */
 body #container #schedule .user {
   font-size: 0.8em;
 }
-/* line 159, ../../../app/stylesheets/screen.sass */
+/* line 160, ../../../app/stylesheets/screen.sass */
 body #container #schedule .tags,
 body #container #schedule .date {
   font-size: 0.8em;
   color: #738595;
 }
-/* line 163, ../../../app/stylesheets/screen.sass */
+/* line 164, ../../../app/stylesheets/screen.sass */
 body #container #schedule .tags {
   color: #6e750e;
 }
-/* line 165, ../../../app/stylesheets/screen.sass */
+/* line 166, ../../../app/stylesheets/screen.sass */
 body #container #schedule .description {
   margin: 10px;
 }
-/* line 167, ../../../app/stylesheets/screen.sass */
+/* line 168, ../../../app/stylesheets/screen.sass */
 body #container #schedule .items {
   padding-left: 10px;
   margin-left: 30px;
   font-size: 1.1em;
 }
-/* line 171, ../../../app/stylesheets/screen.sass */
+/* line 172, ../../../app/stylesheets/screen.sass */
 body #container #schedule .items .infoitem {
   color: #033500;
   font-weight: bold;
 }
-/* line 174, ../../../app/stylesheets/screen.sass */
+/* line 175, ../../../app/stylesheets/screen.sass */
 body #container #schedule .items .textitem {
   color: #650021;
   font-weight: bolder;
 }
-/* line 179, ../../../app/stylesheets/screen.sass */
+/* line 180, ../../../app/stylesheets/screen.sass */
 body #container #schedule .items .textlvl1 {
   padding-left: 1.3em;
 }
-/* line 181, ../../../app/stylesheets/screen.sass */
+/* line 182, ../../../app/stylesheets/screen.sass */
 body #container #schedule .items .textlvl2 {
   padding-left: 2.6em;
 }
-/* line 184, ../../../app/stylesheets/screen.sass */
+/* line 185, ../../../app/stylesheets/screen.sass */
 body #container #schedule .items .infolvl0 {
   padding-left: 1em;
 }
-/* line 186, ../../../app/stylesheets/screen.sass */
+/* line 187, ../../../app/stylesheets/screen.sass */
 body #container #schedule .items .infolvl1 {
   padding-left: 2em;
 }
-/* line 188, ../../../app/stylesheets/screen.sass */
+/* line 189, ../../../app/stylesheets/screen.sass */
 body #container #schedule .items .infolvl2 {
   padding-left: 3em;
 }
-/* line 194, ../../../app/stylesheets/screen.sass */
+/* line 195, ../../../app/stylesheets/screen.sass */
 body #container #new_schedule ul.formlist .label,
 body #container #edit_schedule ul.formlist .label {
   float: left;
   width: 112px;
 }
-/* line 201, ../../../app/stylesheets/screen.sass */
+/* line 202, ../../../app/stylesheets/screen.sass */
 body #container #admin_edit i,
 body #container #user_edit i {
   margin-left: 168px;
 }
-/* line 204, ../../../app/stylesheets/screen.sass */
+/* line 205, ../../../app/stylesheets/screen.sass */
 body #container #content {
   display: inline;
   float: left;
@@ -793,7 +797,7 @@ body #container #content {
 * html body #container #content {
   overflow-x: hidden;
 }
-/* line 210, ../../../app/stylesheets/screen.sass */
+/* line 211, ../../../app/stylesheets/screen.sass */
 body #container #content .horizontal {
   margin: 0;
   padding: 0;
@@ -821,7 +825,7 @@ body #container #content .horizontal li:first-child, body #container #content .h
 body #container #content .horizontal li:last-child, body #container #content .horizontal li.last {
   padding-right: 0;
 }
-/* line 213, ../../../app/stylesheets/screen.sass */
+/* line 214, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area {
   display: inline;
   float: left;
@@ -836,11 +840,11 @@ body #container #content #comments_area {
 * html body #container #content #comments_area {
   overflow-x: hidden;
 }
-/* line 221, ../../../app/stylesheets/screen.sass */
+/* line 222, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #comments {
   padding-left: 15px;
 }
-/* line 223, ../../../app/stylesheets/screen.sass */
+/* line 224, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #comments .comment {
   border-bottom: solid 2px black;
   margin: 5px 0;
@@ -849,21 +853,21 @@ body #container #content #comments_area #comments .comment {
   padding-left: 10px;
   padding-top: 10px;
 }
-/* line 230, ../../../app/stylesheets/screen.sass */
+/* line 231, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #comments .comment .date {
   color: black;
   font-size: 0.7em;
 }
-/* line 234, ../../../app/stylesheets/screen.sass */
+/* line 235, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #new_comment ul {
   padding-left: 20px;
 }
-/* line 236, ../../../app/stylesheets/screen.sass */
+/* line 237, ../../../app/stylesheets/screen.sass */
 body #container #content #comments_area #new_comment textarea {
   height: 100px;
   width: 320px;
 }
-/* line 240, ../../../app/stylesheets/screen.sass */
+/* line 241, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud {
   display: inline;
   float: left;
@@ -882,56 +886,56 @@ body #container #tag_cloud {
 * html body #container #tag_cloud {
   overflow-x: hidden;
 }
-/* line 253, ../../../app/stylesheets/screen.sass */
+/* line 254, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud a {
   text-decoration: none;
   color: black;
 }
-/* line 256, ../../../app/stylesheets/screen.sass */
+/* line 257, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud a:hover {
   color: white;
   background-color: black;
   border-radius: 5px;
 }
-/* line 261, ../../../app/stylesheets/screen.sass */
+/* line 262, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud h3 {
   text-align: center;
   margin-top: 21px;
   margin-bottom: 19px;
 }
-/* line 266, ../../../app/stylesheets/screen.sass */
+/* line 267, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_1 {
   font-size: 0.6em;
 }
-/* line 268, ../../../app/stylesheets/screen.sass */
+/* line 269, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_2 {
   font-size: 0.9em;
 }
-/* line 270, ../../../app/stylesheets/screen.sass */
+/* line 271, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_3 {
   font-size: 1.2em;
 }
-/* line 272, ../../../app/stylesheets/screen.sass */
+/* line 273, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_4 {
   font-size: 1.5em;
 }
-/* line 274, ../../../app/stylesheets/screen.sass */
+/* line 275, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_5 {
   font-size: 1.8em;
 }
-/* line 276, ../../../app/stylesheets/screen.sass */
+/* line 277, ../../../app/stylesheets/screen.sass */
 body #container #tag_cloud .tag_size_6 {
   font-size: 2.1em;
 }
-/* line 281, ../../../app/stylesheets/screen.sass */
+/* line 282, ../../../app/stylesheets/screen.sass */
 body #container div .ui-widget {
   font-size: 62.5%;
 }
-/* line 289, ../../../app/stylesheets/screen.sass */
+/* line 290, ../../../app/stylesheets/screen.sass */
 body #container .authentications {
   margin-bottom: 30px;
 }
-/* line 292, ../../../app/stylesheets/screen.sass */
+/* line 293, ../../../app/stylesheets/screen.sass */
 body #container .authentication {
   width: 130px;
   float: left;
@@ -942,7 +946,7 @@ body #container .authentication {
   position: relative;
   margin-right: 10px;
 }
-/* line 301, ../../../app/stylesheets/screen.sass */
+/* line 302, ../../../app/stylesheets/screen.sass */
 body #container .authentication .remove {
   text-decoration: none;
   position: absolute;
@@ -952,27 +956,27 @@ body #container .authentication .remove {
   padding: 2px 4px;
   font-size: 0.7em;
 }
-/* line 309, ../../../app/stylesheets/screen.sass */
+/* line 310, ../../../app/stylesheets/screen.sass */
 body #container .authentication .remove:hover {
   color: #cccccc;
   background-color: #777777;
   border-radius: 6px;
 }
-/* line 313, ../../../app/stylesheets/screen.sass */
+/* line 314, ../../../app/stylesheets/screen.sass */
 body #container .authentication img {
   float: left;
   margin-right: 10px;
 }
-/* line 316, ../../../app/stylesheets/screen.sass */
+/* line 317, ../../../app/stylesheets/screen.sass */
 body #container .authentication .provider {
   font-weight: bold;
 }
-/* line 318, ../../../app/stylesheets/screen.sass */
+/* line 319, ../../../app/stylesheets/screen.sass */
 body #container .authentication .uid {
   color: #666666;
   font-size: 0.75em;
 }
-/* line 322, ../../../app/stylesheets/screen.sass */
+/* line 323, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider {
   float: left;
   text-decoration: none;
@@ -980,23 +984,23 @@ body #container .auth_provider {
   text-align: center;
   margin-bottom: 10px;
 }
-/* line 323, ../../../app/stylesheets/screen.sass */
+/* line 324, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider img {
   display: block;
 }
-/* line 330, ../../../app/stylesheets/screen.sass */
+/* line 331, ../../../app/stylesheets/screen.sass */
 body #container .auth_provider:hover {
   color: white;
   background-color: black;
   border-radius: 6px;
 }
-/* line 335, ../../../app/stylesheets/screen.sass */
+/* line 336, ../../../app/stylesheets/screen.sass */
 body #container .clear {
   clear: both;
   height: 0;
   overflow: hidden;
 }
-/* line 342, ../../../app/stylesheets/screen.sass */
+/* line 343, ../../../app/stylesheets/screen.sass */
 body .ui-datepicker-calendar thead th {
   background-color: black;
 }
