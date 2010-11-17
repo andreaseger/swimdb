@@ -6,9 +6,9 @@ Just messing around with rails 3, mongoid, devise and BDD(rspec, cucumber)
 Newest changes
 --------------
 
+- validation errors now have a red border, just had to add the sass snippet, even works with items
 - replaced mongomapper for mongoid
 - Passanger in development?!?
-- cached comments_count
 - more style
 - now you can create a info item when add a leading '=>' to the text
 
@@ -33,7 +33,6 @@ Features until now
 Known Issues
 ------------
 
-- an validation error on an individual item will not be marked, so it is difficult to spot the wrong item
 - not really an issue but I not really know how that mapreduce snippet works ;)
 - when a failure while the comment creation happens it does just nothing(with JS)
 

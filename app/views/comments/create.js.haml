@@ -1,4 +1,4 @@
-!= "$('#comments_count').html('#{pluralize(@schedule.comments.size,'comment')}');"
+!= "$('#comments_count').html('<h2>#{pluralize(@schedule.comments.size,'comment')}</h2>');"
 != "$('#comments').append('#{escape_javascript(render(:partial => @comment))}');"
 != "$('#new_comment')[0].reset();"
 

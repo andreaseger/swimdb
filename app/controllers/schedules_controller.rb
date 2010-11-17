@@ -40,16 +40,16 @@ class SchedulesController < InheritedResources::Base
     items = params[:schedule][:items].delete_if{|i| i[:text] == ""}
 
     i = []
-    e = false
+    errors = false
     items.each do |item|
       i.push(Item.new(item))
       unless i.last.valid?
-        e = true
+        errors = true
       end
     end
     @schedule = Schedule.find(params[:id])
 
-    if e
+    if errors
       @schedule.items = i
       @schedule.valid?
       render :action => 'edit'

@@ -7,7 +7,7 @@
       .date
         =schedule.date.strftime('%d. %b, %Y') #format noch falsch gleich über i18 richtig machen
       .count
-        =pluralize(schedule.comments_count, 'Comment')
+        =pluralize(schedule.comments.count, 'Comment')
 
   - if user_signed_in?
     %li

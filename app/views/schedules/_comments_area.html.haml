@@ -1,7 +1,7 @@
 #comments_area
   #comments_count
     - unless @schedule.comments.empty?
-      %h2= pluralize(@schedule.comments_count, 'Comment')
+      %h2= pluralize(@schedule.comments.count, 'Comment')
   %ul#comments
     = render :partial => @schedule.comments.sort_by(&:created_at)
   %br

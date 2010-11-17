@@ -25,14 +25,13 @@ class Item
   attr_accessible :level, :text, :full_distance, :info
 
   validates_presence_of :text
-
   validates_format_of :text, :key => :lvl0, :with =>PAT0, :if => Proc.new { self.level == 0 }
   validates_format_of :text, :key => :lvl1, :with =>PAT1, :if => Proc.new { self.level == 1 }
   validates_format_of :text, :key => :lvl2, :with =>PAT2, :if => Proc.new { self.level == 2 }
 
   validates :level,
-            :numericality => {:only_integer => true}
-            :inclusion => { :in => 0..2 }
+            :numericality => {:only_integer => true},
+            :inclusion => { :in => 0..2 },
             :presence => true
 
   validates_numericality_of :outer, :greater_than_or_equal_to => 0, :only_integer => true, :allow_nil => true
