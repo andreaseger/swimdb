@@ -25,7 +25,7 @@ end
 
 Given /^(?:|I )have a schedule "([^"]*)" with the description "([^"]*)" and the following items:$/ do |name, description, table|
   # table is a Cucumber::Ast::Table
-  schedule = Schedule.new(:name => name, :description => description, :user => User.last, :taggings => "foo bar")
+  schedule = Schedule.new(:name => name, :description => description, :user => User.last, :taggings => "goo foo")
   table.hashes.each do |hash|
     schedule.items.build(hash)
   end

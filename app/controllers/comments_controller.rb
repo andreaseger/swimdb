@@ -11,10 +11,8 @@ class CommentsController < InheritedResources::Base
     @comment.user = current_user
 
     create! do |success, failure|
-      success.html {
-        Schedule.increment(@schedule.id, :comments_count => 1)
-        redirect_to parent_url}
-      success.js { Schedule.increment(@schedule.id, :comments_count => 1) }
+      success.html { redirect_to parent_url}
+      success.js
       failure.html { redirect_to parent_url }
       failure.js  { head :unprocessable_entity }
     end
@@ -31,17 +29,20 @@ class CommentsController < InheritedResources::Base
 
 
   def destroy
-    @schedule = Schedule.find(params[:schedule_id])
-    @comment = @schedule.comments.find(params[:id])
-
-    @schedule.comments.delete_if{|comment| comment.id == @comment.id}
-    if @schedule.save
-      Schedule.decrement(@schedule.id, :comments_count => 1)
-      flash[:notice] = "Successfully destroyed comment."
-    else
-      flash[:error] = "dag, yo."
-    end
-    redirect_to @schedule
+#<<<<<<< HEAD
+#    @schedule = Schedule.find(params[:schedule_id])
+#    @comment = @schedule.comments.find(params[:id])
+#
+#    @schedule.comments.delete_if{|comment| comment.id == @comment.id}
+#    if @schedule.save
+#      Schedule.decrement(@schedule.id, :comments_count => 1)
+#      flash[:notice] = "Successfully destroyed comment."
+#    else
+#      flash[:error] = "dag, yo."
+#    end
+#    redirect_to @schedule
+#=======
+    destroy!{ parent_url }
   end
 end
 

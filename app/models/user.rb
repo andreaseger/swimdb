@@ -1,7 +1,6 @@
 class User
-  include MongoMapper::Document
-  plugin MongoMapper::Devise
-  timestamps!
+  include Mongoid::Document
+  include Mongoid::Timestamps
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable
   # :confirmable
@@ -16,18 +15,21 @@ class User
   # Setup accessible (or protected) attributes for your model
   attr_accessible :username, :email, :password, :password_confirmation
 
-  key :username, String, :required => true, :unique => true
-  key :image, String
+  field :username
+  validates_presence_of :username
+  validates_uniqueness_of :username
+  field :image
 
-  many :schedules
-  validates_associated :schedules
-  many :comments
-  validates_associated :comments
-  many :authentications, :dependent => :destroy
-  validates_associated :authentications
+  references_many :schedules
+  references_many :comments
+  references_many :authentications, :dependent => :destroy
+
+  #validates_associated :comments, :allow_nil => true
+  #validates_associated :schedules
+  validate :validate_authentications, :unless => Proc.new {self.authentications == []}
 
   def self.find_for_oauth(omniauth, user)
-    auth = Authentication.find_by_uid_and_provider(omniauth["uid"], omniauth["provider"])
+    auth = Authentication.where(:uid => omniauth["uid"], :provider => omniauth["provider"]).first
     if user
       # the user wants to add fb to his account
       if auth
@@ -74,6 +76,14 @@ class User
       return u
     else
       User.new
+    end
+  end
+
+  def validate_authentications
+    authentications.each do |auth|
+      if auth.valid? == false
+        errors.add :authentication, auth.errors.full_messages
+      end
     end
   end
 

@@ -1,17 +1,28 @@
 class Comment
-  include MongoMapper::EmbeddedDocument
-  embedded_in :schedule
-  belongs_to :user
+  include Mongoid::Document
+  embedded_in :schedule, :inverse_of => :comments
+  referenced_in :user
 
-  key :body, String, :required => true
-  key :created_at, Time, :default => Proc.new {Time.now}
-  key :cached_user, String
-  validates_presence_of :user
-  before_save :cache_user
+  field :body
+  field :created_at, :type => Time
+  field :cached_user
+  validates_presence_of :user, :body
+
+  after_validation :cache_user
+  after_validation :set_created_at
+
 
   private
+  def set_created_at
+    self.created_at = Time.now
+    true
+  end
+
   def cache_user
-    self.cached_user = self.user.username
+    unless self.user == nil
+      self.cached_user = self.user.username
+    end
+    true
   end
 end
 

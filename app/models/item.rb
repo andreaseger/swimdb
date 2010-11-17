@@ -1,6 +1,6 @@
 class Item
-  include MongoMapper::EmbeddedDocument
-  belongs_to :schedule
+  include Mongoid::Document
+  embedded_in :schedule, :inverse_of => :items
 
   private
     MULTI = '((\d{1,2})(\*|x))?'
@@ -13,19 +13,34 @@ class Item
     PAT2 = /^(#{INFO}|#{DIST})/i
   public
 
-  key :level, Integer, :required => true, :only_integer => true, :in => 0..2, :default => 0
-  key :text, String, :required => true
-  validates_format_of :text, :key => :lvl0, :with =>PAT0, :if => Proc.new { level == 0 }
-  validates_format_of :text, :key => :lvl1, :with =>PAT1, :if => Proc.new { level == 1 }
-  validates_format_of :text, :key => :lvl2, :with =>PAT2, :if => Proc.new { level == 2 }
+  field :level, :type => Integer
+  field :text
+  field :info
 
   #parsed
-  key :outer, Integer, :only_integer => true, :greater_than_or_equal => 0
-  key :inner, Integer, :only_integer => true, :greater_than_or_equal => 0
-  key :distance, Integer, :only_integer => true, :greater_than_or_equal => 0
-  key :info, String
+  field :outer, :type => Integer
+  field :inner, :type => Integer
+  field :distance, :type => Integer
 
   attr_accessible :level, :text, :full_distance, :info
+
+  validates_presence_of :text
+
+  validates_format_of :text, :key => :lvl0, :with =>PAT0, :if => Proc.new { self.level == 0 }
+  validates_format_of :text, :key => :lvl1, :with =>PAT1, :if => Proc.new { self.level == 1 }
+  validates_format_of :text, :key => :lvl2, :with =>PAT2, :if => Proc.new { self.level == 2 }
+
+  validates :level,
+            :numericality => {:only_integer => true}
+            :inclusion => { :in => 0..2 }
+            :presence => true
+
+  validates_numericality_of :outer, :greater_than_or_equal_to => 0, :only_integer => true, :allow_nil => true
+  validates_numericality_of :inner, :greater_than_or_equal_to => 0, :only_integer => true, :allow_nil => true
+  validates_numericality_of :distance, :greater_than_or_equal_to => 0, :only_integer => true, :allow_nil => true
+
+  after_validation :parse_text
+  before_validation :set_level
 
   def full_distance
     i = (self.inner == nil) ? 1 : self.inner
@@ -33,9 +48,14 @@ class Item
     self.distance * i * o
   end
 
-  after_validation :parse_text
-
   private
+
+  def set_level
+    if self.level == nil
+      self.level = 0
+    end
+  end
+
   def parse_text
     if parse = (/^#{REGEX}/i).match(self.text)
       # a valid item is given
@@ -58,6 +78,5 @@ class Item
       self.info = parse[1]
     end
   end
-
 end
 

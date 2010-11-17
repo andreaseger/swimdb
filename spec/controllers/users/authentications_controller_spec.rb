@@ -78,7 +78,7 @@ describe Users::AuthenticationsController do
       end
       it "assigns the current_user authentications as @authentications" do
         get :edit, :id => "37"
-        assigns(:authentications).should == @user.authentications
+        assigns(:authentications).all.should == @user.authentications.all
       end
     end
   end

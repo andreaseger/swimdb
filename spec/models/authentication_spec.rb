@@ -7,23 +7,27 @@ describe Authentication do
     end
     it 'should allow the same provider for different users' do
       auth = Factory(:facebook)
-      @user.authentications.build(:uid => '12321232123', :provider => auth.provider)
-      @user.should be_valid
+      a = Authentication.new(:uid => '12321232123', :provider => auth.provider)
+      a.user = @user
+      a.should be_valid
     end
     it 'should allow the same uid for different providers' do
       auth = Factory(:facebook)
-      @user.authentications.build(:uid => auth.uid, :provider => 'foobar')
-      @user.should be_valid
+      a = Authentication.new(:uid => auth.uid, :provider => 'foobar')
+      a.user = @user
+      a.should be_valid
     end
     it 'should check the uniquess of uid-provider' do
       auth = Factory(:facebook)
-      @user.authentications.build(:uid => auth.uid, :provider => auth.provider)
-      @user.should_not be_valid
+      a = Authentication.new(:uid => auth.uid, :provider => auth.provider)
+      a.user = @user
+      a.should_not be_valid
     end
     it 'should check the uniquess of user_id-provider' do
       auth = Factory(:facebook, :user => @user)
-      @user.authentications.build(:uid => '543210987654321', :provider => auth.provider)
-      @user.should_not be_valid
+      a = Authentication.new(:uid => '543210987654321', :provider => auth.provider)
+      a.user = @user
+      a.should_not be_valid
     end
     it 'should check the presence of user_id' do
       @auth = Factory.build(:facebook, :user_id => nil)

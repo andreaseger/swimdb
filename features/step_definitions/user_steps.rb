@@ -38,7 +38,7 @@ Given /^(?:|I )am a new, authenticated user(?: named "([^\"]*)"(?: with email "(
 end
 
 Then /(?:|I )should have a user "([^\"]*)" with email "([^\"]*)"/ do |username, email|
-  u = User.find_by_username(username)
+  u = User.where(:username => username).first
   u.email.should == email
 end
 
@@ -47,7 +47,7 @@ Then /^(?:|I )should have a user with "([^\"]*)" authentication$/ do |provider|
 end
 
 Then /^(?:|I )should not have a user "([^"]*)"$/ do |username|
-  User.find_by_username(username).nil?.should be_true
+  User.where(:username => username).first.should be_nil
 end
 
 Given /^I am a new, authenticated omniauth user$/ do

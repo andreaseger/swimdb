@@ -1,7 +1,6 @@
 class Admin
-  include MongoMapper::Document
-  plugin MongoMapper::Devise
-  timestamps!
+  include Mongoid::Document
+  include Mongoid::Timestamps
   # Include default devise modules. Others available are:
   # :token_authenticatable, :lockable, :timeoutable and :activatable
   # :confirmable

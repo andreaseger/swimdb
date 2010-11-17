@@ -30,7 +30,7 @@ Spork.prefork do
     # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
     #config.fixture_path = "#{::Rails.root}/spec/fixtures"
     DatabaseCleaner.strategy = :truncation
-    DatabaseCleaner.orm = "mongo_mapper"
+    DatabaseCleaner.orm = "mongoid"
 
     config.before(:each) do
       DatabaseCleaner.clean

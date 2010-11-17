@@ -1,11 +1,12 @@
 swimdb
 ======
 
-Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
+Just messing around with rails 3, mongoid, devise and BDD(rspec, cucumber)
 
 Newest changes
 --------------
 
+- replaced mongomapper for mongoid
 - Passanger in development?!?
 - cached comments_count
 - more style
@@ -40,6 +41,7 @@ Known Issues
 to think about
 --------------
 
+- because of the way mongoid is doing thing the schedules update method is now very cutomized
 - had to put the comments_count into the comments controller because of the callbacks
 
 TODO
@@ -51,5 +53,5 @@ TODO
 meh
 ---
 
-Tested with rspec and cucumber under ree-1.8.7
+Tested with rspec and cucumber under 1.9.2
 

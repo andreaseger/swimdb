@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Schedule do
 
   describe 'when validate' do
-    %w(name description).each do |attrib|
+    %w(name description taggings).each do |attrib|
       it "should validates presence of #{attrib}" do
         schedule = Factory.build(:schedule, attrib => nil)
         schedule.should_not be_valid
@@ -14,7 +14,7 @@ describe Schedule do
       schedule.should_not be_valid
     end
     it 'should nest items' do
-      schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m")])
+      schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :text => "300m")])
       schedule.should have(1).items
     end
   end
@@ -82,7 +82,7 @@ describe Schedule do
       schedule.user.should == @amy
     end
     it 'should be nil if not set' do
-      schedule = Factory(:valid_schedule)
+      schedule = Factory(:valid_schedule, :user => nil)
       schedule.user.should be_nil
     end
     it 'should be in the list of the users schedules' do
@@ -105,6 +105,7 @@ describe Schedule do
     end
     it 'should update the items on schedule update' do
       item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
+      pending 'deprecated because the controller uses update_attributes for that'
       @schedule.items << item
       @schedule.save
       @schedule.items[0].text = "5*400m"
@@ -176,7 +177,7 @@ describe Schedule do
       schedule.tags.should == ["foo", "bar", "baz", "lorem"]
     end
     it 'should give a string of all assigned tags' do
-      schedule = Factory(:valid_schedule, :tags=>["foo", "bar", "baz", "lorem"])
+      schedule = Factory(:valid_schedule, :taggings => nil, :tags=>["foo", "bar", "baz", "lorem"])
       schedule.taggings.should == "foo bar baz lorem"
     end
     it 'should split strings with a dot correctly' do
@@ -195,11 +196,12 @@ describe Schedule do
 
   describe '#scopes' do
     before do
-      Factory(:valid_schedule, :tags => ["GA1", "foo", "bar"])
-      Factory(:valid_schedule, :tags => ["ga1", "SP", "bar"])
-      Factory(:valid_schedule, :tags => ["GA2", "KT", "bar"])
-      Factory(:valid_schedule, :tags => ["KT", "SP", "bar"])
-      Factory(:valid_schedule, :tags => ["CC", "FLY", "bar"])
+      @user = Factory(:amy)
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["GA1", "foo", "bar"])
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["ga1", "SP", "bar"])
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["GA2", "KT", "bar"])
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["KT", "SP", "bar"])
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["CC", "FLY", "bar"])
     end
     it 'should only deliver schedules with the tag GA1' do
       @schedules = Schedule.by_tag("GA1").all
@@ -211,6 +213,16 @@ describe Schedule do
     it 'should not be case-sensitive' do
       @schedules = Schedule.by_tag("ga1").all
       @schedules.count.should == 2
+    end
+  end
+
+  describe '#cached_user' do
+    before do
+      @user = Factory(:bob)
+    end
+    it 'should cache the username' do
+      @schedule = Factory(:valid_schedule, :user => @user)
+      @schedule.cached_user.should == @user.username
     end
   end
 end

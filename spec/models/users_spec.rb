@@ -26,17 +26,15 @@ describe User do
   describe '#authentications' do
     it 'should save authentications' do
       user = Factory(:bob)
-      user.authentications.build(:uid => '123456789012345', :provider => 'dummy')
-      user.save
-      user.should have(1).authentications
+      user.authentications.create!(:uid => '123456789012345', :provider => 'dummy')
+      user.authentications.count.should == 1
       Authentication.count.should == 1
     end
 
     it 'should delete the authentications on delete' do
-      pending 'in rspec the callback does not work'
+      #pending 'in rspec the callback does not work'
       user = Factory(:bob)
-      user.authentications.build(:uid => '123456789012345', :provider => 'dummy')
-      user.save
+      user.authentications.create!(:uid => '123456789012345', :provider => 'dummy')
       user.delete
       User.count.should == 0
       Authentication.count.should == 0
@@ -71,7 +69,7 @@ describe User do
       describe '#auth not known' do
         it 'should add the authentication to the current_user' do
           User.find_for_oauth(@omniauth, @user)
-          @user.should have(1).authentications
+          @user.authentications.count.should == 1
         end
       end
     end

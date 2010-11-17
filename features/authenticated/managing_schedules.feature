@@ -27,6 +27,7 @@ Scenario: I can create a new schedule with 2 Items
     And I fill in the following:
      | name             | Foobar      |
      | description      | Lorem Ipsum |
+     | taggings         | foo bar     |
     And I select "0" from "level" within the 1st ".item" fieldset
     And I fill in "text" with "400m" within the 1st ".item" fieldset
     And I follow "(add item)"
@@ -47,6 +48,7 @@ Scenario: I cannot create a new schedule with a invalid Item
     And I fill in the following:
      | name             | Foobar      |
      | description      | Lorem Ipsum |
+     | taggings         | foo bar     |
     And I select "0" from "level" within the 1st ".item" fieldset
     And I fill in "text" with "400m" within the 1st ".item" fieldset
     And I follow "(add item)"

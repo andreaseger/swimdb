@@ -1,22 +1,27 @@
 class Schedule
-  include MongoMapper::Document
-  timestamps!
+  include Mongoid::Document
+  include Mongoid::Timestamps
 
-  key :name, String, :required => true
-  key :description, String, :required => true
-  key :original_date, Date
-  key :tags, Array, :index => true
-  many :items, :dependent => :destroy
-  many :comments, :dependent => :destroy
+  referenced_in :user
+  field :name
+  field :description
+  field :original_date, :type => Date
+
+  field :tags, :type => Array
+  embeds_many :items
+  accepts_nested_attributes_for :items
+
+  embeds_many :comments
   #cache
-  key :cached_user, String
-  key :comments_count, Integer, :default => 0
+  field :cached_user
 
-  belongs_to :user
   before_save :cache_user
+  validates_presence_of :name, :description
+  validates_presence_of :taggings, :if => Proc.new{ self.tags == nil}
 
   validates_associated :items
-  validates_associated :comments
+  validates_associated :comments, :allow_nil => true
+
   validate :itemscount
 
   def self.by_tag(tag)
@@ -25,10 +30,12 @@ class Schedule
 
   #virtual attributes
   def taggings=(value)
-    self.tags = value.scan(/\w+|,|\./).delete_if{|t| t =~ /,|\./}
+    unless value.nil?
+      self.tags = value.scan(/\w+|,|\./).delete_if{|t| t =~ /,|\./}
+    end
   end
   def taggings
-    tags.join(" ")
+    tags.join(" ") if tags
   end
 
   def date
@@ -70,7 +77,9 @@ class Schedule
   private
 
   def cache_user
-    self.cached_user = self.user.username
+    unless self.user == nil
+      self.cached_user = self.user.username
+    end
   end
 
   def itemscount
