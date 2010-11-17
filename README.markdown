@@ -52,5 +52,10 @@ TODO
 meh
 ---
 
-Tested with rspec and cucumber under 1.9.2
+- Ruby 1.9.2
+- Rails 3.0.3
+- RSpec
+- Cucumber
+
+swimdb &copy; Eger Andreas 2010
 
