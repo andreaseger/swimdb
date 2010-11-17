@@ -11,6 +11,7 @@ Scenario: The schedule gets linked to the user while creation
     And I fill in the following:
      | name             | Foobar      |
      | description      | Lorem Ipsum |
+     | taggings         | foo bar     |
     And I fill in "level" with "0" within the 1st ".item" fieldset
     And I fill in "text" with "400m" within the 1st ".item" fieldset
     And I press "Save"

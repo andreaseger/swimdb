@@ -9,19 +9,10 @@ gem 'has_scope'
 #MongoDB
 gem 'bson_ext'
 gem 'mongoid', '>= 2.0.0.beta.20'
-#gem 'mongo_mapper',
-#    :git =>"git://github.com/jnunemaker/mongomapper.git",
-#    :branch => "master"
 
 #security
 gem 'devise'
 gem 'omniauth'
-
-#    :git => "git://github.com/plataformatec/devise.git",
-#    :branch => "omniauth"
-
-#gem 'devise-mongo_mapper',
-#    :git => "git://github.com/collectiveidea/devise-mongo_mapper"
 
 group :development do
   gem 'capistrano'

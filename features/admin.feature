@@ -31,8 +31,8 @@ Scenario: I can edit a user
 Scenario: Admins can delete random comments
   Given I am a new, authenticated user
     And I have a schedule "Foobar" with the description "Lorem Ipsum" and the following items:
-    | level | text      | rank |
-    | 0     | 400m      | 0    |
+    | level | text      | rank | taggings |
+    | 0     | 400m      | 0    | foo bar  |
     And The schedule has no comments
     And I am on the schedule page
     And I fill in "comment_body" with "Lorem Ipsum"

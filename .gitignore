@@ -2,7 +2,8 @@
 db/*.sqlite3
 log/*.log
 tmp/**/*
-coverage/**/*
+coverage
 config/initializers/omniauth.rb
 config/deploy.rb
+config/newrelic.yml
 

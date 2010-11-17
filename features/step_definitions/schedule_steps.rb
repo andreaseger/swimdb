@@ -3,8 +3,8 @@ Given /^(?:|I )have no schedules$/ do
 end
 
 Given /^(?:|I )have (\d+) schedules "([^"]*)" and "([^"]*)"$/ do |num, arg2, arg3|
-  Schedule.create!(:name => arg2, :description => 'foo', :items => [Item.new(:text => "400m")])
-  Schedule.create!(:name => arg3, :description => 'foo', :items => [Item.new(:text => "400m")])
+  Schedule.create!(:name => arg2, :description => 'foo', :items => [Item.new(:text => "400m")], :taggings => "foo, bar")
+  Schedule.create!(:name => arg3, :description => 'foo', :items => [Item.new(:text => "400m")], :taggings => "foo, goo")
 end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)" within the (\d)(?:st|nd|rd|th) "([^"]*)" ([^"]*)$/ do |field, value, index, selector, tag|
@@ -25,7 +25,7 @@ end
 
 Given /^(?:|I )have a schedule "([^"]*)" with the description "([^"]*)" and the following items:$/ do |name, description, table|
   # table is a Cucumber::Ast::Table
-  schedule = Schedule.new(:name => name, :description => description, :user => User.last)
+  schedule = Schedule.new(:name => name, :description => description, :user => User.last, :taggings => "goo foo")
   table.hashes.each do |hash|
     schedule.items.build(hash)
   end

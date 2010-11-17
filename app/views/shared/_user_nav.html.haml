@@ -1,0 +1,25 @@
+#user_nav
+  %ul
+    #logo
+      logo
+    %li.first= link_to "Home", root_url
+    - if user_signed_in?
+      %li
+        = "Hello #{current_user.username}. Not you?"
+        = link_to "Logout", destroy_user_session_path
+      %li
+        = link_to "Edit Profile", edit_users_authentication_path(current_user)
+    - elsif admin_signed_in?
+      #admin_nav
+        %li
+          = link_to "Admin Area", adminarea_users_path
+        %li
+          = "Admin access as #{current_admin.email}"
+          = link_to "Logout Admin", destroy_admin_session_path
+        %li
+          = link_to "Edit Admin Profile", edit_admin_registration_path
+    - else
+      %li
+        = link_to "Login or SignUp", users_authentications_path
+    %li.last About
+

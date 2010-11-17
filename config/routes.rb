@@ -11,8 +11,6 @@ Swimdb::Application.routes.draw do
     resources :authentications
   end
 
-
-
   resources :schedules do
     resources :comments
   end

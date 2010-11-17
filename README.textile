@@ -4,8 +4,7 @@ Just messing around with rails 3, mongomapper, devise and BDD(rspec, cucumber)
 
 h2. Newest changes
 
-* created a working capistrano script, but yeah I wont upload it here
-* merge with jquery and omniauth
+*replaced mongomapper for mongoid
 
 h2. Features until now
 
@@ -28,6 +27,7 @@ h2. Known Issues
 
 h3. to think about
 
+* because of the way mongoid is doing thing the schedules update method is now very cutomized
 * changed Items to an embedded document, not sure about that change. Had to move all
 the parsing logic into schedule because i cannot use the before_save callback.
 On the good side it completely made my controller changes obsolete, now it

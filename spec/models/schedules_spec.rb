@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Schedule do
 
   describe 'when validate' do
-    %w(name description).each do |attrib|
+    %w(name description taggings).each do |attrib|
       it "should validates presence of #{attrib}" do
         schedule = Factory.build(:schedule, attrib => nil)
         schedule.should_not be_valid
@@ -14,7 +14,7 @@ describe Schedule do
       schedule.should_not be_valid
     end
     it 'should nest items' do
-      schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :rank => 0, :text => "300m")])
+      schedule = Factory.build(:schedule, :items => [Item.new(:level => 0, :text => "300m")])
       schedule.should have(1).items
     end
   end
@@ -181,7 +181,7 @@ describe Schedule do
       schedule.tags.should == ["foo", "bar", "baz", "lorem"]
     end
     it 'should give a string of all assigned tags' do
-      schedule = Factory(:valid_schedule, :tags=>["foo", "bar", "baz", "lorem"])
+      schedule = Factory(:valid_schedule, :taggings => nil, :tags=>["foo", "bar", "baz", "lorem"])
       schedule.taggings.should == "foo bar baz lorem"
     end
   end
@@ -189,11 +189,11 @@ describe Schedule do
   describe '#scopes' do
     before do
       @user = Factory(:amy)
-      Factory(:valid_schedule, :user => @user, :tags => ["GA1", "foo", "bar"])
-      Factory(:valid_schedule, :user => @user, :tags => ["ga1", "SP", "bar"])
-      Factory(:valid_schedule, :user => @user, :tags => ["GA2", "KT", "bar"])
-      Factory(:valid_schedule, :user => @user, :tags => ["KT", "SP", "bar"])
-      Factory(:valid_schedule, :user => @user, :tags => ["CC", "FLY", "bar"])
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["GA1", "foo", "bar"])
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["ga1", "SP", "bar"])
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["GA2", "KT", "bar"])
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["KT", "SP", "bar"])
+      Factory(:valid_schedule, :user => @user, :taggings => nil, :tags => ["CC", "FLY", "bar"])
     end
     it 'should only deliver schedules with the tag GA1' do
       @schedules = Schedule.by_tag("GA1").all

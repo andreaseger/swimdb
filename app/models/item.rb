@@ -13,7 +13,7 @@ class Item
 
   field :level, :type => Integer#, :default => 0
   field :text
-  field :rank, :type => Integer
+  #field :rank, :type => Integer
 
   #parsed
   field :outer, :type => Integer

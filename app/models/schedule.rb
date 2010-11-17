@@ -5,7 +5,6 @@ class Schedule
   referenced_in :user
   field :name
   field :description
-  validates_presence_of :name, :description
   field :original_date, :type => Date
 
   field :tags, :type => Array
@@ -17,17 +16,10 @@ class Schedule
   field :cached_user
 
   before_save :cacheUser
-  #validate :validate_items, :on => :create
-#
-  #def validate_items
-  #  self.items.each do |item|
-  #    if item.valid? == false
-  #      errors.add :item, item.errors.full_messages
-  #    end
-  #  end
-  #end
+  validates_presence_of :name, :description
+  validates_presence_of :taggings, :if => Proc.new{ self.tags == nil}
 
-  validates_associated :items#, :allow_nil => true
+  validates_associated :items
   validates_associated :comments, :allow_nil => true
 
   validate :itemscount
@@ -38,7 +30,9 @@ class Schedule
 
   #virtual attributes
   def taggings=(value)
-    self.tags = value.split(",").join(" ").split(" ")
+    unless value.nil?
+      self.tags = value.split(",").join(" ").split(" ")
+    end
   end
   def taggings
     tags.join(" ") if tags
@@ -55,7 +49,7 @@ class Schedule
     distance = 0
     last_outer = 1
     last_inner = 1
-    for item in items.sort_by(&:rank)
+    for item in items
       if item.level == 0
         distance += item.full_distance
         last_outer = 1
