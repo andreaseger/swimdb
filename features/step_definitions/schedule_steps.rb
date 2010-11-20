@@ -44,7 +44,17 @@ Then /^the schedules user should be "([^"]*)"$/ do |username|
   Schedule.last.user.username.should == username
 end
 
-Given /^I have a schedule "([^"]*)" with the following tags "([^"]*)"$/ do |name, taggings|
+Given /^(?:|I )have a schedule "([^"]*)" with the following tags "([^"]*)"$/ do |name, taggings|
   Schedule.create!(:name => name, :description => "Lorem", :items => [Item.new(:text => "400m")], :taggings => taggings)
+end
+
+When /(?:|I )add the following items/ do |table|
+  table.each_with_index do |hash, index|
+    level = hash[:level]
+    text = hash[:text]
+    When %{I follow "(add item)"}
+     And %{I select "#{level}" from "level" within the #{index+1} ".item" fieldset}
+     And %{I fill in "#{text}" for "text" within the #{index+1} ".item" fieldset}
+  end
 end
 

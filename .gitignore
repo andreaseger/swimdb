@@ -6,4 +6,5 @@ coverage
 config/initializers/omniauth.rb
 config/deploy.rb
 config/newrelic.yml
+public/maintenance.html
 
