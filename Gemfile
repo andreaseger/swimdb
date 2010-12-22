@@ -23,6 +23,9 @@ gem 'rpm_contrib'
 #gem 'newrelic_rpm'
 
 
+#search
+gem "sunspot", ">= 1.2rc4"
+
 
 group :development do
   gem 'capistrano'
@@ -42,6 +45,13 @@ group :test, :development do
   gem 'cucumber-rails'
   gem 'ruby-debug19', :require => 'ruby-debug'
   #gem 'ruby-debug'
+
+  #irb stuff
+  gem 'wirble'
+  gem 'hirb'
+  gem 'awesome_print'
+  gem 'bond'
+  gem 'sketches'
 end
 
 group :test do
@@ -50,7 +60,5 @@ group :test do
   gem 'capybara'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
-#  gem 'rack-test',
-#    :git => 'git://github.com/brynary/rack-test.git'
 end
 

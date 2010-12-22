@@ -1,4 +1,9 @@
 -title "Schedules"
+
+= form_tag schedules_path, :method => 'get', :id => 'schedule_search' do
+  = text_field_tag :search, params[:search]
+  = submit_tag "Search", :name => nil
+
 %ul
   - for schedule in @schedules
     %li

@@ -15,6 +15,23 @@ class Schedule
   #cache
   field :cached_user
 
+  require 'sunspot'
+  require 'sunspot_helper'
+  Sunspot::Adapters::InstanceAdapter.register(SunspotHelper::InstanceAdapter, Schedule)
+  Sunspot::Adapters::DataAccessor.register(SunspotHelper::DataAccessor, Schedule)
+  Sunspot.setup(Schedule) do
+    string :name
+    string :cache_user
+    text :description
+    string :tags, :multiple => true
+    text :items do
+      items.map {|item| item.text }
+    end
+    integer :full_schedule_distance
+    date :date
+  end
+
+
   before_save :cache_user
   validates_presence_of :name, :description
   validates_presence_of :taggings, :if => Proc.new{ self.tags == nil}
@@ -23,6 +40,10 @@ class Schedule
   validates_associated :comments, :allow_nil => true
 
   validate :itemscount
+
+  #sunspot
+  after_save :update_sunspot
+  before_destroy :remove_sunspot
 
   def self.by_tag(tag)
     where(:tags => /#{tag}/i)
@@ -74,8 +95,8 @@ class Schedule
     return distance
   end
 
-  private
 
+private
   def cache_user
     unless self.user == nil
       self.cached_user = self.user.username
@@ -84,6 +105,15 @@ class Schedule
 
   def itemscount
     errors.add :items, "There has to be at least 1 Item" if self.items.empty?
+  end
+
+  def update_sunspot
+    Sunspot.index( self )
+    Sunspot.commit
+  end
+  def remove_sunspot
+    Sunspot.remove( self )
+    Sunspot.commit
   end
 end
 
