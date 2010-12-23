@@ -3,7 +3,7 @@ require 'spec_helper'
 describe '/users/authentications/edit.html.haml' do
   include Devise::TestHelpers
   before do
-    @authentications = [Factory(:facebook)]
+    @authentications = [Factory.stub(:facebook)]
   end
 
   it 'should show a provider' do

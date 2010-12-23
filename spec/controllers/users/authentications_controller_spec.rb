@@ -4,16 +4,16 @@ describe Users::AuthenticationsController do
   include Devise::TestHelpers
 
   def mock_user(stubs={})
-    @mock_user ||= mock_model(User, stubs).as_null_object
+    @mock_user ||= mock()
   end
 
   describe "POST create" do
     before do
-      controller.stub!(:render)
+      controller.stubs(:render)
     end
     it 'should call oath for provider facebook-twitter' do
-      controller.stub!(:oauth).and_return(true)
-      controller.should_receive(:oauth)
+      controller.stubs(:oauth).returns(true)
+      controller.expects(:oauth)
       post :create, :provider => 'facebook'
     end
     describe '#oauth' do
@@ -23,7 +23,7 @@ describe Users::AuthenticationsController do
           sign_in @user
         end
         it 'should redirect to the users authentications page' do
-          User.stub!(:find_for_oauth).and_return(@user)
+          User.stubs(:find_for_oauth).returns(@user)
           request.env["omniauth.auth"] = {"provider" => 'facebook'}
           post :create, :provider => 'facebook'
           response.should redirect_to(edit_users_authentication_path(@user))
@@ -31,24 +31,24 @@ describe Users::AuthenticationsController do
       end
       describe '#guest' do
         before do
-          controller.stub!(:current_user).and_return(nil)
+          controller.stubs(:current_user).returns(nil)
         end
         it 'should sign in and redirect the user' do
           auth = Factory(:facebook)
-          User.stub!(:find_for_oauth).and_return(auth.user)
+          User.stubs(:find_for_oauth).returns(auth.user)
           request.env["omniauth.auth"] = {"provider" => 'facebook'}
           post :create, :provider => 'facebook'
           response.should redirect_to(root_url)
         end
         it 'should redirect to the edit page(facebook)' do
-          User.stub!(:find_for_oauth).and_return(User.new)
+          User.stubs(:find_for_oauth).returns(User.new)
           request.env["omniauth.auth"] = {"provider" => 'facebook'}
           post :create, :provider => 'facebook'
           response.should redirect_to(new_user_registration_url)
           session["devise.facebook_data"].should_not be_nil
         end
         it 'should redirect to the edit page(twitter)' do
-          User.stub!(:find_for_oauth).and_return(User.new)
+          User.stubs(:find_for_oauth).returns(User.new)
           request.env["omniauth.auth"] = {"provider" => 'twitter'}
           post :create, :provider => 'twitter'
           response.should redirect_to(new_user_registration_url)
@@ -61,11 +61,12 @@ describe Users::AuthenticationsController do
   describe "GET edit" do
     describe '#as admin' do
       before(:each) do
-        controller.stub!(:admin_signed_in?).and_return(true)
+        controller.stubs(:admin_signed_in?).returns(true)
       end
       it "assigns the requested authentications as @authentications" do
-        mu = mock_user(:authentications => [{"uid" => '5', "provider" => 'dummy'}])
-        User.stub(:find).with("37") { mu }
+        mu = mock()
+        mu.stubs(:authentications).returns([{"uid" => '5', "provider" => 'dummy'}])
+        User.stubs(:find).with("37").returns(mu)
         get :edit, :id => "37"
         assigns(:authentications).should == mu.authentications
       end

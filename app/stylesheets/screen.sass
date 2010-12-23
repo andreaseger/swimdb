@@ -2,6 +2,8 @@
 @import "blueprint/reset"
 // To configure blueprint, edit the partials/base.sass file.
 @import partials/base.scss
+@import partials/flash_errors.sass
+//@import partials/simple_form.sass
 //@import partials/flash_error.sass
 // Import all the default blueprint modules so that we can access their mixins.
 @import blueprint
@@ -118,44 +120,6 @@ body
     i
       color: $silver
       font-size: 0.7em
-
-
-    #flash_notice, #flash_error, #flash_alert
-      padding: 5px 8px
-      margin: 10px 0
-
-    #flash_notice
-      background-color: #ccffcc
-      border: solid 1px #66cc66
-
-    #flash_error, #flash_alert
-      background-color: #ffcccc
-      border: solid 1px #cc6666
-
-    .fieldWithErrors
-      display: inline
-
-    .error_messages,
-    #error_explanation
-      width: 400px
-      border: 2px solid #cf0000
-      padding: 0
-      padding-bottom: 12px
-      margin-bottom: 20px
-      background-color: #f0f0f0
-      font-size: 0.8em
-      h2
-        text-align: left
-        padding: 5px 5px 5px 15px
-        margin: 0
-        font-weight: bold
-        font-size: 0.8em
-        background-color: #cc0000
-        color: white
-      p
-        margin: 8px 10px
-      ul
-        margin: 0
 
     .admin
       color: #F00

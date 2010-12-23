@@ -1,14 +1,16 @@
-Factory.define :bob, :class => :user do |f|
-  f.username "Bob"
-  f.email "bob@foo.com"
-  f.password "secret"
-  f.password_confirmation "secret"
-end
+FactoryGirl.define do
+  factory :bob, :class => :user do
+    username "Bob"
+    email "bob@foo.com"
+    password "secret"
+    password_confirmation "secret"
+  end
 
-Factory.define :amy, :class => :user do |f|
-  f.username "Amy"
-  f.email "amy@foo.com"
-  f.password "secret"
-  f.password_confirmation "secret"
+  factory :amy, :class => :user do
+    username "Amy"
+    email "amy@foo.com"
+    password "secret"
+    password_confirmation "secret"
+  end
 end
 

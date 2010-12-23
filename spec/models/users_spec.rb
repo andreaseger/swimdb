@@ -50,19 +50,15 @@ describe User do
         @user = Factory(:amy)
       end
       describe '#auth already exists and belongs to another user' do
-        before(:each) do
-          @bob = Factory(:bob)
-          @bob.authentications.create!(:uid => '12345', :provider => 'dummy')
-        end
         it 'should raise an exception' do
+          @bob = Factory.create(:bob, :authentications => [Authentication.new(:uid => '12345', :provider => 'dummy')])
+          Authentication.stubs(:find).returns(@bob.authentications.first)
           lambda {User.find_for_oauth(@omniauth, @user)}.should raise_error('Account already linked to an other user')
         end
       end
       describe '#auth already exists and belongs to the current_user' do
-        before(:each) do
-          @user.authentications.create!(:uid => '12345', :provider => 'dummy')
-        end
         it 'should return the user himself' do
+          @user.authentications.create!(:uid => '12345', :provider => 'dummy')
           User.find_for_oauth(@omniauth, @user).should == @user
         end
       end
@@ -97,7 +93,7 @@ describe User do
               @omniauth = {'uid' => '1235', 'provider'=> 'facebook', 'extra' => {'user_hash' => {'name' => "Foo Bar", 'email' => "bar@foo.com"}}}
           end
           it 'should call create_new_fb_user' do
-            User.should_receive(:create_new_fb_user)
+            User.expects(:create_new_fb_user)
             User.find_for_oauth(@omniauth, @user)
           end
           describe '#create_new_fb_user' do
@@ -105,19 +101,20 @@ describe User do
               User.create_new_fb_user(@omniauth).persisted?.should be_true
             end
             it 'should have the username "Foo Bar"' do
-              User.create_new_fb_user(@omniauth).username.should == "Foo Bar"
+              User.new_fb_user(@omniauth).username.should == "Foo Bar"
             end
             it 'should have the email "bar@foo.com"' do
-              User.create_new_fb_user(@omniauth).email.should == "bar@foo.com"
+              User.new_fb_user(@omniauth).email.should == "bar@foo.com"
             end
             it 'should have a facebook authentication' do
-              User.create_new_fb_user(@omniauth).authentications[0].provider.should == 'facebook'
+              User.new_fb_user(@omniauth).authentications[0].provider.should == 'facebook'
             end
             describe '#autocreate is invalid' do
               before do
-                Factory(:bob, :username => "Foo Bar")
+                #Factory.stub(:bob, :username => "Foo Bar")
               end
               it 'should return a non persisted User' do
+                User.stubs(:new_fb_user).returns(User.new)
                 User.create_new_fb_user(@omniauth).persisted?.should be_false
               end
             end

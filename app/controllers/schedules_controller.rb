@@ -8,7 +8,7 @@ class SchedulesController < InheritedResources::Base
   end
 
   def index
-    @schedules = apply_scopes(Schedule).all
+    @schedules = apply_scopes(Schedule).paginate(:per_page => 20, :page => params[:page])
     unless @schedules.count == 0
       @tags = SchedulesHelper::TagCloud.build.find()
       render :layout => 'with_tagcloud'

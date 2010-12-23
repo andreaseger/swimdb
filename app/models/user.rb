@@ -16,8 +16,6 @@ class User
   attr_accessible :username, :email, :password, :password_confirmation
 
   field :username
-  validates_presence_of :username
-  validates_uniqueness_of :username
   field :image
 
   references_many :schedules
@@ -26,6 +24,8 @@ class User
 
   #validates_associated :comments, :allow_nil => true
   #validates_associated :schedules
+  validates_presence_of :username
+  validates_uniqueness_of :username
   validate :validate_authentications, :unless => Proc.new {self.authentications == []}
 
   def self.find_for_oauth(omniauth, user)
@@ -69,9 +69,14 @@ class User
   end
 
   private
-  def self.create_new_fb_user(data)
+  def self.new_fb_user(data)
     u = User.new(:username => data["extra"]["user_hash"]["name"], :email => data["extra"]["user_hash"]["email"])
     u.authentications.build(:uid => data["uid"],:provider => data["provider"])
+    return u
+  end
+
+  def self.create_new_fb_user(data)
+    u = new_fb_user(data)
     if u.save
       return u
     else

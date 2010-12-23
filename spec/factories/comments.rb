@@ -1,4 +1,6 @@
-Factory.define :comment do |f|
-  f.body "awesome schedule"
+FactoryGirl.define do
+  factory :comment do
+    body "awesome schedule"
+  end
 end
 

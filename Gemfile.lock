@@ -1,17 +1,31 @@
 GIT
   remote: git://github.com/plataformatec/devise.git
-  revision: 67645c68f7a65ad26cb687e95914cb37e1587348
+  revision: 379d8c69a5c02dede6230719f3ebcc8bb95a655b
   branch: master
   specs:
     devise (1.2.rc)
       bcrypt-ruby (~> 2.1.2)
-      orm_adapter (~> 0.0.2)
-      warden (~> 1.0.2)
+      orm_adapter (~> 0.0.3)
+      warden (~> 1.0.3)
+
+GIT
+  remote: git://github.com/thoughtbot/factory_girl.git
+  revision: df8cdbf8142143026a7f9b8c47b64ae0bb5e84fb
+  specs:
+    factory_girl (2.0.0.beta1)
+
+GIT
+  remote: git://github.com/thoughtbot/factory_girl_rails.git
+  revision: 544868740c3e26d8a5e8337940f9de4990b1cd0b
+  specs:
+    factory_girl_rails (1.1.beta1)
+      factory_girl (~> 2.0.0.beta)
+      railties (>= 3.0.0)
 
 GEM
   remote: http://rubygems.org/
   specs:
-    ZenTest (4.4.0)
+    ZenTest (4.4.2)
     abstract (1.0.0)
     actionmailer (3.0.3)
       actionpack (= 3.0.3)
@@ -41,13 +55,16 @@ GEM
     activesupport (3.0.3)
     addressable (2.2.2)
     archive-tar-minitar (0.5.2)
-    arel (2.0.4)
-    autotest (4.4.4)
+    arel (2.0.6)
+    autotest (4.4.6)
+      ZenTest (>= 4.4.1)
     autotest-rails (4.1.0)
       ZenTest
-    bcrypt-ruby (2.1.2)
-    bson (1.1.2)
-    bson_ext (1.1.2)
+    awesome_print (0.3.1)
+    bcrypt-ruby (2.1.3)
+    bond (0.3.3)
+    bson (1.1.5)
+    bson_ext (1.1.5)
     builder (2.1.2)
     capistrano (2.5.19)
       highline
@@ -64,39 +81,37 @@ GEM
       rack-test (>= 0.5.4)
       selenium-webdriver (>= 0.0.27)
       xpath (~> 0.1.2)
-    celerity (0.8.4)
-    childprocess (0.1.4)
+    celerity (0.8.6)
+    childprocess (0.1.6)
       ffi (~> 0.6.3)
     columnize (0.3.2)
     compass (0.10.6)
       haml (>= 3.0.4)
-    cucumber (0.9.4)
-      builder (~> 2.1.2)
+    cucumber (0.10.0)
+      builder (>= 2.1.2)
       diff-lcs (~> 1.1.2)
-      gherkin (~> 2.2.9)
+      gherkin (~> 2.3.2)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
     cucumber-rails (0.3.2)
       cucumber (>= 0.8.0)
-    culerity (0.2.12)
+    culerity (0.2.13)
     database_cleaner (0.6.0)
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
-    factory_girl (1.3.2)
-    factory_girl_rails (1.0)
-      factory_girl (~> 1.3)
-      rails (>= 3.0.0.beta4)
+    faker (0.9.2)
+      i18n (~> 0.4)
     faraday (0.5.3)
       addressable (~> 2.2.2)
       multipart-post (~> 1.0.1)
       rack (>= 1.1.0, < 2)
     ffi (0.6.3)
       rake (>= 0.8.7)
-    gherkin (2.2.9)
+    gherkin (2.3.2)
       json (~> 1.4.6)
       term-ansicolor (~> 1.0.5)
-    haml (3.0.24)
+    haml (3.0.25)
     haml-rails (0.3.4)
       actionpack (~> 3.0)
       activesupport (~> 3.0)
@@ -104,7 +119,8 @@ GEM
       railties (~> 3.0)
     has_scope (0.5.0)
     highline (1.6.1)
-    i18n (0.4.2)
+    hirb (0.3.5)
+    i18n (0.5.0)
     inherited_resources (1.1.2)
       has_scope (~> 0.5.0)
       responders (~> 0.6.0)
@@ -112,14 +128,16 @@ GEM
     json_pure (1.4.6)
     linecache19 (0.5.11)
       ruby_core_source (>= 0.1.4)
-    mail (2.2.10)
+    mail (2.2.12)
       activesupport (>= 2.3.6)
-      i18n (~> 0.4.1)
+      i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.16)
-    mongo (1.1.2)
-      bson (>= 1.1.1)
+    mocha (0.9.10)
+      rake
+    mongo (1.1.5)
+      bson (>= 1.1.5)
     mongoid (2.0.0.beta.20)
       activemodel (~> 3.0)
       mongo (~> 1.1)
@@ -135,7 +153,7 @@ GEM
     net-ssh (2.0.23)
     net-ssh-gateway (1.0.1)
       net-ssh (>= 1.99.1)
-    newrelic_rpm (2.13.3)
+    newrelic_rpm (2.13.4)
     nifty-generators (0.4.2)
     nokogiri (1.4.4)
     oa-basic (0.1.6)
@@ -201,16 +219,19 @@ GEM
       mime-types (>= 1.16)
     rpm_contrib (1.0.13)
       newrelic_rpm (>= 2.13.1)
-    rspec (2.1.0)
-      rspec-core (~> 2.1.0)
-      rspec-expectations (~> 2.1.0)
-      rspec-mocks (~> 2.1.0)
-    rspec-core (2.1.0)
-    rspec-expectations (2.1.0)
+    rspec (2.3.0)
+      rspec-core (~> 2.3.0)
+      rspec-expectations (~> 2.3.0)
+      rspec-mocks (~> 2.3.0)
+    rspec-core (2.3.1)
+    rspec-expectations (2.3.0)
       diff-lcs (~> 1.1.2)
-    rspec-mocks (2.1.0)
-    rspec-rails (2.1.0)
-      rspec (~> 2.1.0)
+    rspec-mocks (2.3.0)
+    rspec-rails (2.3.1)
+      actionpack (~> 3.0)
+      activesupport (~> 3.0)
+      railties (~> 3.0)
+      rspec (~> 2.3.0)
     ruby-debug-base19 (0.11.24)
       columnize (>= 0.3.1)
       linecache19 (>= 0.5.11)
@@ -226,27 +247,29 @@ GEM
       archive-tar-minitar (>= 0.5.2)
     rubyntlm (0.1.1)
     rubyzip (0.9.4)
-    selenium-webdriver (0.1.0)
-      childprocess (= 0.1.4)
+    selenium-webdriver (0.1.2)
+      childprocess (~> 0.1.5)
       ffi (~> 0.6.3)
       json_pure
       rubyzip
     simplecov (0.3.7)
       simplecov-html (>= 0.3.7)
     simplecov-html (0.3.9)
+    sketches (0.1.1)
     spork (0.9.0.rc2)
     term-ansicolor (1.0.5)
-    thor (0.14.4)
+    thor (0.14.6)
     treetop (1.4.9)
       polyglot (>= 0.3.1)
     tzinfo (0.3.23)
-    warden (1.0.2)
+    warden (1.0.3)
       rack (>= 1.0.0)
     webrat (0.7.2)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
       rack-test (>= 0.5.3)
     will_paginate (3.0.pre2)
+    wirble (0.1.3)
     xpath (0.1.2)
       nokogiri (~> 1.3)
 
@@ -256,6 +279,8 @@ PLATFORMS
 DEPENDENCIES
   autotest
   autotest-rails
+  awesome_print
+  bond
   bson_ext
   capistrano
   capybara
@@ -264,10 +289,14 @@ DEPENDENCIES
   cucumber-rails
   database_cleaner
   devise!
-  factory_girl_rails
+  factory_girl!
+  factory_girl_rails!
+  faker
   haml-rails
   has_scope
+  hirb
   inherited_resources
+  mocha
   mongoid (>= 2.0.0.beta.20)
   nifty-generators
   omniauth
@@ -276,5 +305,8 @@ DEPENDENCIES
   rspec-rails (>= 2.0.0.beta.22)
   ruby-debug19
   simplecov (>= 0.3.5)
+  sketches
   spork (>= 0.9.0.rc2)
   webrat
+  will_paginate (= 3.0.pre2)
+  wirble

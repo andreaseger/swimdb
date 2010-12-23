@@ -6,6 +6,7 @@ Just messing around with rails 3, mongoid, devise and BDD(rspec, cucumber)
 Newest changes
 --------------
 
+- hacked a populate script to generate some data for development
 - validation errors now have a red border, just had to add the sass snippet, even works with items
 - replaced mongomapper for mongoid
 - Passanger in development?!?
@@ -35,7 +36,7 @@ Known Issues
 
 - not really an issue but I not really know how that mapreduce snippet works ;)
 - when a failure while the comment creation happens it does just nothing(with JS)
-
+- the tagcloud is unacceptable low when run on ~84000 Schedules - ok thats not a small number but I definatly have to use some sort of cache here. Perhaps I could use a backgroundworker to generate a new tagcloud after changes.
 
 to think about
 --------------

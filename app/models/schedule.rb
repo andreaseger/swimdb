@@ -3,7 +3,7 @@ class Schedule
   include Mongoid::Timestamps
 
   referenced_in :user
-  field :name
+  field :title
   field :description
   field :original_date, :type => Date
 
@@ -16,7 +16,7 @@ class Schedule
   field :cached_user
 
   before_save :cache_user
-  validates_presence_of :name, :description
+  validates_presence_of :title, :description
   validates_presence_of :taggings, :if => Proc.new{ self.tags == nil}
 
   validates_associated :items

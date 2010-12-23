@@ -1,6 +1,8 @@
-Factory.define :alice, :class => :admin do |f|
-  f.email "alice@foo.com"
-  f.password "secret"
-  f.password_confirmation "secret"
+FactoryGirl.define do
+  factory :alice, :class => :admin do
+    email "alice@foo.com"
+    password "secret"
+    password_confirmation "secret"
+  end
 end
 

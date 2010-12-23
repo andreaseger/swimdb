@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe "/schedules/show.html.haml" do
-  include Devise::TestHelpers
-  before do
+  #include Devise::TestHelpers
+  before(:each) do
     user = Factory(:amy)
     assign(:schedule, Factory(:valid_schedule, :user => user))
     assign(:comment, Comment.new(:body => "lorem", :user => user))
+    @view.stubs(:user_signed_in?).returns(false)
+    @view.stubs(:admin_signed_in?).returns(false)
   end
 
   it "should show the basic elements of the schedule" do
@@ -26,8 +28,11 @@ describe "/schedules/show.html.haml" do
     end
     describe 'logged in' do
       before do
-        @user = Factory(:bob)
-        sign_in @user
+        @user = Factory.stub(:bob)
+        @view.stubs(:user_signed_in?).returns(true)
+        @view.stubs(:admin_signed_in?).returns(false)
+        @view.stubs(:current_user).returns(@user)
+        #sign_in @user
       end
       it 'should only show the body field for the CommentsForm' do
         render

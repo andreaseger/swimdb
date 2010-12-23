@@ -1,5 +1,4 @@
 = form_for [@schedule, @schedule.comments.build], :remote =>true do |f|
-  = f.error_messages
   %ul.formList
     %li
       = f.label :body, "Comment"

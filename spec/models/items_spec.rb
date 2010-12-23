@@ -63,7 +63,7 @@ describe Item do
 
     it 'should call #parse_text after_validation' do
       item = Factory(:item, :text => "3*4x200m abwechlselnd Lagen und Kraul")
-      item.should_receive(:parse_text)
+      item.expects(:parse_text)
       item.valid?
     end
   end
@@ -94,12 +94,12 @@ describe Item do
   describe '#callbacks' do
     it 'should call #set_level' do
       item = Factory(:item, :level => 2, :text => '100m')
-      item.should_receive(:set_level)
+      item.expects(:set_level)
       item.valid?
     end
     it 'should call #parse_text' do
       item = Factory(:item, :level => 2, :text => '100m')
-      item.should_receive(:parse_text)
+      item.expects(:parse_text)
       item.valid?
     end
   end

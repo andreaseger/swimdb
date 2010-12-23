@@ -5,7 +5,7 @@ describe '/layouts/application.html.haml' do
 
   describe 'not authenticated' do
     before :each do
-      @view.stub!(:user_signed_in?).and_return(false)
+      @view.stubs(:user_signed_in?).returns(false)
     end
     it 'should show the default usernav' do
       render
@@ -22,15 +22,15 @@ describe '/layouts/application.html.haml' do
 
   describe 'authenticated' do
     before :each do
-      @view.stub!(:user_signed_in?).and_return(true)
-      current_user = mock_model(User, :username => "bob")
-      @view.stub!(:current_user).and_return(current_user)
+      @view.stubs(:user_signed_in?).returns(true)
+      current_user = Factory.stub(:bob)
+      @view.stubs(:current_user).returns(current_user)
     end
     it 'should show the usernav for logged in user' do
       render
       rendered.should have_selector("div", :id => "user_nav") do
         contain "Home"
-        contain "Signed in as bob"
+        contain "Signed in as Bob"
         contain "Logout"
         contain "Edit Profile"
       end

@@ -5,8 +5,8 @@
   = f.error_messages
   %ul.formlist
     %li#name
-      .label= f.label :name
-      .field= f.text_field :name, :id => 'name'
+      .label= f.label :title
+      .field= f.text_field :title, :id => 'name'
     %li#items
       - @schedule.items.each do |item|
         = f.fields_for item do |ff|

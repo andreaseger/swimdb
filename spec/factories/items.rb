@@ -1,33 +1,35 @@
-Factory.define :item, :default_strategy => :build do |f|
-  f.level 0
-  f.text '100m'
-end
+FactoryGirl.define do
+  factory :item, :default_strategy => :build do
+    level 0
+    text '100m'
+  end
 
-Factory.define :first, :parent => :item do |f|
-  f.text '400m'
-end
-Factory.define :second, :parent => :item do |f|
-  f.text '2*800m'
-end
-Factory.define :third, :parent => :item do |f|
-  f.text '3*500m'
-end
-Factory.define :third_lvl1, :parent => :item do |f|
-  f.level 1
-  f.text "50m"
-end
-Factory.define :forth, :parent => :item do |f|
-  f.text '3*5*100m'
-end
-Factory.define :forth_lvl2, :parent => :item do |f|
-  f.level 2
-  f.text "50m"
-end
-Factory.define :forth_lvl1, :parent => :item do |f|
-  f.level 1
-  f.text "2x50m"
-end
-Factory.define :info, :parent => :item do |f|
-  f.text "=> foo"
+  factory :first, :parent => :item do
+    text '400m'
+  end
+  factory :second, :parent => :item do
+    text '2*800m'
+  end
+  factory :third, :parent => :item do
+    text '3*500m'
+  end
+  factory :third_lvl1, :parent => :item do
+    level 1
+    text "50m"
+  end
+  factory :forth, :parent => :item do
+    text '3*5*100m'
+  end
+  factory :forth_lvl2, :parent => :item do
+    level 2
+    text "50m"
+  end
+  factory :forth_lvl1, :parent => :item do
+    level 1
+    text "2x50m"
+  end
+  factory :info, :parent => :item do
+    text "=> foo"
+  end
 end
 

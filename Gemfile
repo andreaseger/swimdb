@@ -5,9 +5,12 @@ gem 'rails', '3.0.3'
 gem 'haml-rails'
 gem 'inherited_resources'
 gem 'has_scope'
+gem 'will_paginate', '3.0.pre2'
+
 
 # Style
 gem "compass", ">= 0.10.6"
+#gem 'simple_form'
 
 #MongoDB
 gem 'bson_ext'
@@ -35,13 +38,25 @@ end
 group :test, :development do
   gem 'rspec-rails', '>= 2.0.0.beta.22'
   gem 'spork', '>= 0.9.0.rc2'
-  #gem 'mocha'
+  gem 'mocha'
   gem 'autotest'
   gem 'autotest-rails'
   gem 'cucumber'
   gem 'cucumber-rails'
   gem 'ruby-debug19', :require => 'ruby-debug'
   #gem 'ruby-debug'
+  gem 'faker'
+
+  #irb stuff
+  gem 'wirble'
+  gem 'hirb'
+  gem 'awesome_print'
+  gem 'bond'
+  gem 'sketches'
+
+  #factories
+  gem 'factory_girl_rails', :git => 'git://github.com/thoughtbot/factory_girl_rails.git'
+  gem 'factory_girl', :git => 'git://github.com/thoughtbot/factory_girl.git'
 end
 
 group :test do
@@ -49,8 +64,5 @@ group :test do
   gem 'webrat'
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
-#  gem 'rack-test',
-#    :git => 'git://github.com/brynary/rack-test.git'
 end
 

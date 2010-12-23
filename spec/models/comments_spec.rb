@@ -18,8 +18,8 @@ describe Comment do
   end
   describe '#timestamp' do
     before do
-      @schedule = Factory(:valid_schedule, :user=>Factory(:bob), :created_at => 3.days.ago)
-      @user = Factory(:amy)
+      @user = Factory.stub(:amy)
+      @schedule = Factory(:valid_schedule, :created_at => 3.days.ago)
     end
     it 'should have an individual created_at timestamp' do
       #pending 'not possible in mongoid'
@@ -29,17 +29,17 @@ describe Comment do
   end
   describe '#cache_user' do
     before do
-      @schedule = Factory(:valid_schedule, :user=>Factory(:bob))
       @user = Factory(:amy)
+      @schedule = Factory(:valid_schedule)
     end
     it 'should call cache_user before_save' do
       @comment = @schedule.comments.build(:user => @user, :body => "hase")
-      @comment.should_receive(:cache_user)
+      @comment.expects(:cache_user)
       @schedule.save
     end
 
     it 'should save the username' do
-      @schedule.comments.create!(:user => @user, :body => "hase")
+      @schedule.comments.create(:user => @user, :body => "hase")
       @schedule.comments[0].cached_user.should == @user.username
     end
   end

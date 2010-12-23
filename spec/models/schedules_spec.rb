@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Schedule do
 
   describe 'when validate' do
-    %w(name description taggings).each do |attrib|
+    %w(title description taggings).each do |attrib|
       it "should validates presence of #{attrib}" do
         schedule = Factory.build(:schedule, attrib => nil)
         schedule.should_not be_valid
